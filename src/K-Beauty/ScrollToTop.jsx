@@ -5,14 +5,18 @@ const ScrollToTop = () => {
     const { pathname } = useLocation();
 
     useLayoutEffect(() => {
-        // Use a timeout of 0 to ensure it happens after the browser paints
-        // This handles cases where React concurrent rendering or AOS animations might interfere
+        // Disable browser's automatic scroll restoration
+        if ('scrollRestoration' in window.history) {
+            window.history.scrollRestoration = 'manual';
+        }
+
+        // Use a small timeout to ensure it runs after the route change has fully rendered
         const timeoutId = setTimeout(() => {
-            window.scrollTo({
-                top: 0,
-                left: 0,
-                behavior: 'instant' // Force instant jump to prevent clashes with CSS smooth scroll
-            });
+            const scrollOptions = { top: 0, left: 0, behavior: 'instant' };
+            
+            window.scrollTo(scrollOptions);
+            document.documentElement.scrollTo(scrollOptions);
+            document.body.scrollTo(scrollOptions);
         }, 0);
 
         return () => clearTimeout(timeoutId);
