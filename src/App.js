@@ -17,6 +17,7 @@ import { WishlistProvider } from './K-Beauty/context/WishlistContext';
 import { CartProvider } from './K-Beauty/context/CartContext';
 import { ToastContainer } from 'react-toastify';
 import ScrollToTop from './K-Beauty/ScrollToTop';
+import AuthPopup from './K-Beauty/Components/AuthPopup';
 export const loginStatus = createContext();
 
 function App() {
@@ -128,6 +129,7 @@ function App() {
           <WishlistProvider>
             <CartProvider>
               <ScrollToTop />
+              <AuthPopup isLogin={login} />
               {!isAdminRoute && <Navbar />}
               <Routing />
               {!isAdminRoute && <Footer />}
