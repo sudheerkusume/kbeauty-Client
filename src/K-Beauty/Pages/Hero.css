@@ -99,27 +99,27 @@
 @media (max-width: 768px) {
     .pure-hero-slider {
         height: auto;
-        aspect-ratio: 16 / 10;
-        min-height: 200px;
+        aspect-ratio: 16 / 8;
+        min-height: 180px;
     }
 
     .banner-slide {
         background-size: cover;
-        background-position: center top; /* Focus on top/center for mobile content */
+        background-position: center center; /* Balance left text and right product */
     }
 
     .banner-nav {
-        bottom: 15px;
-        gap: 8px;
+        bottom: 12px;
+        gap: 6px;
     }
 
     .banner-nav .nav-item {
-        width: 25px;
+        width: 20px;
         height: 3px;
     }
 
     .banner-nav .nav-item.active {
-        width: 40px;
+        width: 35px;
     }
 }
 
