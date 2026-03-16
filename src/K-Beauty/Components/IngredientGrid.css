@@ -1,0 +1,52 @@
+.ingredient-grid-section {
+    border-top: 1px solid var(--border-gold, rgba(212, 175, 55, 0.15));
+}
+
+.ingredient-title {
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--text-primary, #fff);
+}
+
+.ingredient-circle-item {
+    width: 140px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.ingredient-circle-item:hover {
+    transform: translateY(-8px);
+}
+
+.ing-img-box {
+    width: 100px;
+    height: 100px;
+    background: var(--bg-card, #1A1A1A);
+    border-radius: 50%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    transition: background 0.3s;
+    border: 1px solid var(--border-gold, rgba(212, 175, 55, 0.15));
+}
+
+.ingredient-circle-item:hover .ing-img-box {
+    background: var(--gold, #D4AF37);
+    border-color: var(--gold, #D4AF37);
+}
+
+.ing-img-box img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.ing-name {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-primary, #fff);
+}

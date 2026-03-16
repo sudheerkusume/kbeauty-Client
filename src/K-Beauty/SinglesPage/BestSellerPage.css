@@ -1,0 +1,49 @@
+/* BestSellerPage.css - Dark & Gold Premium Utility Styles */
+
+.brand-link-common {
+    transition: all 0.2s ease;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.brand-link-common:hover {
+    color: var(--gold, #D4AF37) !important;
+    text-decoration: underline !important;
+}
+
+/* Sidebar Custom Scrollbar for stability */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #111;
+    border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #444;
+}
+
+/* Filter Checkbox Styling */
+.form-check-input:checked {
+    background-color: var(--gold, #D4AF37) !important;
+    border-color: var(--gold, #D4AF37) !important;
+}
+
+/* Category Hero Typography */
+.category-hero h1 {
+    font-family: 'Playfair Display', serif !important;
+}
+
+/* Mobile Adjustments for Grid */
+@media (max-width: 768px) {
+    .category-hero h1 {
+        font-size: 2.5rem !important;
+    }
+}

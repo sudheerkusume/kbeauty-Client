@@ -1,0 +1,51 @@
+.trust-bar-wrap {
+    background: var(--bg-dark, #000);
+    border-top: 1px solid var(--border-gold, rgba(212, 175, 55, 0.1));
+    border-bottom: 1px solid var(--border-gold, rgba(212, 175, 55, 0.1));
+}
+
+.trust-item {
+    transition: transform 0.3s;
+}
+
+.trust-item:hover {
+    transform: translateY(-2px);
+}
+
+.trust-icon {
+    color: var(--gold, #D4AF37);
+}
+
+.trust-content h6 {
+    text-transform: uppercase;
+    color: var(--text-primary, #fff);
+}
+
+@media (max-width: 768px) {
+    .trust-bar-wrap {
+        padding: 15px 0 !important;
+    }
+    
+    .trust-item {
+        justify-content: center !important; /* Centered for 2-column grid */
+        padding: 0 5px;
+    }
+
+    .trust-icon {
+        margin-right: 8px !important; /* Reduced space as requested */
+    }
+
+    .trust-icon svg {
+        width: 18px !important;
+        height: 18px !important;
+    }
+
+    .trust-content h6 {
+        font-size: 10px !important;
+        white-space: nowrap;
+    }
+
+    .trust-content p {
+        font-size: 9px !important;
+    }
+}

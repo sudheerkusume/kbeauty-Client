@@ -1,0 +1,221 @@
+.trending-section {
+    background-color: var(--bg-dark, #000);
+}
+
+.trending-subtitle {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--gold, #D4AF37);
+    display: block;
+    margin-bottom: 8px;
+}
+
+.trending-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin: 0;
+    color: var(--text-primary, #fff);
+}
+
+.trending-view-all {
+    color: var(--gold-light, #F5D27A);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    border-bottom: 2px solid var(--gold, #D4AF37);
+    padding-bottom: 2px;
+    transition: opacity 0.3s;
+}
+
+.trending-view-all:hover {
+    opacity: 0.7;
+}
+
+.trending-card {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.trending-img-container {
+    position: relative;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    border-radius: 8px;
+    background: var(--bg-card, #1A1A1A);
+    border: 1px solid var(--border-gold, rgba(212, 175, 55, 0.1));
+}
+
+.trending-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.trending-card:hover .trending-img {
+    transform: scale(1.05);
+}
+
+.trending-rating-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(0, 0, 0, 0.8);
+    color: var(--gold-light, #F5D27A);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-gold, rgba(212, 175, 55, 0.2));
+}
+
+.trending-brand-link {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--gold, #D4AF37);
+    display: block;
+    margin-bottom: 5px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: all 0.2s ease;
+}
+
+.trending-brand-link:hover {
+    color: var(--gold-light, #F5D27A);
+    text-decoration: underline;
+}
+
+.trending-name {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2; /* Standard property */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 38px;
+    color: var(--text-primary, #fff);
+}
+
+.trending-price-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.trending-offer {
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--gold-light, #F5D27A);
+}
+
+.trending-old {
+    font-size: 13px;
+    color: var(--text-muted, #888);
+}
+
+/* =========================================
+   Mobile Responsiveness & Typography Clamps
+   ========================================= */
+.trending-title {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+}
+
+.trending-subtitle {
+    font-size: clamp(9px, 2vw, 11px);
+}
+
+.trending-name {
+    font-size: clamp(12px, 3vw, 14px);
+    height: auto;
+    min-height: 38px;
+}
+
+.trending-offer {
+    font-size: clamp(14px, 3.5vw, 16px);
+}
+
+/* Horizontal Touch Scroll for Mobile Arrays */
+@media (max-width: 768px) {
+    .trending-section {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+
+    .trending-section .d-flex.justify-content-between {
+        flex-direction: column !important;
+        text-align: center;
+        gap: 15px;
+        margin-bottom: 30px !important;
+    }
+
+    .trending-title {
+        font-size: 1.6rem !important;
+    }
+
+    .trending-subtitle {
+        font-size: 8px !important;
+        letter-spacing: 2px !important;
+        margin-bottom: 5px !important;
+    }
+
+    .mobile-scroll-row {
+        flex-wrap: wrap !important;
+        overflow-x: hidden;
+        padding: 0 !important;
+        margin-left: -5px !important;
+        margin-right: -5px !important;
+    }
+    
+    .mobile-scroll-row > .col-6 {
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+        padding-left: 5px !important;
+        padding-right: 5px !important;
+        margin-bottom: 20px;
+        scroll-snap-align: unset;
+    }
+
+    .trending-img-container {
+        aspect-ratio: 4 / 5 !important;
+        border-radius: 6px;
+    }
+
+    .trending-info {
+        padding-top: 10px !important;
+        text-align: center;
+    }
+
+    .trending-name {
+        font-size: 11px !important;
+        height: 32px !important;
+        margin-bottom: 6px !important;
+        line-height: 1.3 !important;
+    }
+
+    .trending-price-box {
+        justify-content: center;
+        gap: 8px !important;
+    }
+
+    .trending-offer {
+        font-size: 13px !important;
+    }
+
+    .trending-old {
+        font-size: 10px !important;
+    }
+
+    .trending-view-all {
+        font-size: 12px;
+        width: fit-content;
+    }
+}

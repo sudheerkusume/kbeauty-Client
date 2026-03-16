@@ -1,0 +1,158 @@
+.ingredient-section {
+    background-color: var(--bg-dark, #000);
+}
+
+.ing-subtitle {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--gold, #D4AF37);
+    display: block;
+    margin-bottom: 8px;
+}
+
+.ing-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin: 0;
+    color: var(--text-primary, #fff);
+}
+
+.ingredient-grid-luxe {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.ing-card-premium {
+    background: transparent;
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-radius: 12px;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    width: 180px;
+}
+
+.ing-card-premium:hover {
+    background: rgba(212, 175, 55, 0.05);
+    border-color: rgba(212, 175, 55, 0.5);
+    transform: translateY(-5px);
+}
+
+.ing-orb {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(0, 0, 0, 0.8));
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    transition: all 0.4s ease;
+}
+
+.ing-card-premium:hover .ing-orb {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.4), rgba(0, 0, 0, 0.9));
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+    transform: scale(1.05);
+}
+
+.ing-initial {
+    font-size: 2rem;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: var(--gold-light, #F5D27A);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.ing-name {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--text-primary, #fff);
+    margin: 0;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ing-browse-btn {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gold, #D4AF37);
+    margin-top: 15px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    opacity: 0.8;
+}
+
+.ing-card-premium:hover .ing-browse-btn {
+    opacity: 1;
+    color: var(--gold-light, #F5D27A);
+}
+
+.ing-card-premium:hover .ing-browse-btn span {
+    transform: translateX(4px);
+}
+
+@media (max-width: 768px) {
+    .ingredient-section {
+        padding-top: 2.5rem !important;
+        padding-bottom: 2.5rem !important;
+    }
+
+    .ing-title {
+        font-size: 1.8rem !important;
+        text-align: center;
+    }
+
+    .ing-subtitle {
+        font-size: 9px !important;
+        letter-spacing: 2px !important;
+        text-align: center;
+    }
+
+    .ingredient-grid-luxe {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px !important;
+        padding: 0 10px;
+    }
+
+    .ing-card-premium {
+        width: 100% !important;
+        padding: 20px 10px !important;
+        border-radius: 12px;
+    }
+
+    .ing-orb {
+        width: 60px !important;
+        height: 60px !important;
+    }
+
+    .ing-initial {
+        font-size: 1.5rem !important;
+    }
+
+    .ing-name {
+        font-size: 12px !important;
+        height: auto !important;
+        min-height: 32px;
+    }
+
+    .ing-browse-btn {
+        font-size: 9px !important;
+        letter-spacing: 1px !important;
+        margin-top: 10px !important;
+    }
+}

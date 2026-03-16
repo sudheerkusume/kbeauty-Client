@@ -1,0 +1,204 @@
+/* Order.css - Premium Multi-Step Checkout */
+
+:root {
+    --gold: #D4AF37;
+    --gold-hover: #B8962E;
+    --dark-bg: #000;
+    --card-bg: #111;
+    --text-muted: #888;
+    --border-color: #333;
+}
+
+.checkout-container {
+    background-color: var(--dark-bg);
+    color: #fff;
+    min-height: 100vh;
+}
+
+.step-indicator {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.step-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.step-item.active {
+    color: var(--gold);
+}
+
+.step-item.completed {
+    color: #fff;
+}
+
+.step-number {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1px solid currentColor;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+}
+
+.step-item.active .step-number {
+    background-color: var(--gold);
+    border-color: var(--gold);
+    color: #000;
+}
+
+.checkout-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.checkout-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+.form-floating > .form-control {
+    background-color: transparent !important;
+    border: 1px solid var(--border-color);
+    color: #fff !important;
+    border-radius: 8px;
+}
+
+.form-floating > .form-control:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.1);
+}
+
+.form-floating > label {
+    color: var(--text-muted);
+}
+
+.btn-premium {
+    background-color: var(--gold);
+    color: #000;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-premium:hover:not(:disabled) {
+    background-color: var(--gold-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+}
+
+.btn-premium:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn-back {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: none;
+}
+
+.btn-back:hover {
+    color: #fff;
+}
+
+.order-summary-sticky {
+    position: sticky;
+    top: 2rem;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+.summary-total {
+    border-top: 1px solid var(--border-color);
+    margin-top: 1rem;
+    padding-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--gold);
+}
+
+.payment-option {
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.payment-option:hover {
+    border-color: var(--gold);
+    background: rgba(212, 175, 55, 0.05);
+}
+
+.payment-option.active {
+    border-color: var(--gold);
+    background: rgba(212, 175, 55, 0.1);
+}
+
+.product-thumb {
+    width: 64px;
+    height: 64px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 1px solid var(--border-color);
+}
+
+.product-qty-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: var(--gold);
+    color: #000;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+/* Animations */
+.fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

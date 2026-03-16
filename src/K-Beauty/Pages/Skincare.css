@@ -1,0 +1,156 @@
+/* Skincare.css - Premium Dark & Gold Styling */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+.skincare-page {
+    background-color: var(--bg-dark, #000);
+    color: var(--text-primary, #fff);
+    font-family: 'Outfit', sans-serif;
+}
+
+/* Hero Section */
+.skincare-hero {
+    position: relative;
+    height: 80vh;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 4rem;
+    background-color: #000;
+}
+
+.hero-bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.7);
+    z-index: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    color: #fff;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.hero-subtitle {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    margin-bottom: 1.5rem;
+    display: block;
+    font-weight: 500;
+    color: var(--gold-light, #F5D27A);
+}
+
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Filter Bar */
+.filter-container {
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border-gold, rgba(212, 175, 55, 0.15));
+    margin-bottom: 3rem;
+    position: sticky;
+    top: 80px;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+}
+
+.filter-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.filter-btn {
+    background: none;
+    border: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-muted, #888);
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.filter-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1.5px;
+    background-color: var(--gold, #D4AF37);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.filter-btn.active {
+    color: var(--gold, #D4AF37);
+}
+
+.filter-btn.active::after {
+    width: 20px;
+}
+
+.filter-btn:hover {
+    color: var(--gold-light, #F5D27A);
+}
+
+/* Product Grid */
+.product-grid-refined {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 3rem 2rem;
+    padding-bottom: 5rem;
+}
+
+@media (max-width: 768px) {
+    .product-grid-refined {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem 1rem;
+    }
+}
+
+/* Animations */
+[data-aos] {
+    transition-duration: 1000ms !important;
+}
