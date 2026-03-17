@@ -57,7 +57,7 @@ const Faq = () => {
                 <div className="text-center mb-5">
                     <span className="contact-tag">Customer Support</span>
                     <h1 className="contact-title display-3">Got <span>Questions?</span></h1>
-                    <p className="lead text-light mx-auto" style={{ maxWidth: '650px', opacity: 0.9 }}>
+                    <p className="lead text-white-force mx-auto" style={{ maxWidth: '650px', opacity: 0.9 }}>
                         Browse our categories and select a question to see the detailed guide
                         in our K-Beauty mobile assistant.
                     </p>
@@ -98,14 +98,14 @@ const Faq = () => {
                                             >
                                                 <div className="d-flex align-items-center gap-3">
                                                     <div className={`faq-status-dot ${selectedFaq?.id === faq.id ? 'active' : ''}`}></div>
-                                                    <h6 className="mb-0 fw-bold">{faq.question}</h6>
+                                                    <h6 className="mb-0 fw-bold text-white-force">{faq.question}</h6>
                                                 </div>
                                                 <FaChevronRight className="arrow-small" />
                                             </div>
                                         ))
                                     ) : (
                                         <div className="text-center py-4">
-                                            <p className="text-muted">Loading...</p>
+                                            <p className="text-white-force">Loading...</p>
                                         </div>
                                     )}
                                 </div>
@@ -140,7 +140,7 @@ const Faq = () => {
                                                 <h3 className="hd-q-text">{selectedFaq.question}</h3>
                                                 <div className="hd-accent-line"></div>
                                                 <div className="hd-answer-box">
-                                                    <p className="hd-a-text">{selectedFaq.answer}</p>
+                                                    <p className="hd-a-text text-white-force">{selectedFaq.answer}</p>
                                                 </div>
                                             </div>
                                         ) : (

@@ -15,6 +15,16 @@
   color: #F5D27A !important;
 }
 
+.text-white-force {
+  color: #FFFFFF !important;
+  opacity: 1 !important;
+}
+
+.text-glow-gold {
+  color: var(--gold, #D4AF37) !important;
+  text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+}
+
 .bg-gold {
   background-color: #D4AF37 !important;
 }
@@ -700,14 +710,16 @@ summary {
 .contact-page {
   font-family: 'Outfit', sans-serif !important;
   background-color: var(--bg-dark, #000);
-  color: #fff; /* Changed from text-secondary for better default visibility */
+  color: #fff;
+  /* Changed from text-secondary for better default visibility */
   position: relative;
   overflow: hidden;
   padding-bottom: 80px;
 }
 
 .contact-page .text-muted {
-  color: #aaa !important; /* Brighter than default muted for readability on black */
+  color: #aaa !important;
+  /* Brighter than default muted for readability on black */
 }
 
 /* Background soft glow decorations with more color */
@@ -751,7 +763,8 @@ summary {
 }
 
 .contact-card {
-  background: #151515 !important; /* Slightly lighter for better definition */
+  background: #151515 !important;
+  /* Slightly lighter for better definition */
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-radius: 40px;
@@ -853,12 +866,14 @@ summary {
   margin-bottom: 20px;
 }
 
-.contact-title span, .text-glow-gold {
+.contact-title span,
+.text-glow-gold {
   background: var(--gradient-gold, linear-gradient(135deg, #D4AF37, #F5D27A));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 20px rgba(212, 175, 55, 0.4); /* Stronger glow for better visibility */
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+  /* Stronger glow for better visibility */
 }
 
 .contact-tag {
@@ -879,21 +894,25 @@ summary {
     padding-top: 10px !important;
     padding-bottom: 40px !important;
   }
+
   .contact-title {
     font-size: 2.2rem !important;
     letter-spacing: -1px !important;
     line-height: 1.2 !important;
   }
+
   .contact-card {
     padding: 35px 25px !important;
     border-radius: 30px !important;
     margin-bottom: 15px;
   }
+
   .contact-image-wrapper {
     height: 180px !important;
     margin-bottom: 25px !important;
     border-radius: 20px !important;
   }
+
   .contact-info-icon {
     width: 45px;
     height: 45px;
@@ -901,6 +920,7 @@ summary {
     margin-right: 15px;
     border-radius: 12px !important;
   }
+
   .lead {
     font-size: 1rem !important;
     padding: 0 15px;
@@ -916,15 +936,18 @@ summary {
   .contact-title {
     font-size: 1.8rem !important;
   }
+
   .contact-card {
     padding: 25px 20px !important;
   }
+
   .contact-submit-btn {
     padding: 16px 25px !important;
     font-size: 0.85rem !important;
     letter-spacing: 1px;
     border-radius: 15px !important;
   }
+
   .smaller {
     font-size: 0.75rem !important;
   }
@@ -936,7 +959,8 @@ summary {
 .faq-page {
   font-family: 'Outfit', sans-serif !important;
   background-color: var(--bg-dark, #000);
-  padding-bottom: 120px; /* Adjusted from 150px for tighter feel */
+  padding-bottom: 120px;
+  /* Adjusted from 150px for tighter feel */
   color: #fff;
 }
 
@@ -947,7 +971,8 @@ summary {
 .faq-selection-wrapper {
   display: flex;
   gap: 20px;
-  background: #151515; /* Lighter for definition */
+  background: #151515;
+  /* Lighter for definition */
   padding: 25px;
   border-radius: 35px;
   box-shadow: 0 15px 45px rgba(0, 0, 0, 0.5);
@@ -1035,7 +1060,8 @@ summary {
 
 .faq-mini-card h6 {
   font-size: 0.9rem;
-  color: #bbb; /* Brighter for readability */
+  color: #bbb;
+  /* Brighter for readability */
   margin: 0;
 }
 
@@ -1063,7 +1089,8 @@ summary {
 .phone-wrapper-clear {
   position: relative;
   width: 420px;
-  height: 520px; /* Increased height to show more of the frame */
+  height: 520px;
+  /* Increased height to show more of the frame */
   overflow: hidden;
   background: transparent;
   display: flex;
@@ -1075,26 +1102,31 @@ summary {
   width: 100%;
   height: auto;
   display: block;
-  filter: invert(0.9) brightness(0.8) contrast(1.2); /* Effectively makes white frame dark/silver */
-  transform: scale(1.1); /* Zoom slightly to fill area */
+  filter: invert(0.9) brightness(0.8) contrast(1.2);
+  /* Effectively makes white frame dark/silver */
+  transform: scale(1.1);
+  /* Zoom slightly to fill area */
   transform-origin: top center;
 }
 
 /* THIS SECTION FIXES THE OVERLAP */
 .phone-screen-clear {
   position: absolute;
-  top: 9%; /* Adjusted for better alignment with hardware frame */
+  top: 9%;
+  /* Adjusted for better alignment with hardware frame */
   left: 50%;
   transform: translateX(-50%);
-  width: 76%; /* Slightly narrower to fit inside the frame */
-  height: 82%; /* Height adjusted to fit within visible frame */
+  width: 76%;
+  /* Slightly narrower to fit inside the frame */
+  height: 82%;
+  /* Height adjusted to fit within visible frame */
   background: #000;
   border-radius: 40px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   z-index: 10;
-  box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
 }
 
 /* HARDWARE NOTCH MOCK */
@@ -1103,7 +1135,8 @@ summary {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 100px; /* Slightly slimmer */
+  width: 100px;
+  /* Slightly slimmer */
   height: 20px;
   background: #000;
   border-bottom-left-radius: 12px;
@@ -1116,7 +1149,8 @@ summary {
   justify-content: space-between;
   align-items: center;
   padding: 15px 25px 5px;
-  background: transparent; /* Changed from white */
+  background: transparent;
+  /* Changed from white */
   z-index: 50;
 }
 
@@ -1136,19 +1170,12 @@ summary {
 .phone-content-scroller {
   flex: 1;
   overflow-y: auto;
-  background: #000;
+  background: var(--bg-charcoal, #111);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  animation: floatContent 6s ease-in-out infinite; /* Added floating effect */
-}
-
-@keyframes floatContent {
-  0% { transform: translateY(0px) scale(1); }
-  50% { transform: translateY(-5px) scale(1.02); } /* Subtle movement "outside" */
-  100% { transform: translateY(0px) scale(1); }
 }
 
 .phone-content-scroller::-webkit-scrollbar {
@@ -1187,27 +1214,9 @@ summary {
 }
 
 .hd-a-text {
-  font-size: 1rem; /* Slightly smaller for better fit */
+  font-size: 1.1rem;
   color: var(--text-secondary, #ccc);
-  line-height: 1.6;
-}
-
-.hd-answer-box {
-  padding: 0 15px;
-  position: relative;
-}
-
-/* Subtle glow to "pop" content outside */
-.phone-screen-clear::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  box-shadow: inset 0 0 30px rgba(212, 175, 55, 0.1);
-  pointer-events: none;
-  z-index: 20;
+  line-height: 1.7;
 }
 
 .hp-empty {
@@ -1495,12 +1504,15 @@ input::placeholder {
     padding: 15px !important;
     border-radius: 25px !important;
   }
+
   .faq-mini-card {
     padding: 15px !important;
   }
+
   .faq-mini-card h6 {
     font-size: 0.85rem !important;
   }
+
   .faq-cat-sidebar-btn {
     font-size: 0.75rem !important;
     padding: 8px 10px !important;

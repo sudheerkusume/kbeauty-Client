@@ -58,7 +58,7 @@ const Contact = () => {
                             </div>
 
                             <h3 className="contact-title h2 mb-4"><span>Contact</span> Info</h3>
-                            <p className="mb-4 mb-lg-5 text-muted small">
+                            <p className="mb-4 mb-lg-5 text-white-force opacity-75 small">
                                 We're always excited to hear from our community. Visit us or reach out through any of these channels.
                             </p>
 
@@ -67,8 +67,8 @@ const Contact = () => {
                                     <FaPhone />
                                 </div>
                                 <div>
-                                    <h6 className="mb-0 fw-bold">Call Our Experts</h6>
-                                    <p className="mb-0 text-muted small">+91 __________</p>
+                                    <h6 className="mb-0 fw-bold text-white-force">Call Our Experts</h6>
+                                    <p className="mb-0 text-white-force opacity-75 small">+91 __________</p>
                                 </div>
                             </div>
 
@@ -77,8 +77,8 @@ const Contact = () => {
                                     <FaEnvelope />
                                 </div>
                                 <div>
-                                    <h6 className="mb-0 fw-bold">Email Support</h6>
-                                    <p className="mb-0 text-muted small">__________@kbeautymart.com</p>
+                                    <h6 className="mb-0 fw-bold text-white-force">Email Support</h6>
+                                    <p className="mb-0 text-white-force opacity-75 small">__________@kbeautymart.com</p>
                                 </div>
                             </div>
 
@@ -87,8 +87,8 @@ const Contact = () => {
                                     <FaMapMarkerAlt />
                                 </div>
                                 <div>
-                                    <h6 className="mb-0 fw-bold">Our Headquarters</h6>
-                                    <p className="mb-0 text-muted small">Kakinada, Andhra Pradesh, India</p>
+                                    <h6 className="mb-0 fw-bold text-white-force">Our Headquarters</h6>
+                                    <p className="mb-0 text-white-force opacity-75 small">Kakinada, Andhra Pradesh, India</p>
                                 </div>
                             </div>
                         </div>
@@ -98,13 +98,13 @@ const Contact = () => {
                     <div className="col-lg-7 col-md-6">
                         <div className="contact-card">
                             <h3 className="contact-title h2 mb-4"><span>Send us</span> a Message</h3>
-                            <p className="text-muted mb-4 mb-lg-5 small">Drop us a line and we'll get back to you within 24 hours.</p>
+                            <p className="text-white-force opacity-75 mb-4 mb-lg-5 small">Drop us a line and we'll get back to you within 24 hours.</p>
 
                             <form onSubmit={submitHandler}>
                                 <div className="row">
                                     <div className="col-md-6">
                                         <div className="mb-4">
-                                            <label className="form-label smaller fw-bold text-uppercase ms-2 text-coral">Full Name</label>
+                                            <label className="form-label smaller fw-bold text-uppercase ms-2 text-glow-gold">Full Name</label>
                                             <input
                                                 name='name'
                                                 value={name}
@@ -117,7 +117,7 @@ const Contact = () => {
                                     </div>
                                     <div className="col-md-6">
                                         <div className="mb-4">
-                                            <label className="form-label smaller fw-bold text-uppercase ms-2 text-coral">Mobile Number</label>
+                                            <label className="form-label smaller fw-bold text-uppercase ms-2 text-glow-gold">Mobile Number</label>
                                             <input
                                                 name='mobile'
                                                 value={mobile}
@@ -130,7 +130,7 @@ const Contact = () => {
                                     </div>
                                 </div>
                                 <div className="mb-4">
-                                    <label className="form-label smaller fw-bold text-uppercase ms-2 text-coral">Email Address</label>
+                                    <label className="form-label smaller fw-bold text-uppercase ms-2 text-glow-gold">Email Address</label>
                                     <input
                                         name='email'
                                         type='email'
@@ -142,7 +142,7 @@ const Contact = () => {
                                     />
                                 </div>
                                 <div className="mb-4">
-                                    <label className="form-label smaller fw-bold text-uppercase ms-2 text-coral">Your Message</label>
+                                    <label className="form-label smaller fw-bold text-uppercase ms-2 text-glow-gold">Your Message</label>
                                     <textarea
                                         name='message'
                                         value={message}
