@@ -99,13 +99,13 @@
 @media (max-width: 768px) {
     .pure-hero-slider {
         height: auto;
-        aspect-ratio: 16 / 8;
-        min-height: 180px;
+        aspect-ratio: 3 / 1; /* Wider aspect ratio to show full banner */
+        min-height: 120px;
     }
 
     .banner-slide {
         background-size: cover;
-        background-position: center center; /* Balance left text and right product */
+        background-position: center center;
     }
 
     .banner-nav {
@@ -120,6 +120,22 @@
 
     .banner-nav .nav-item.active {
         width: 35px;
+    }
+}
+
+/* Specific Smaller Mobile Devices */
+@media (max-width: 480px) {
+    .pure-hero-slider {
+        aspect-ratio: 3 / 1; /* Keep wide to prevent cropping of full banner */
+        min-height: 100px;
+    }
+
+    .banner-slide {
+        background-position: center center;
+    }
+
+    .banner-nav {
+        bottom: 10px;
     }
 }
 
