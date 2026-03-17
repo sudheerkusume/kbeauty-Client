@@ -110,8 +110,8 @@ const ViewBrands = () => {
 
     return (
         <div className="animate-in">
-            <div className="d-flex justify-content-between align-items-center mb-5">
-                <div>
+            <div className="d-flex justify-content-between align-items-center mb-5 flex-wrap gap-4">
+                <div style={{ minWidth: '280px' }}>
                     <h2 className="fw-bold m-0" style={{ letterSpacing: '-1.5px', color: '#fff', fontSize: '2.5rem' }}>Partner Brands</h2>
                     <p className="text-secondary mt-2 fw-medium">Manage the luxury brands in your K-Beauty portfolio.</p>
                 </div>
@@ -242,6 +242,23 @@ const ViewBrands = () => {
                     background: #151515; border-color: #D4AF37; box-shadow: 0 0 15px rgba(212, 175, 55, 0.1); color: #fff;
                 }
                 .btn-black { background: #000; color: #fff; }
+                @media (max-width: 576px) {
+                    .modal-dialog {
+                        max-width: 100% !important;
+                        margin: 0 !important;
+                    }
+                    .modal-content {
+                        min-height: 100vh;
+                        border-radius: 0 !important;
+                    }
+                    h2 {
+                        font-size: 1.8rem !important;
+                    }
+                    .luxury-input {
+                        height: 44px;
+                        padding: 10px 15px;
+                    }
+                }
                 .hvr-gold:hover { color: #D4AF37 !important; border-color: #D4AF37 !important; }
                 .hvr-danger:hover { color: #ff4d4d !important; border-color: #ff4d4d !important; }
                 .text-gold { color: #D4AF37; }

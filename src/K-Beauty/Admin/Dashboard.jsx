@@ -220,41 +220,45 @@ const Dashboard = () => {
                     .active-admin-nav:hover { background-color: #D4AF37 !important; color: #000 !important; }
                     .text-luxury-gold { color: #D4AF37 !important; }
 
+                    .hover-gold:hover { color: #D4AF37 !important; }
+                    .admin-sidebar {
+                        width: 220px !important;
+                        transition: transform 0.3s ease;
+                    }
+
                     @media (max-width: 991.98px) {
                         .admin-sidebar {
-                            width: 280px;
+                            width: 280px !important;
+                            position: fixed;
+                            top: 0;
+                            left: 0;
+                            height: 100vh;
                             transform: translateX(-100%);
+                            z-index: 1060;
                         }
                         .admin-sidebar.show-sidebar {
                             transform: translateX(0);
                         }
                         .offset-lg-2 {
                             margin-left: 0 !important;
+                            width: 100% !important;
                         }
                     }
 
                     @media (min-width: 992px) {
-                        .admin-sidebar {
-                            width: 16.666667%; /* col-lg-2 width */
+                        .offset-lg-2 {
+                            margin-left: 220px !important;
+                            width: calc(100% - 220px) !important;
                         }
                     }
-
-                    .hover-gold:hover { color: #D4AF37 !important; }
 
                     aside button:hover:not(.active-admin-nav) {
                         background-color: rgba(255, 255, 255, 0.05) !important;
                         color: #fff !important;
                     }
                     
-                    .admin-sidebar {
-                        width: 220px !important;
-                    }
                     .admin-sidebar button {
                         padding: 10px 15px !important;
-                    }
-                    .offset-lg-2 {
-                        margin-left: 220px !important;
-                        width: calc(100% - 220px) !important;
                     }
                 `}
             </style>

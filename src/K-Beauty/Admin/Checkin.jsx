@@ -31,8 +31,14 @@ const Checkin = () => {
             justifyContent: 'center',
             background: '#ffffff'
         }}>
-            <div className='col-lg-4 col-md-6 col-sm-10 px-3 px-sm-0'>
-                <div className='p-4 p-md-5' style={{ backgroundColor: '#f0f3f9', borderRadius: '40px', border: '1px solid rgba(0,0,0,0.05)', boxShadow: '0 20px 40px rgba(0,0,0,0.05)' }}>
+            <div className='col-12 col-md-8 col-lg-5 col-xl-4 px-3'>
+                <div className='p-4 p-md-5' style={{ 
+                    backgroundColor: '#f0f3f9', 
+                    borderRadius: '40px', 
+                    border: '1px solid rgba(0,0,0,0.05)', 
+                    boxShadow: '0 20px 40px rgba(0,0,0,0.05)',
+                    margin: '20px 0'
+                }}>
                     <div className="text-center mb-5">
                         <h2 style={{ fontWeight: 800, letterSpacing: '-1.5px', color: '#1a2b4b', fontSize: '2.4rem' }}>
                             K-BEAUTY <span style={{ color: '#2b59c3' }}>ADMIN</span>
@@ -98,7 +104,8 @@ const Checkin = () => {
                                 textTransform: 'uppercase',
                                 letterSpacing: '1px',
                                 boxShadow: '0 10px 20px rgba(43, 89, 195, 0.2)',
-                                fontSize: '1.1rem'
+                                fontSize: '1.1rem',
+                                minHeight: '56px'
                             }}
                             onMouseEnter={(e) => { e.target.style.transform = 'translateY(-2px)'; e.target.style.boxShadow = '0 15px 30px rgba(43, 89, 195, 0.3)'; }}
                             onMouseLeave={(e) => { e.target.style.transform = 'translateY(0)'; e.target.style.boxShadow = '0 10px 20px rgba(43, 89, 195, 0.2)'; }}
@@ -131,6 +138,15 @@ const Checkin = () => {
                         border-color: #2b59c3;
                         background: #fff;
                         outline: none;
+                    }
+                    @media (max-width: 576px) {
+                        .luxury-input {
+                            height: 48px;
+                            padding: 0 20px;
+                        }
+                        h2 {
+                            font-size: 1.8rem !important;
+                        }
                     }
                     .hover-gold:hover {
                         color: #2b59c3 !important;

@@ -81,8 +81,8 @@ const ViewTaxonomies = () => {
     };
 
     const renderHeader = (title, subtitle, icon, section) => (
-        <div className="d-flex justify-content-between align-items-center mb-5">
-            <div>
+        <div className="d-flex justify-content-between align-items-center mb-5 flex-wrap gap-4">
+            <div style={{ minWidth: '280px' }}>
                 <h2 className="fw-bold m-0" style={{ letterSpacing: '-1.5px', color: '#fff', fontSize: '2.5rem' }}>{title}</h2>
                 <p className="text-secondary mt-2 fw-medium">{subtitle}</p>
             </div>
@@ -99,21 +99,21 @@ const ViewTaxonomies = () => {
     return (
         <div className="animate-in">
             {/* ── TOP TABS ── */}
-            <div className="d-flex gap-3 mb-5 bg-dark p-2 rounded-4 border border-secondary" style={{ width: 'fit-content' }}>
+            <div className="d-flex gap-2 mb-5 bg-dark p-2 rounded-4 border border-secondary flex-wrap" style={{ width: 'fit-content', maxWidth: '100%' }}>
                 <button
-                    className={`btn px-4 py-3 rounded-3 border-0 transition-all d-flex align-items-center gap-2 ${activeSection === 'categories' ? 'bg-luxury-gold text-dark fw-bold' : 'text-secondary opacity-50'}`}
+                    className={`btn px-3 py-2 rounded-3 border-0 transition-all d-flex align-items-center gap-2 flex-grow-1 ${activeSection === 'categories' ? 'bg-luxury-gold text-dark fw-bold' : 'text-secondary opacity-50'}`}
                     onClick={() => setActiveSection('categories')}
                 >
                     <FiPlusSquare /> Categories
                 </button>
                 <button
-                    className={`btn px-4 py-3 rounded-3 border-0 transition-all d-flex align-items-center gap-2 ${activeSection === 'types' ? 'bg-luxury-gold text-dark fw-bold' : 'text-secondary opacity-50'}`}
+                    className={`btn px-3 py-2 rounded-3 border-0 transition-all d-flex align-items-center gap-2 flex-grow-1 ${activeSection === 'types' ? 'bg-luxury-gold text-dark fw-bold' : 'text-secondary opacity-50'}`}
                     onClick={() => setActiveSection('types')}
                 >
                     <FiTag /> Types
                 </button>
                 <button
-                    className={`btn px-4 py-3 rounded-3 border-0 transition-all d-flex align-items-center gap-2 ${activeSection === 'faq' ? 'bg-luxury-gold text-dark fw-bold' : 'text-secondary opacity-50'}`}
+                    className={`btn px-3 py-2 rounded-3 border-0 transition-all d-flex align-items-center gap-2 flex-grow-1 ${activeSection === 'faq' ? 'bg-luxury-gold text-dark fw-bold' : 'text-secondary opacity-50'}`}
                     onClick={() => setActiveSection('faq')}
                 >
                     <FiHelpCircle /> FAQs
@@ -308,6 +308,22 @@ const ViewTaxonomies = () => {
                     background: #151515; border-color: #D4AF37; box-shadow: 0 0 15px rgba(212, 175, 55, 0.1); color: #fff;
                 }
                 .btn-black { background: #000; color: #fff; }
+                @media (max-width: 576px) {
+                    .modal-dialog {
+                        max-width: 100% !important;
+                        margin: 0 !important;
+                    }
+                    .modal-content {
+                        min-height: 100vh;
+                        border-radius: 0 !important;
+                    }
+                    h2 {
+                        font-size: 1.8rem !important;
+                    }
+                    .btn-luxury-primary {
+                        padding: 10px 20px !important;
+                    }
+                }
                 .hvr-gold:hover { color: #D4AF37 !important; border-color: #D4AF37 !important; }
                 .hvr-danger:hover { color: #ff4d4d !important; border-color: #ff4d4d !important; }
                 .text-gold { color: #D4AF37; }

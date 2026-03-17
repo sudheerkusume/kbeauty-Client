@@ -241,13 +241,13 @@ const ViewOrders = () => {
     return (
         <div className="admin-container fade-in py-4">
             <ToastContainer theme="dark" position="top-right" />
-            <div className="d-flex justify-content-between align-items-center mb-5">
-                <div>
+            <div className="d-flex justify-content-between align-items-center mb-5 flex-wrap gap-4">
+                <div style={{ minWidth: '250px' }}>
                     <h2 className="fw-bold m-0 text-white" style={{ letterSpacing: '-1px' }}>Order Analytics Hub</h2>
                     <p className="text-muted small mt-1">Manage processing, metrics, and fulfillment auditing.</p>
                 </div>
-                <div className="d-flex gap-3 align-items-center">
-                     <div className="input-group input-group-sm bg-dark border border-secondary rounded-3 overflow-hidden">
+                <div className="d-flex gap-3 align-items-center flex-grow-1 flex-wrap">
+                     <div className="input-group input-group-sm bg-dark border border-secondary rounded-3 overflow-hidden flex-grow-1" style={{ minWidth: '200px', height: '44px' }}>
                         <span className="input-group-text bg-transparent border-0 text-muted"><FiFilter /></span>
                         <input 
                             type="text" 
@@ -259,7 +259,7 @@ const ViewOrders = () => {
                     </div>
                     <select 
                         className="form-select form-select-sm bg-dark text-white border-secondary rounded-3"
-                        style={{ width: '150px' }}
+                        style={{ width: 'auto', minWidth: '150px', height: '44px' }}
                         value={filters.orderStatus}
                         onChange={(e) => setFilters(prev => ({ ...prev, orderStatus: e.target.value }))}
                     >
@@ -363,6 +363,24 @@ const ViewOrders = () => {
                 .form-select-sm:focus, .form-control-sm:focus { border-color: #D4AF37 !important; box-shadow: none !important; }
                 .modal-content { background-color: #0a0a0a !important; border: 1px solid #333 !important; }
                 .bg-black { background-color: #000 !important; }
+                @media (max-width: 768px) {
+                    .modal-dialog {
+                        max-width: 100% !important;
+                        margin: 0 !important;
+                    }
+                    .modal-content {
+                        min-height: 100vh;
+                        border-radius: 0 !important;
+                    }
+                    .col-md-4.border-end {
+                        border-end: none !important;
+                        border-bottom: 1px solid #333 !important;
+                        padding-bottom: 15px;
+                    }
+                    table {
+                        font-size: 12px !important;
+                    }
+                }
             `}</style>
         </div>
     );

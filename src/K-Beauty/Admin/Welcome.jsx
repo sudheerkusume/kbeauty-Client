@@ -204,7 +204,7 @@ const DynamicCalendar = ({ isOpen, onRangeSelect, selectedRange }) => {
         <div className="position-absolute animate-fade-in user-select-none"
             style={{
                 top: '100%', right: 0, zIndex: 1050,
-                width: '310px', marginTop: '10px', padding: '20px',
+                width: '100%', maxWidth: '310px', marginTop: '10px', padding: '20px',
                 background: '#1a1a1a', borderRadius: '20px',
                 boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)',
                 border: '1px solid #222'
@@ -394,48 +394,47 @@ const Welcome = ({ setView }) => {
         <div className="wdash-root" style={{ backgroundColor: '#000', color: '#fff', fontFamily: "'Inter', sans-serif" }}>
 
             {/* ── STAT CARDS ── */}
-            <div className="row g-4 mb-5">
+            <div className="wdash-stats-grid mb-5">
                 {cards.map((card, idx) => {
                     const isActive = activeTab === card.label;
                     const cardTheme = COLORS[card.label] || COLORS.Products;
                     return (
-                        <div className="col-12 col-sm-6 col-md-4 col-lg-2" key={idx}>
-                            <div className="wdash-stat-card h-100 rounded-4 p-3"
-                                onClick={() => card.action ? card.action() : setActiveTab(card.label)}
-                                style={{
-                                    background: '#111',
-                                    borderRadius: '20px', cursor: 'pointer',
-                                    boxShadow: isActive ? '0 20px 40px rgba(0,0,0,0.4)' : 'none',
-                                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                                    border: isActive ? `2px solid ${cardTheme.primary}` : '1px solid #222',
-                                    position: 'relative', overflow: 'hidden'
+                        <div className="wdash-stat-card rounded-4 p-3"
+                            key={idx}
+                            onClick={() => card.action ? card.action() : setActiveTab(card.label)}
+                            style={{
+                                background: '#111',
+                                borderRadius: '20px', cursor: 'pointer',
+                                boxShadow: isActive ? '0 20px 40px rgba(0,0,0,0.4)' : 'none',
+                                transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                                border: isActive ? `2px solid ${cardTheme.primary}` : '1px solid #222',
+                                position: 'relative', overflow: 'hidden'
+                            }}>
+                            <div className="d-flex justify-content-between align-items-start mb-4">
+                                <div style={{
+                                    width: '40px', height: '40px', borderRadius: '10px',
+                                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                    background: cardTheme.iconBg,
+                                    color: cardTheme.iconColor,
                                 }}>
-                                <div className="d-flex justify-content-between align-items-start mb-4">
-                                    <div style={{
-                                        width: '40px', height: '40px', borderRadius: '10px',
-                                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                        background: cardTheme.iconBg,
-                                        color: cardTheme.iconColor,
-                                    }}>
-                                        {card.icon}
-                                    </div>
-                                    <span style={{
-                                        padding: '4px 8px', borderRadius: '8px',
-                                        background: cardTheme.light,
-                                        fontSize: '9px', fontWeight: 800, color: cardTheme.primary,
-                                        letterSpacing: '0.5px', textTransform: 'uppercase'
-                                    }}>
-                                        {card.trend}
-                                    </span>
+                                    {card.icon}
                                 </div>
-                                <div>
-                                    <span style={{ fontSize: '11px', fontWeight: 700, color: '#94a3b8', display: 'block', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '2px' }}>
-                                        {card.label}
-                                    </span>
-                                    <h2 style={{ margin: 0, fontSize: card.label === 'Architecture' ? '1.4rem' : '1.8rem', fontWeight: 800, color: '#fff', letterSpacing: '-1px' }}>
-                                        {card.label === 'Architecture' ? "MAP" : <AnimCounter target={card.value} />}
-                                    </h2>
-                                </div>
+                                <span style={{
+                                    padding: '4px 8px', borderRadius: '8px',
+                                    background: cardTheme.light,
+                                    fontSize: '9px', fontWeight: 800, color: cardTheme.primary,
+                                    letterSpacing: '0.5px', textTransform: 'uppercase'
+                                }}>
+                                    {card.trend}
+                                </span>
+                            </div>
+                            <div>
+                                <span style={{ fontSize: '11px', fontWeight: 700, color: '#94a3b8', display: 'block', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '2px' }}>
+                                    {card.label}
+                                </span>
+                                <h2 style={{ margin: 0, fontSize: card.label === 'Architecture' ? '1.4rem' : '1.8rem', fontWeight: 800, color: '#fff', letterSpacing: '-1px' }}>
+                                    {card.label === 'Architecture' ? "MAP" : <AnimCounter target={card.value} />}
+                                </h2>
                             </div>
                         </div>
                     );
@@ -548,6 +547,16 @@ const Welcome = ({ setView }) => {
                     background: #111;
                     border-radius: 32px;
                     border: 1px solid #222;
+                }
+                .wdash-stats-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+                    gap: 20px;
+                }
+                @media (max-width: 576px) {
+                    .wdash-stats-grid {
+                        grid-template-columns: 1fr;
+                    }
                 }
                 .wdash-stat-card:hover {
                     transform: translateY(-5px);

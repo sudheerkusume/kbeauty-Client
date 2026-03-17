@@ -438,34 +438,34 @@ const ViewProduct = () => {
             {/* ── STATS COMMAND CENTER ── */}
             {/* ── COMMAND BAR ── */}
             <div className="bg-black p-3 rounded-4 shadow-sm border border-secondary mb-4 d-flex justify-content-between align-items-center flex-wrap gap-3">
-                <div className="category-tabs d-flex gap-2">
+                <div className="category-tabs d-flex gap-2 overflow-x-auto pb-2 scrollbar-hide" style={{ maxWidth: '100%', WebkitOverflowScrolling: 'touch' }}>
                         {availableCategories.map((cat) => (
                         <button
                             key={cat._id}
                             onClick={() => setCategory(cat.name)}
-                            className={`btn px-4 py-2 rounded-3 border-0 transition-all ${category === cat.name ? 'bg-luxury-gold text-dark fw-bold shadow-sm' : 'bg-dark text-secondary fw-semibold'
-                                }`}
-                            style={{ fontSize: '13px' }}
+                            className={`btn px-4 py-2 rounded-3 border-0 transition-all flex-shrink-0 ${category === cat.name ? 'bg-luxury-gold text-dark fw-bold shadow-sm' : 'bg-dark text-secondary fw-semibold'
+                                 }`}
+                            style={{ fontSize: '13px', whiteSpace: 'nowrap' }}
                         >
                             {cat.name}
                         </button>
                     ))}
                 </div>
 
-                <div className="d-flex gap-3 align-items-center flex-grow-1 flex-md-grow-0">
-                    <div className="position-relative flex-grow-1" style={{ minWidth: '300px' }}>
+                <div className="d-flex gap-3 align-items-center flex-grow-1 flex-wrap">
+                    <div className="position-relative flex-grow-1" style={{ minWidth: '200px' }}>
                         <FiSearch className="position-absolute top-50 start-0 translate-middle-y ms-3 text-muted" style={{ zIndex: 10 }} />
                         <input
                             type="text"
                             className="form-control ps-5 border-0 luxury-input"
                             placeholder="Search catalog..."
-                            style={{ fontSize: '15px', fontWeight: '700', height: '60px' }}
+                            style={{ fontSize: '15px', fontWeight: '700', height: '50px' }}
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
                         />
                     </div>
 
-                    <div className="d-flex align-items-center bg-dark rounded-pill px-4" style={{ height: '60px', border: '1px solid #333' }}>
+                    <div className="d-flex align-items-center bg-dark rounded-pill px-4" style={{ height: '50px', border: '1px solid #333' }}>
                         <div className="form-check form-switch m-0 d-flex align-items-center gap-3">
                             <input
                                 className="form-check-input pointer"
@@ -475,7 +475,7 @@ const ViewProduct = () => {
                                 onChange={(e) => setShowLowStock(e.target.checked)}
                                 style={{ width: '40px', height: '20px' }}
                             />
-                            <label className="form-check-label text-white small fw-bold text-uppercase pointer" htmlFor="lowStockToggle" style={{ letterSpacing: '0.5px' }}>
+                            <label className="form-check-label text-white small fw-bold text-uppercase pointer" htmlFor="lowStockToggle" style={{ letterSpacing: '0.5px', whiteSpace: 'nowrap' }}>
                                 Low Stock <span className="text-danger ms-1">({stats.lowStock})</span>
                             </label>
                         </div>
@@ -1238,18 +1238,41 @@ const ViewProduct = () => {
                     to { opacity: 1; transform: translateY(0); }
                 }
                 .luxury-input {
-                    padding: 0 32px; border-radius: 50px; background: #f1f3f9; border: 1px solid #d1d9e6;
+                    padding: 0 24px; border-radius: 50px; background: #f1f3f9; border: 1px solid #d1d9e6;
                     font-size: 15px; font-weight: 700;
                     color: #1a2b4b;
                     box-shadow: inset 0 4px 10px rgba(0,0,0,0.1);
                     transition: all 0.3s ease;
-                    height: 60px;
+                    height: 50px;
+                    width: 100%;
                 }
                 .luxury-input:focus {
                     background: #fff; border-color: #2b59c3; outline: none; 
                     box-shadow: inset 0 4px 10px rgba(0,0,0,0.1), 0 0 0 4px rgba(43, 89, 195, 0.1);
                 }
                 .modal-content { background: #f0f3f9 !important; border-radius: 40px !important; }
+                @media (max-width: 576px) {
+                    .modal-dialog {
+                        max-width: 100% !important;
+                        margin: 0 !important;
+                        min-height: 100vh;
+                    }
+                    .modal-content {
+                        min-height: 100vh;
+                        border-radius: 0 !important;
+                    }
+                    .luxury-input {
+                        height: 44px;
+                        padding: 0 16px;
+                    }
+                    table {
+                        font-size: 12px !important;
+                    }
+                    .btn-luxury-primary, .btn-primary {
+                        height: 50px !important;
+                        font-size: 16px !important;
+                    }
+                }
                 .bg-white { background: transparent !important; } /* Allow modal-content bg to show */
                 .luxury-input::placeholder {
                     text-transform: none; font-weight: 500; letter-spacing: normal; opacity: 0.6;

@@ -47,8 +47,8 @@ const ViewUsers = () => {
 
     return (
         <div className="container-fluid p-0 animate__animated animate__fadeIn">
-            <div className="d-flex justify-content-between align-items-center mb-4">
-                <div>
+            <div className="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-4">
+                <div style={{ minWidth: '240px' }}>
                     <h2 className="text-white fw-bold mb-1">Online Users</h2>
                     <p className="text-secondary small mb-0">Real-time activity tracking (5-minute window)</p>
                 </div>
@@ -138,6 +138,11 @@ const ViewUsers = () => {
                     .border-luxury-gold { border-color: #D4AF37 !important; }
                     .table-hover tbody tr:hover {
                         background-color: rgba(255, 255, 255, 0.02) !important;
+                    }
+                    @media (max-width: 576px) {
+                        table {
+                            font-size: 12px !important;
+                        }
                     }
                     .transition-all { transition: all 0.3s ease; }
                 `}

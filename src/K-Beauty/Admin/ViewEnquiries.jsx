@@ -37,8 +37,8 @@ const ViewEnquiries = () => {
 
     return (
         <div className="animate-in">
-            <div className="d-flex justify-content-between align-items-center mb-5">
-                <div>
+            <div className="d-flex justify-content-between align-items-center mb-5 flex-wrap gap-4">
+                <div style={{ minWidth: '280px' }}>
                     <h2 className="fw-bold m-0" style={{ letterSpacing: '-1.5px', color: '#fff', fontSize: '2.5rem' }}>Customer Enquiries</h2>
                     <p className="text-secondary mt-2 fw-medium">Monitor and respond to customer queries from the ecosystem.</p>
                 </div>
@@ -67,7 +67,7 @@ const ViewEnquiries = () => {
                             <tbody>
                                 {enquiries.map((enq) => (
                                     <tr key={enq.id} className="transition-all">
-                                        <td className="ps-4 py-4" style={{ width: '250px' }}>
+                                        <td className="ps-4 py-4" style={{ minWidth: '200px' }}>
                                             <div className="d-flex align-items-center gap-3">
                                                 <div className="bg-dark p-2 rounded-3 text-gold">
                                                     <FiUser size={18} />
@@ -79,7 +79,7 @@ const ViewEnquiries = () => {
                                             </div>
                                         </td>
                                         <td className="py-4">
-                                            <div style={{ maxWidth: '400px' }}>
+                                            <div style={{ maxWidth: '400px', minWidth: '200px' }}>
                                                 <div className="fw-bold text-gold small text-uppercase mb-1" style={{ letterSpacing: '0.5px' }}>
                                                     {enq.subject || 'No Subject'}
                                                 </div>
@@ -138,6 +138,14 @@ const ViewEnquiries = () => {
                 @keyframes spin { to { transform: rotate(360deg); } }
                 .transition-all { transition: all 0.3s ease; }
                 tr:hover { background-color: rgba(255,255,255,0.02) !important; }
+                @media (max-width: 576px) {
+                    table {
+                        font-size: 12px !important;
+                    }
+                    h2 {
+                        font-size: 1.8rem !important;
+                    }
+                }
             `}</style>
         </div>
     );

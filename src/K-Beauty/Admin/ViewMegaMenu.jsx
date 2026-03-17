@@ -26,8 +26,8 @@ const ViewMegaMenu = () => {
 
     return (
         <div className="animate-in">
-            <div className="d-flex justify-content-between align-items-center mb-5">
-                <div>
+            <div className="d-flex justify-content-between align-items-center mb-5 flex-wrap gap-4">
+                <div style={{ minWidth: '280px' }}>
                     <h2 className="fw-bold m-0" style={{ letterSpacing: '-1.5px', color: '#fff', fontSize: '2.5rem' }}>Navigation Architecture</h2>
                     <p className="text-secondary mt-2 fw-medium">Preview and structure your storefront's mega-menu hierarchy.</p>
                 </div>
@@ -92,6 +92,11 @@ const ViewMegaMenu = () => {
                 .border-secondary-subtle { border-color: rgba(255,255,255,0.05) !important; }
                 .border-dashed { border-style: dashed !important; }
                 .last-child-mb-0:last-child { margin-bottom: 0 !important; }
+                @media (max-width: 576px) {
+                    h2 {
+                        font-size: 1.8rem !important;
+                    }
+                }
             `}</style>
         </div>
     );
