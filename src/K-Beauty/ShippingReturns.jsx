@@ -11,7 +11,7 @@ const ShippingReturns = () => {
                         </button>
                     </h2>
                     <div id="shipOne" className="accordion-collapse collapse" data-bs-parent="#shippingAccordion">
-                        <div className="accordion-body px-0 text-white opacity-100" style={{ fontSize: '14px' }}>
+                        <div className="accordion-body px-0 text-white-force" style={{ fontSize: '14px' }}>
                             <p className="mb-2">We offer free standard shipping on all orders over ₹2000. For orders below ₹2000, a flat shipping fee of ₹99 will apply.</p>
                             <p className="mb-0">Delivery usually takes 3-5 business days for metro cities and 5-7 business days for other locations.</p>
                         </div>
@@ -24,7 +24,7 @@ const ShippingReturns = () => {
                         </button>
                     </h2>
                     <div id="shipTwo" className="accordion-collapse collapse" data-bs-parent="#shippingAccordion">
-                        <div className="accordion-body px-0 text-white opacity-100" style={{ fontSize: '14px' }}>
+                        <div className="accordion-body px-0 text-white-force" style={{ fontSize: '14px' }}>
                             <p className="mb-2">We accept returns for unused and unopened products within 7 days of delivery. Due to hygiene reasons, opened or used products cannot be returned.</p>
                             <p className="mb-0">Please contact our support team at <span className="text-gold">support@kbeautymart.com</span> to initiate a return.</p>
                         </div>
@@ -37,7 +37,7 @@ const ShippingReturns = () => {
                         </button>
                     </h2>
                     <div id="shipThree" className="accordion-collapse collapse" data-bs-parent="#shippingAccordion">
-                        <div className="accordion-body px-0 text-white opacity-100" style={{ fontSize: '14px' }}>
+                        <div className="accordion-body px-0 text-white-force" style={{ fontSize: '14px' }}>
                             <p className="mb-0">At K-BeautyMart, we source all our products directly from the brands or their authorized distributors in South Korea. We guarantee 100% authenticity for every item we sell.</p>
                         </div>
                     </div>

@@ -368,10 +368,10 @@ const ProductSingle = () => {
                                     </h2>
                                     <div id="collapseShipping" className="accordion-collapse collapse" data-bs-parent="#productDetailsAccordion">
                                         <div className="accordion-body px-0 pt-0 pb-4">
-                                            {/* Shipping Note Box - Darker Background for Visibility */}
-                                            <div className="d-flex align-items-center gap-3 mb-4 p-3 rounded-3" style={{ background: 'rgba(0, 0, 0, 0.6)', border: '1px solid rgba(212, 175, 55, 0.3)', backdropFilter: 'blur(5px)' }}>
+                                            {/* Shipping Note Box - Forcing Contrast */}
+                                            <div className="d-flex align-items-center gap-3 mb-4 p-3 rounded-3" style={{ background: 'rgba(0, 0, 0, 0.8)', border: '1px solid rgba(212, 175, 55, 0.4)', backdropFilter: 'blur(10px)' }}>
                                                 <FiBox size={22} className="text-gold flex-shrink-0" />
-                                                <p className="m-0 fw-bold text-white small" style={{ letterSpacing: '0.5px' }}>
+                                                <p className="m-0 fw-bold text-white-force small" style={{ letterSpacing: '0.5px' }}>
                                                     {product.shippingInfo || "Free standard shipping on orders over ₹999."}
                                                 </p>
                                             </div>
@@ -392,7 +392,7 @@ const ProductSingle = () => {
                                             <div className="accordion-body px-0 pt-0 pb-4">
                                                 <ul className="lh-lg text-white opacity-100 mb-0 list-unstyled" style={{ fontSize: '14px' }}>
                                                     {product.faqs.map((faq, idx) => (
-                                                        <li key={idx} className="mb-3 p-3 bg-white bg-opacity-5 rounded-3 fw-medium border border-white border-opacity-10 text-white">
+                                                        <li key={idx} className="mb-3 p-3 bg-white bg-opacity-5 rounded-3 fw-medium border border-white border-opacity-10 text-white-force">
                                                             <span className="text-gold fw-bold me-2">Q:</span> {faq}
                                                         </li>
                                                     ))}

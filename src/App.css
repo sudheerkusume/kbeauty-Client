@@ -700,10 +700,14 @@ summary {
 .contact-page {
   font-family: 'Outfit', sans-serif !important;
   background-color: var(--bg-dark, #000);
-  color: var(--text-secondary, #ccc);
+  color: #fff; /* Changed from text-secondary for better default visibility */
   position: relative;
   overflow: hidden;
   padding-bottom: 80px;
+}
+
+.contact-page .text-muted {
+  color: #aaa !important; /* Brighter than default muted for readability on black */
 }
 
 /* Background soft glow decorations with more color */
@@ -714,7 +718,7 @@ summary {
   height: 600px;
   top: -200px;
   left: -200px;
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, transparent 70%);
   z-index: 0;
   pointer-events: none;
 }
@@ -726,7 +730,7 @@ summary {
   height: 500px;
   bottom: -150px;
   right: -150px;
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.06) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
   z-index: 0;
   pointer-events: none;
 }
@@ -747,13 +751,13 @@ summary {
 }
 
 .contact-card {
-  background: var(--bg-card, #1A1A1A) !important;
+  background: #151515 !important; /* Slightly lighter for better definition */
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-radius: 40px;
   padding: 50px;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
-  border: 1px solid var(--border-gold, rgba(212, 175, 55, 0.2));
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(212, 175, 55, 0.2);
   position: relative;
   z-index: 1;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -849,11 +853,12 @@ summary {
   margin-bottom: 20px;
 }
 
-.contact-title span {
+.contact-title span, .text-glow-gold {
   background: var(--gradient-gold, linear-gradient(135deg, #D4AF37, #F5D27A));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.4); /* Stronger glow for better visibility */
 }
 
 .contact-tag {
@@ -869,23 +874,84 @@ summary {
   color: var(--gold, #D4AF37);
 }
 
+@media (max-width: 768px) {
+  .contact-page {
+    padding-top: 10px !important;
+    padding-bottom: 40px !important;
+  }
+  .contact-title {
+    font-size: 2.2rem !important;
+    letter-spacing: -1px !important;
+    line-height: 1.2 !important;
+  }
+  .contact-card {
+    padding: 35px 25px !important;
+    border-radius: 30px !important;
+    margin-bottom: 15px;
+  }
+  .contact-image-wrapper {
+    height: 180px !important;
+    margin-bottom: 25px !important;
+    border-radius: 20px !important;
+  }
+  .contact-info-icon {
+    width: 45px;
+    height: 45px;
+    font-size: 1.1rem;
+    margin-right: 15px;
+    border-radius: 12px !important;
+  }
+  .lead {
+    font-size: 1rem !important;
+    padding: 0 15px;
+  }
+}
+
+/* Fix for AOS stuck elements if any */
+[data-aos] {
+  transition-property: transform, opacity !important;
+}
+
+@media (max-width: 480px) {
+  .contact-title {
+    font-size: 1.8rem !important;
+  }
+  .contact-card {
+    padding: 25px 20px !important;
+  }
+  .contact-submit-btn {
+    padding: 16px 25px !important;
+    font-size: 0.85rem !important;
+    letter-spacing: 1px;
+    border-radius: 15px !important;
+  }
+  .smaller {
+    font-size: 0.75rem !important;
+  }
+}
+
 
 
 /* ----------- FAQ Page (Hardware-Aligned Refinement) ----------- */
 .faq-page {
   font-family: 'Outfit', sans-serif !important;
   background-color: var(--bg-dark, #000);
-  padding-bottom: 150px;
+  padding-bottom: 120px; /* Adjusted from 150px for tighter feel */
+  color: #fff;
+}
+
+.faq-page .text-muted {
+  color: #aaa !important;
 }
 
 .faq-selection-wrapper {
   display: flex;
   gap: 20px;
-  background: var(--bg-card, #1A1A1A);
+  background: #151515; /* Lighter for definition */
   padding: 25px;
   border-radius: 35px;
-  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3);
-  border: 1px solid var(--border-gold, rgba(212, 175, 55, 0.2));
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(212, 175, 55, 0.2);
   height: 100%;
 }
 
@@ -969,7 +1035,7 @@ summary {
 
 .faq-mini-card h6 {
   font-size: 0.9rem;
-  color: #555;
+  color: #bbb; /* Brighter for readability */
   margin: 0;
 }
 
@@ -997,35 +1063,38 @@ summary {
 .phone-wrapper-clear {
   position: relative;
   width: 420px;
-  height: 480px;
-  /* Cropped height roughly 50% of original mockup */
+  height: 520px; /* Increased height to show more of the frame */
   overflow: hidden;
-  /* This crops the image/screen */
-  filter: drop-shadow(0 40px 100px rgba(45, 15, 5, 0.1));
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .phone-asset-hd {
   width: 100%;
   height: auto;
-  /* Allow natural aspect ratio */
   display: block;
+  filter: invert(0.9) brightness(0.8) contrast(1.2); /* Effectively makes white frame dark/silver */
+  transform: scale(1.1); /* Zoom slightly to fill area */
+  transform-origin: top center;
 }
 
 /* THIS SECTION FIXES THE OVERLAP */
 .phone-screen-clear {
   position: absolute;
-  top: 5.7%;
+  top: 9%; /* Adjusted for better alignment with hardware frame */
   left: 50%;
   transform: translateX(-50%);
-  width: 80%;
-  /* Balanced for border visibility */
-  height: 100%;
-  background: white;
-  border-radius: 50px;
+  width: 76%; /* Slightly narrower to fit inside the frame */
+  height: 82%; /* Height adjusted to fit within visible frame */
+  background: #000;
+  border-radius: 40px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   z-index: 10;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
 }
 
 /* HARDWARE NOTCH MOCK */
@@ -1034,12 +1103,11 @@ summary {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 120px;
-  /* Slimmer notch */
-  height: 25px;
+  width: 100px; /* Slightly slimmer */
+  height: 20px;
   background: #000;
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
   z-index: 100;
 }
 
@@ -1048,8 +1116,7 @@ summary {
   justify-content: space-between;
   align-items: center;
   padding: 15px 25px 5px;
-  /* Added padding to clear notch area */
-  background: white;
+  background: transparent; /* Changed from white */
   z-index: 50;
 }
 
@@ -1069,12 +1136,19 @@ summary {
 .phone-content-scroller {
   flex: 1;
   overflow-y: auto;
-  background: var(--bg-charcoal, #111);
+  background: #000;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+  animation: floatContent 6s ease-in-out infinite; /* Added floating effect */
+}
+
+@keyframes floatContent {
+  0% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-5px) scale(1.02); } /* Subtle movement "outside" */
+  100% { transform: translateY(0px) scale(1); }
 }
 
 .phone-content-scroller::-webkit-scrollbar {
@@ -1113,9 +1187,27 @@ summary {
 }
 
 .hd-a-text {
-  font-size: 1.1rem;
+  font-size: 1rem; /* Slightly smaller for better fit */
   color: var(--text-secondary, #ccc);
-  line-height: 1.7;
+  line-height: 1.6;
+}
+
+.hd-answer-box {
+  padding: 0 15px;
+  position: relative;
+}
+
+/* Subtle glow to "pop" content outside */
+.phone-screen-clear::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-shadow: inset 0 0 30px rgba(212, 175, 55, 0.1);
+  pointer-events: none;
+  z-index: 20;
 }
 
 .hp-empty {
@@ -1397,9 +1489,21 @@ input::placeholder {
 }
 
 /* Responsive */
+/* Responsive FAQ updates */
 @media (max-width: 768px) {
-  .search-drawer {
-    width: 100vw;
+  .faq-selection-wrapper {
+    padding: 15px !important;
+    border-radius: 25px !important;
+  }
+  .faq-mini-card {
+    padding: 15px !important;
+  }
+  .faq-mini-card h6 {
+    font-size: 0.85rem !important;
+  }
+  .faq-cat-sidebar-btn {
+    font-size: 0.75rem !important;
+    padding: 8px 10px !important;
   }
 }
 
