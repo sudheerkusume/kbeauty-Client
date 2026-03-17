@@ -123,10 +123,10 @@ const ProductSingle = () => {
             {/* Breadcrumb Navigation */}
             <div className="container pt-lg-2 pt-1 pb-2">
                 <nav aria-label="breadcrumb">
-                    <ol className="breadcrumb mb-0 px-0" style={{ fontSize: '12px', fontWeight: 600, letterSpacing: '1px', textTransform: 'uppercase' }}>
-                        <li className="breadcrumb-item"><Link to="/" className="text-decoration-none text-muted">Home</Link></li>
-                        <li className="breadcrumb-item"><Link to={`/${product.category.replace(/\s+/g, '')}`} className="text-decoration-none text-muted">{product.category}</Link></li>
-                        <li className="breadcrumb-item active text-gold px-1" aria-current="page">{product.title}</li>
+                    <ol className="breadcrumb mb-0 px-0" style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '1px', textTransform: 'uppercase' }}>
+                        <li className="breadcrumb-item"><Link to="/" className="text-decoration-none text-light opacity-50 hover-opacity-100 transition-all">Home</Link></li>
+                        <li className="breadcrumb-item"><Link to={`/${product.category.replace(/\s+/g, '')}`} className="text-decoration-none text-light opacity-50 hover-opacity-100 transition-all">{product.category}</Link></li>
+                        <li className="breadcrumb-item active text-gold fw-bold" aria-current="page">{product.title}</li>
                     </ol>
                 </nav>
             </div>
@@ -195,12 +195,12 @@ const ProductSingle = () => {
                                 <div className="d-flex gap-1">
                                     {renderStars(product.rating || 5)}
                                 </div>
-                                <span className="text-muted fw-bold small">({product.rating || 5} Rating)</span>
+                                <span className="text-light opacity-50 fw-bold small">({product.rating || 5} Rating)</span>
                             </div>
 
                             {/* Brief Description */}
                             {product.description && (
-                                <p className="text-secondary lh-lg mb-4 pb-3 border-bottom border-light-subtle" style={{ fontSize: '15px' }}>
+                                <p className="text-light opacity-75 lh-lg mb-4 pb-3 border-bottom border-white border-opacity-10" style={{ fontSize: '15px' }}>
                                     {product.description}
                                 </p>
                             )}
@@ -209,7 +209,7 @@ const ProductSingle = () => {
                             <div className="d-flex align-items-center gap-3 mb-5">
                                 <span className="product-price-main text-gold fw-light" style={{ fontFamily: "'Outfit', sans-serif" }}>₹{product.offerPrice || product.price}</span>
                                 {product.price > product.offerPrice && (
-                                    <span className="text-muted text-decoration-line-through fw-light" style={{ fontSize: 'clamp(1rem, 3vw, 1.2rem)' }}>₹{product.price}</span>
+                                    <span className="text-light opacity-30 text-decoration-line-through fw-light" style={{ fontSize: '1.2rem' }}>₹{product.price}</span>
                                 )}
                             </div>
 
@@ -230,14 +230,15 @@ const ProductSingle = () => {
                             {product.size && product.size.trim() !== "" && (
                                 <div className="mb-5">
                                     <div className="d-flex justify-content-between align-items-center mb-2">
-                                        <h6 className="fw-bold m-0 text-uppercase" style={{ fontSize: '13px', letterSpacing: '1px' }}>Select Variant</h6>
-                                        <span className="text-muted small fw-medium text-decoration-underline pointer">Size Guide</span>
+                                        <h6 className="fw-bold m-0 text-uppercase text-light opacity-75" style={{ fontSize: '12px', letterSpacing: '1px' }}>Select Variant</h6>
+                                        <span className="text-light opacity-50 small fw-medium text-decoration-underline pointer">Size Guide</span>
                                     </div>
                                     <div className="d-flex flex-wrap gap-2">
                                         {product.size.split(',').map((sizeStr) => (
                                             <button
                                                 key={sizeStr}
-                                                className={`btn btn-lg border-2 rounded-1 transition-all ${selectedSize === sizeStr.trim() ? 'bg-dark text-white border-dark px-4 fw-bold' : 'btn-white border-light-subtle px-4 fw-medium text-muted hover-border-dark'}`}
+                                                className={`btn btn-md border transition-all rounded-1 ${selectedSize === sizeStr.trim() ? 'bg-gold text-black border-gold px-4 fw-bold' : 'btn-outline-light border-white border-opacity-25 px-4 fw-medium text-light opacity-75'}`}
+                                                style={{ fontSize: '13px' }}
                                                 onClick={() => setSelectedSize(sizeStr.trim())}
                                             >
                                                 {sizeStr.trim()}
@@ -250,13 +251,14 @@ const ProductSingle = () => {
                             {/* Actions */}
                             <div className="product-actions-container d-flex flex-column flex-lg-row gap-3 mb-5">
                                 <button
-                                    className="btn rounded-1 fs-5 fw-bold flex-grow-1 transition-all"
-                                    style={{ 
-                                        backgroundColor: 'var(--gold, #D4AF37)', 
-                                        color: '#000', 
-                                        height: '64px', 
-                                        textTransform: 'uppercase', 
-                                        letterSpacing: '1.5px', 
+                                    className="btn rounded-1 fw-bold flex-grow-1 transition-all"
+                                    style={{
+                                        backgroundColor: 'var(--gold, #D4AF37)',
+                                        color: '#000',
+                                        height: '50px',
+                                        fontSize: '14px',
+                                        textTransform: 'uppercase',
+                                        letterSpacing: '1.5px',
                                         border: 'none',
                                         boxShadow: '0 4px 15px rgba(212, 175, 55, 0.2)'
                                     }}
@@ -268,19 +270,20 @@ const ProductSingle = () => {
                                     {product.stockQuantity > 0 ? 'Add to Bag' : 'Out of Stock'}
                                 </button>
                                 <button
-                                    className="btn rounded-1 fs-5 fw-bold flex-grow-1 transition-all"
-                                    style={{ 
-                                        backgroundColor: 'transparent', 
-                                        color: 'var(--gold, #D4AF37)', 
-                                        border: '2px solid var(--gold, #D4AF37)', 
-                                        height: '64px', 
-                                        textTransform: 'uppercase', 
-                                        letterSpacing: '1.5px' 
+                                    className="btn rounded-1 fw-bold flex-grow-1 transition-all"
+                                    style={{
+                                        backgroundColor: 'transparent',
+                                        color: 'var(--gold, #D4AF37)',
+                                        border: '1px solid var(--gold, #D4AF37)',
+                                        height: '50px',
+                                        fontSize: '14px',
+                                        textTransform: 'uppercase',
+                                        letterSpacing: '1.5px'
                                     }}
                                     disabled={product.stockQuantity <= 0}
                                     onClick={() => {
                                         handleAddToCart();
-                                        setTimeout(() => { navigate('/cart'); }, 500); 
+                                        setTimeout(() => { navigate('/cart'); }, 500);
                                     }}
                                     onMouseOver={(e) => { e.currentTarget.style.backgroundColor = 'rgba(212, 175, 55, 0.1)'; e.currentTarget.style.color = '#FFF'; e.currentTarget.style.borderColor = '#FFF'; }}
                                     onMouseOut={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = 'var(--gold, #D4AF37)'; e.currentTarget.style.borderColor = 'var(--gold, #D4AF37)'; }}
@@ -298,15 +301,15 @@ const ProductSingle = () => {
                             <div className="accordion accordion-flush" id="productDetailsAccordion">
                                 {/* Benefits */}
                                 {product.benefits && product.benefits.length > 0 && (
-                                    <div className="accordion-item border-bottom border-light-subtle bg-transparent">
+                                    <div className="accordion-item border-bottom border-white border-opacity-10 bg-transparent">
                                         <h2 className="accordion-header">
-                                            <button className="accordion-button collapsed bg-transparent px-0 py-4 fw-bold text-white text-uppercase shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBenefits" style={{ letterSpacing: '1px', fontSize: '14px' }}>
+                                            <button className="accordion-button collapsed bg-transparent px-0 py-4 fw-bold text-white text-uppercase shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBenefits" style={{ letterSpacing: '1.5px', fontSize: '13px' }}>
                                                 Primary Benefits
                                             </button>
                                         </h2>
                                         <div id="collapseBenefits" className="accordion-collapse collapse" data-bs-parent="#productDetailsAccordion">
                                             <div className="accordion-body px-0 pt-0 pb-4">
-                                                <ul className="lh-lg text-secondary mb-0" style={{ fontSize: '15px' }}>
+                                                <ul className="lh-lg text-light opacity-70 mb-0" style={{ fontSize: '14px' }}>
                                                     {product.benefits.map((benefit, idx) => (
                                                         <li key={idx} className="mb-2">{benefit}</li>
                                                     ))}
@@ -318,9 +321,9 @@ const ProductSingle = () => {
 
                                 {/* Ingredients */}
                                 {product.keyIngredients && product.keyIngredients.length > 0 && (
-                                    <div className="accordion-item border-bottom border-light-subtle bg-transparent">
+                                    <div className="accordion-item border-bottom border-white border-opacity-10 bg-transparent">
                                         <h2 className="accordion-header">
-                                            <button className="accordion-button collapsed bg-transparent px-0 py-4 fw-bold text-white text-uppercase shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseIngredients" style={{ letterSpacing: '1px', fontSize: '14px' }}>
+                                            <button className="accordion-button collapsed bg-transparent px-0 py-4 fw-bold text-white text-uppercase shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseIngredients" style={{ letterSpacing: '1.5px', fontSize: '13px' }}>
                                                 Key Ingredients
                                             </button>
                                         </h2>
@@ -328,7 +331,7 @@ const ProductSingle = () => {
                                             <div className="accordion-body px-0 pt-0 pb-4">
                                                 <div className="d-flex flex-wrap gap-2">
                                                     {product.keyIngredients.map((ing, idx) => (
-                                                        <span key={idx} className="badge bg-black text-gold border border-gold px-3 py-2 rounded-1 fw-bold" style={{ fontSize: '12px' }}>{ing}</span>
+                                                        <span key={idx} className="badge bg-black text-gold border border-gold border-opacity-25 px-3 py-2 rounded-1 fw-bold" style={{ fontSize: '11px', letterSpacing: '0.5px' }}>{ing}</span>
                                                     ))}
                                                 </div>
                                             </div>
@@ -338,15 +341,15 @@ const ProductSingle = () => {
 
                                 {/* How to Use */}
                                 {product.howToUse && product.howToUse.length > 0 && (
-                                    <div className="accordion-item border-bottom border-light-subtle bg-transparent">
+                                    <div className="accordion-item border-bottom border-white border-opacity-10 bg-transparent">
                                         <h2 className="accordion-header">
-                                            <button className="accordion-button collapsed bg-transparent px-0 py-4 fw-bold text-white text-uppercase shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseUsage" style={{ letterSpacing: '1px', fontSize: '14px' }}>
+                                            <button className="accordion-button collapsed bg-transparent px-0 py-4 fw-bold text-white text-uppercase shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseUsage" style={{ letterSpacing: '1.5px', fontSize: '13px' }}>
                                                 How To Application
                                             </button>
                                         </h2>
                                         <div id="collapseUsage" className="accordion-collapse collapse" data-bs-parent="#productDetailsAccordion">
                                             <div className="accordion-body px-0 pt-0 pb-4">
-                                                <ol className="lh-lg text-secondary mb-0" style={{ fontSize: '15px' }}>
+                                                <ol className="lh-lg text-light opacity-70 mb-0" style={{ fontSize: '14px' }}>
                                                     {product.howToUse.map((step, idx) => (
                                                         <li key={idx} className="mb-3">{step}</li>
                                                     ))}
@@ -357,17 +360,20 @@ const ProductSingle = () => {
                                 )}
 
                                 {/* Shipping */}
-                                <div className="accordion-item border-bottom border-light-subtle bg-transparent">
+                                <div className="accordion-item border-bottom border-white border-opacity-10 bg-transparent">
                                     <h2 className="accordion-header">
-                                        <button className="accordion-button collapsed bg-transparent px-0 py-4 fw-bold text-white text-uppercase shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseShipping" style={{ letterSpacing: '1px', fontSize: '14px' }}>
+                                        <button className="accordion-button collapsed bg-transparent px-0 py-4 fw-bold text-white text-uppercase shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseShipping" style={{ letterSpacing: '1.5px', fontSize: '13px' }}>
                                             Shipping & Delivery
                                         </button>
                                     </h2>
                                     <div id="collapseShipping" className="accordion-collapse collapse" data-bs-parent="#productDetailsAccordion">
                                         <div className="accordion-body px-0 pt-0 pb-4">
-                                            <div className="d-flex align-items-center gap-3 mb-3 p-3 bg-dark rounded-3 text-secondary" style={{ border: '1px solid var(--border-gold)' }}>
-                                                <FiBox size={24} className="text-dark" />
-                                                <p className="m-0 fw-medium small">{product.shippingInfo || "Free standard shipping on orders over ₹999."}</p>
+                                            {/* Shipping Note Box - Darker Background for Visibility */}
+                                            <div className="d-flex align-items-center gap-3 mb-4 p-3 rounded-3" style={{ background: 'rgba(0, 0, 0, 0.6)', border: '1px solid rgba(212, 175, 55, 0.3)', backdropFilter: 'blur(5px)' }}>
+                                                <FiBox size={22} className="text-gold flex-shrink-0" />
+                                                <p className="m-0 fw-bold text-white small" style={{ letterSpacing: '0.5px' }}>
+                                                    {product.shippingInfo || "Free standard shipping on orders over ₹999."}
+                                                </p>
                                             </div>
                                             <ShippingReturns />
                                         </div>
@@ -376,17 +382,19 @@ const ProductSingle = () => {
 
                                 {/* FAQs */}
                                 {product.faqs && product.faqs.length > 0 && (
-                                    <div className="accordion-item border-bottom border-light-subtle bg-transparent">
+                                    <div className="accordion-item border-bottom border-white border-opacity-10 bg-transparent">
                                         <h2 className="accordion-header">
-                                            <button className="accordion-button collapsed bg-transparent px-0 py-4 fw-bold text-white text-uppercase shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFaq" style={{ letterSpacing: '1px', fontSize: '14px' }}>
+                                            <button className="accordion-button collapsed bg-transparent px-0 py-4 fw-bold text-white text-uppercase shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFaq" style={{ letterSpacing: '1.5px', fontSize: '13px' }}>
                                                 Frequently Asked Questions
                                             </button>
                                         </h2>
                                         <div id="collapseFaq" className="accordion-collapse collapse" data-bs-parent="#productDetailsAccordion">
                                             <div className="accordion-body px-0 pt-0 pb-4">
-                                                <ul className="lh-lg text-secondary mb-0 list-unstyled" style={{ fontSize: '14px' }}>
+                                                <ul className="lh-lg text-white opacity-100 mb-0 list-unstyled" style={{ fontSize: '14px' }}>
                                                     {product.faqs.map((faq, idx) => (
-                                                        <li key={idx} className="mb-3 p-3 bg-dark rounded-3 fw-medium" style={{ border: '1px solid var(--border-gold)' }}>Q: {faq}</li>
+                                                        <li key={idx} className="mb-3 p-3 bg-white bg-opacity-5 rounded-3 fw-medium border border-white border-opacity-10 text-white">
+                                                            <span className="text-gold fw-bold me-2">Q:</span> {faq}
+                                                        </li>
                                                     ))}
                                                 </ul>
                                             </div>
