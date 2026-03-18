@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import './Hero.css';
 import Banner1 from '../assets/MainBanner1.png';
 import Banner2 from '../assets/MainBanner2.png';
-
+import Banner3 from '../assets/MainBanner3.png';
+import Banner4 from '../assets/MainBanner5.png'
 
 const Hero = () => {
-    const slides = [Banner1, Banner2];
+    const slides = [Banner1, Banner2, Banner3, Banner4];
     const [currentSlide, setCurrentSlide] = useState(0);
 
 

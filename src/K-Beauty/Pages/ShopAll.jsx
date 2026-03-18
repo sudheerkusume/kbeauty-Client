@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import API_BASE_URL from "../config";
 import { IoFilter } from 'react-icons/io5';
 import { IoIosArrowForward } from 'react-icons/io';
@@ -10,6 +10,7 @@ const ShopAll = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [openSections, setOpenSections] = useState({});
+    const navigate = useNavigate();
 
     // Dynamic filter options extracted from DB
     const [filters, setFilters] = useState({
@@ -316,53 +317,83 @@ const ShopAll = () => {
                                         ? Math.round(((product.price - product.offerPrice) / product.price) * 100)
                                         : 0;
 
+                                    const weightFactor = product.brand === "COSRX" ? 2 : 1;
                                     const targetLink = `/${product.category === 'Makeup' ? 'Makeup' : 'SkinCare'}/${product._id}`;
+                                    const combo = product.combo;
+                                    const isCombo = (combo && (combo.isCombo === true || combo.isCombo === "true")) || (product.title && product.title.includes(' + '));
+                                    const comboSavings = combo?.savings || (product.price - product.offerPrice);
 
                                     return (
-                                        <div className="col-6 col-md-4 mb-4" key={product._id}>
-                                            <Link to={targetLink} className="signature-premium-card">
-                                                <div className="premium-img-container">
-                                                    {discountPercent > 15 && (
-                                                        <div className="premium-discount-badge" style={{ left: '10px', right: 'auto' }}>
-                                                            <span className="discount-val-p">{discountPercent}<span className="animated-percent">%</span></span>
-                                                            <span className="discount-label-p">OFF</span>
+                                        <div className={"col-6 col-md-4 mb-4"} key={product._id}>
+                                            {isCombo ? (
+                                                <Link to={targetLink} className="combo-ref-card">
+                                                    <div className="combo-ref-badge-wrap">
+                                                        <div className="combo-ref-badge">Combo Deal</div>
+                                                    </div>
+                                                    <div className="combo-ref-savings-bar">
+                                                        Save <span className="save-text">₹{comboSavings}</span> | {Math.round(((product.price - product.offerPrice) / product.price) * 100)}% OFF
+                                                    </div>
+                                                    <div className="combo-ref-images">
+                                                        <img src={product.images?.[0] || 'https://via.placeholder.com/150'} className="combo-ref-img" alt="" />
+                                                        <span className="combo-ref-plus">+</span>
+                                                        <img src={product.images?.[1] || product.images?.[0] || 'https://via.placeholder.com/150'} className="combo-ref-img" alt="" />
+                                                    </div>
+                                                    <div className="combo-ref-info">
+                                                        <div className="combo-ref-includes">Includes: {product.title}</div>
+                                                        <div className="combo-ref-price-wrap">
+                                                            <span className="combo-ref-price-new">₹{product.offerPrice}</span>
+                                                            <span className="combo-ref-price-old">₹{product.price}</span>
                                                         </div>
-                                                    )}
-
-                                                    <img
-                                                        src={product.images?.[0] || 'https://via.placeholder.com/600x800'}
-                                                        alt={product.title}
-                                                        className="premium-main-img"
-                                                    />
-                                                    {product.images?.[1] && (
-                                                        <img
-                                                            src={product.images[1]}
-                                                            alt={`${product.title} hover`}
-                                                            className="premium-hover-img"
-                                                        />
-                                                    )}
-                                                </div>
-
-                                                <div className="card-content-p text-center">
-                                                    <span className="premium-care-label">{product.brand}</span>
-                                                    <h3 className="premium-product-title" style={{ fontSize: '0.9rem' }}>
-                                                        {product.title}
-                                                    </h3>
-
-                                                    <div className="premium-price-wrap">
-                                                        {product.price > product.offerPrice && (
-                                                            <span className="premium-old-price">₹{product.price}</span>
+                                                        <button className="combo-ref-btn-gold" style={{ padding: '8px 20px', fontSize: '0.65rem' }} onClick={(e) => { e.preventDefault(); navigate(targetLink); }}>
+                                                            Shop Combo
+                                                        </button>
+                                                    </div>
+                                                </Link>
+                                            ) : (
+                                                <Link to={targetLink} className="signature-premium-card">
+                                                    <div className="premium-img-container">
+                                                        {discountPercent > 15 && (
+                                                            <div className="premium-discount-badge" style={{ left: '10px', right: 'auto' }}>
+                                                                <span className="discount-val-p">{discountPercent}<span className="animated-percent">%</span></span>
+                                                                <span className="discount-label-p">OFF</span>
+                                                            </div>
                                                         )}
-                                                        <span className="premium-offer-price" style={{ fontSize: '1rem' }}>
-                                                            ₹{product.offerPrice || product.price}
-                                                        </span>
+
+                                                        <img
+                                                            src={product.images?.[0] || 'https://via.placeholder.com/600x800'}
+                                                            alt={product.title}
+                                                            className="premium-main-img"
+                                                        />
+                                                        {product.images?.[1] && (
+                                                            <img
+                                                                src={product.images[1]}
+                                                                alt={`${product.title} hover`}
+                                                                className="premium-hover-img"
+                                                            />
+                                                        )}
                                                     </div>
 
-                                                    <button className="signature-shop-btn" style={{ padding: '8px 20px', fontSize: '0.65rem' }}>
-                                                        View Product
-                                                    </button>
-                                                </div>
-                                            </Link>
+                                                    <div className="card-content-p text-center">
+                                                        <span className="premium-care-label">{product.brand}</span>
+                                                        <h3 className="premium-product-title" style={{ fontSize: '0.9rem', minHeight: '42px', overflow: 'hidden' }}>
+                                                            {product.title}
+                                                        </h3>
+
+                                                        <div className="premium-price-wrap">
+                                                            {product.price > product.offerPrice && (
+                                                                <span className="premium-old-price">₹{product.price}</span>
+                                                            )}
+                                                            <span className="premium-offer-price" style={{ fontSize: '1rem' }}>
+                                                                ₹{product.offerPrice || product.price}
+                                                            </span>
+                                                        </div>
+
+                                                        <button className="signature-shop-btn" style={{ padding: '8px 20px', fontSize: '0.65rem' }}>
+                                                            View Product
+                                                        </button>
+                                                    </div>
+                                                </Link>
+                                            )}
                                         </div>
                                     );
                                 })}
@@ -373,15 +404,129 @@ const ShopAll = () => {
             </div>
 
             <style>{`
-                .pointer { cursor: pointer; }
-                .transition-transform { transition: transform 0.3s ease; }
-                .group:hover .transition-transform { transform: scale(1.05); }
-                .custom-scrollbar::-webkit-scrollbar { width: 4px; }
-                .custom-scrollbar::-webkit-scrollbar-track { background: #111; border-radius: 4px; }
-                .custom-scrollbar::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
-                .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #444; }
-                .custom-checkbox input:checked { background-color: #D4AF37; border-color: #D4AF37; }
-            `}</style>
+                    .pointer { cursor: pointer; }
+                    .transition-transform { transition: transform 0.3s ease; }
+                    .group:hover .transition-transform { transform: scale(1.05); }
+                    .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+                    .custom-scrollbar::-webkit-scrollbar-track { background: #111; border-radius: 4px; }
+                    .custom-scrollbar::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+                    .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #444; }
+                    .custom-checkbox input:checked { background-color: #D4AF37; border-color: #D4AF37; }
+
+                    /* Premium Combo Card Design v2 (Gold Standard) */
+                    .combo-ref-card {
+                        background: #000;
+                        border: 1px solid rgba(255, 255, 255, 0.08);
+                        border-radius: 12px;
+                        overflow: hidden;
+                        display: flex;
+                        flex-direction: column;
+                        height: 100%;
+                        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+                        text-decoration: none !important;
+                        position: relative;
+                        box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+                    }
+                    .combo-ref-card:hover {
+                        transform: translateY(-8px);
+                        border-color: rgba(197, 160, 89, 0.5);
+                        box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+                    }
+                    .combo-ref-badge-wrap { text-align: center; padding-top: 15px; background: #000; }
+                    .combo-ref-badge {
+                        background: rgba(197, 160, 89, 0.2);
+                        color: #F5D27A;
+                        border: 1px solid rgba(197, 160, 89, 0.4);
+                        padding: 4px 16px;
+                        border-radius: 50px;
+                        font-size: 13px;
+                        font-weight: 700;
+                        display: inline-block;
+                        text-transform: none;
+                        letter-spacing: 0.5px;
+                    }
+                    .combo-ref-savings-bar {
+                        background: linear-gradient(to right, #C5A059, #F5D27A, #C5A059);
+                        padding: 8px 12px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 8px;
+                        margin: 15px 0;
+                        color: #3D2616;
+                        font-weight: 800;
+                        font-size: 14px;
+                        box-shadow: inset 0 2px 4px rgba(255,255,255,0.3);
+                    }
+                    .combo-ref-savings-bar .save-text { color: #a00000; font-weight: 900; }
+                    .combo-ref-images {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 15px;
+                        padding: 20px 15px 30px 15px;
+                        background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+                    }
+                    .combo-ref-img {
+                        width: 44%;
+                        height: 130px;
+                        object-fit: contain;
+                        filter: drop-shadow(0 8px 15px rgba(0,0,0,0.6));
+                        transition: transform 0.4s ease;
+                    }
+                    .combo-ref-card:hover .combo-ref-img { transform: scale(1.08) translateY(-5px); }
+                    .combo-ref-plus { color: rgba(255, 255, 255, 0.8); font-size: 24px; font-weight: 300; margin-top: -5px; }
+                    .combo-ref-info { padding: 0 20px 20px 20px; text-align: center; display: flex; flex-direction: column; flex-grow: 1; }
+                    .combo-ref-includes { font-size: 12px; color: rgba(255, 255, 255, 0.7); margin-bottom: 12px; font-weight: 500; }
+                    .combo-ref-price-wrap { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 20px; }
+                    .combo-ref-price-new { font-size: 24px; font-weight: 800; color: #fff; letter-spacing: -0.5px; }
+                    .combo-ref-price-old { font-size: 16px; color: rgba(255, 255, 255, 0.4); text-decoration: line-through; }
+                    .combo-ref-btn-gold {
+                        width: 100%;
+                        background: linear-gradient(135deg, #8E6E3C 0%, #C5A059 50%, #8E6E3C 100%);
+                        color: #fff !important;
+                        border: none;
+                        padding: 14px;
+                        border-radius: 8px;
+                        font-weight: 800;
+                        font-size: 16px;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+                    }
+                    .combo-ref-btn-gold:hover { transform: scale(1.02); filter: brightness(1.1); }
+
+                    @media (max-width: 576px) {
+                        .combo-ref-badge-wrap { padding-top: 8px; }
+                        .combo-ref-badge { font-size: 10px; padding: 3px 10px; }
+                        .combo-ref-savings-bar { 
+                            font-size: 9px; 
+                            padding: 5px 4px; 
+                            margin: 6px 0; 
+                            white-space: nowrap; 
+                            gap: 4px;
+                            letter-spacing: -0.2px;
+                        }
+                        .combo-ref-images { padding: 8px 5px 12px 5px; gap: 6px; }
+                        .combo-ref-img { height: 60px; }
+                        .combo-ref-info { padding: 0 10px 12px 10px; }
+                        .combo-ref-includes { 
+                            font-size: 10px; 
+                            margin-bottom: 6px; 
+                            line-height: 1.2; 
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            display: -webkit-box;
+                            -webkit-line-clamp: 2;
+                            line-clamp: 2;
+                            -webkit-box-orient: vertical;
+                            min-height: 24px;
+                        }
+                        .combo-ref-price-wrap { gap: 6px; margin-bottom: 10px; }
+                        .combo-ref-price-new { font-size: 18px; }
+                        .combo-ref-btn-gold { padding: 8px 5px; font-size: 12px; border-radius: 6px; }
+                    }
+                `}</style>
         </div>
     );
 };

@@ -82,23 +82,24 @@
 .navbar-main-wrapper .navbar {
     padding-top: 0px !important;
     padding-bottom: 0px !important;
+    height: 80px; /* Force constant height */
+    display: flex;
+    align-items: center;
 }
 
 .navbar-logo {
-    max-height: 75px;
-    /* Increased desktop logo size */
+    max-height: 90px; /* Increased from 75px */
     width: auto;
     object-fit: contain;
     transition: all 0.3s ease;
     margin: 0;
-    transform: scale(1);
+    transform: scale(1.3); /* Visual boost for desktop */
     transform-origin: center center;
 }
 
 .navbar-main-wrapper.sticky-active .navbar-logo {
-    max-height: 55px;
-    /* Stay proportional on scroll */
-    transform: scale(1.2);
+    max-height: 70px; /* Increased from 55px */
+    transform: scale(1.1); /* Slightly smaller than base but still prominent */
 }
 
 /* Nav Links & Hover Animation */
@@ -504,9 +505,9 @@
     }
 
     .navbar-logo {
-        max-height: 65px !important;
+        max-height: 80px !important; /* Increased from 65px */
         width: auto !important;
-        transform: scale(1.1);
+        transform: scale(1.25); /* More prominent on mobile */
         object-fit: contain;
     }
 

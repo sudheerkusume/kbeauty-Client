@@ -16,7 +16,6 @@ const Product = () => {
     return (
         <div style={{ backgroundColor: '#000' }}>
             <Hero />
-            <TrustBar />
             <BestSellers />
             <Categories />
             <ExpertBacking />
@@ -24,7 +23,7 @@ const Product = () => {
             <TrendingProducts />
             <OffersSection />
             <KoreanCollection />
-            <IngredientSection />
+            {/* <IngredientSection /> */}
             <BlogSection />
             <VideoGallery />
             <ReviewsSection />

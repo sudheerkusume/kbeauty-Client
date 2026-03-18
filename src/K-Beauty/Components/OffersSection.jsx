@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper/modules';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import WishlistButton from '../WishlistButton';
 import 'swiper/css';
@@ -12,13 +12,14 @@ import './OffersSection.css';
 
 const OffersSection = () => {
     const [offerProducts, setOfferProducts] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         axios.get(`${API_BASE_URL}/products`)
             .then((res) => {
-                // Filter all products that have a discount
+                // Filter all products that have a discount AND are NOT combos
                 const discounted = res.data
-                    .filter(p => p.price > p.offerPrice)
+                    .filter(p => p.price > p.offerPrice && (!p.combo || (p.combo.isCombo !== true && p.combo.isCombo !== "true")))
                     .sort((a, b) => (b.price - b.offerPrice) - (a.price - a.offerPrice));
                 setOfferProducts(discounted);
             })
@@ -56,7 +57,13 @@ const OffersSection = () => {
                     }}
                     className="offers-swiper"
                 >
-                    {offerProducts.map((product) => (
+                    {offerProducts.map((product) => {
+                        const targetLink = `/${product.category === 'Makeup' ? 'Makeup' : 'SkinCare'}/${product._id}`;
+                        const combo = product.combo;
+                        const isCombo = (combo && (combo.isCombo === true || combo.isCombo === "true")) || (product.title && product.title.includes(' + '));
+                        const comboSavings = combo?.savings || (product.price - product.offerPrice);
+
+                        return (
                         <SwiperSlide key={product._id}>
                             <div className="offer-card-luxe">
                                 <div className="row g-0 align-items-center">
@@ -77,7 +84,7 @@ const OffersSection = () => {
                                                 <span className="offer-price-old ms-2">₹{product.price}</span>
                                             </div>
                                             <Link
-                                                to={`/${product.category === 'Makeup' ? 'Makeup' : 'SkinCare'}/${product._id}`}
+                                                to={targetLink}
                                                 className="offer-cta-link mt-3"
                                             >
                                                 Shop Deal <IoIosArrowForward size={12} />
@@ -87,7 +94,8 @@ const OffersSection = () => {
                                 </div>
                             </div>
                         </SwiperSlide>
-                    ))}
+                        );
+                    })}
                 </Swiper>
             </div>
         </section>

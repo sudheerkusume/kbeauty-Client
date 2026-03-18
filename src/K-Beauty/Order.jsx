@@ -67,10 +67,8 @@ const Order = () => {
         const numericPrice = Number(item.price.toString().replace(/[^0-9.-]+/g, ""));
         return acc + numericPrice * (item.quantity || 1);
     }, 0);
-    // const shippingFee = subtotal > 1000 ? 0 : 50;
-    // const tax = Math.round(subtotal * 0.18); // 18% GST snapshot
-    const shippingFee = 0; // Temporary for ₹1 test
-    const tax = 0; // Temporary for ₹1 test
+    const shippingFee = subtotal > 1000 ? 0 : 50;
+    const tax = Math.round(subtotal * 0.18); // 18% GST snapshot
     const totalAmount = subtotal + shippingFee + tax;
 
     const handleInputChange = (e, section, field) => {

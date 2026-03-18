@@ -98,7 +98,7 @@
     line-height: 1.4;
     display: -webkit-box;
     -webkit-line-clamp: 2;
-    line-clamp: 2; /* Standard property */
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
     height: 38px;
@@ -143,6 +143,229 @@
     font-size: clamp(14px, 3.5vw, 16px);
 }
 
+/* --- Premium Combo Card Design v2 (Gold Standard) --- */
+.combo-ref-card {
+    background: #000;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    text-decoration: none !important;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.combo-ref-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(197, 160, 89, 0.5);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+}
+
+.combo-ref-badge-wrap {
+    text-align: center;
+    padding-top: 15px;
+    background: #000;
+}
+
+.combo-ref-badge {
+    background: rgba(197, 160, 89, 0.2);
+    color: #F5D27A;
+    border: 1px solid rgba(197, 160, 89, 0.4);
+    padding: 4px 16px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 700;
+    display: inline-block;
+    text-transform: none;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.combo-ref-savings-bar {
+    background: linear-gradient(to right, #C5A059, #F5D27A, #C5A059);
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 15px 0;
+    color: #3D2616;
+    font-weight: 800;
+    font-size: 14px;
+    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.3), 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.combo-ref-savings-bar .save-text {
+    color: #a00000;
+    /* Richer red for the banner */
+    font-weight: 900;
+}
+
+.combo-ref-images {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px 15px 30px 15px;
+    background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+    position: relative;
+}
+
+.combo-ref-img {
+    width: 44%;
+    height: 130px;
+    object-fit: contain;
+    filter: drop-shadow(0 8px 15px rgba(0, 0, 0, 0.6));
+    transition: transform 0.4s ease;
+}
+
+.combo-ref-card:hover .combo-ref-img {
+    transform: scale(1.08) translateY(-5px);
+}
+
+.combo-ref-plus {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 24px;
+    font-weight: 300;
+    margin-top: -5px;
+}
+
+.combo-ref-info {
+    padding: 0 20px 20px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.combo-ref-includes {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+.combo-ref-price-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.combo-ref-price-new {
+    font-size: 24px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.5px;
+}
+
+.combo-ref-price-old {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.4);
+    text-decoration: line-through;
+}
+
+.combo-ref-btn-gold {
+    width: 100%;
+    background: linear-gradient(135deg, #8E6E3C 0%, #C5A059 50%, #8E6E3C 100%);
+    color: #fff !important;
+    border: none;
+    border-radius: 8px;
+    font-weight: 800;
+    text-transform: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+}
+
+.combo-ref-btn-gold:hover {
+    transform: scale(1.02);
+    filter: brightness(1.1);
+    box-shadow: 0 6px 20px rgba(197, 160, 89, 0.3);
+}
+
+/* Mobile adjustments for combo ref card v2 */
+@media (max-width: 576px) {
+    .combo-ref-badge-wrap {
+        padding-top: 10px;
+    }
+
+    .combo-ref-badge {
+        font-size: 10px;
+        padding: 3px 10px;
+    }
+
+    .combo-ref-savings-bar {
+        font-size: 9px;
+        padding: 5px 4px;
+        margin: 6px 0;
+        /* Tightened from 8px */
+        white-space: nowrap;
+        gap: 4px;
+        letter-spacing: -0.2px;
+    }
+
+    .combo-ref-savings-bar .save-text {
+        font-weight: 800;
+    }
+
+    .combo-ref-images {
+        padding: 8px 5px 12px 5px;
+        /* Tightened from 15px */
+        gap: 6px;
+    }
+
+    .combo-ref-img {
+        height: 60px;
+        /* Sized down from 65px */
+    }
+
+    .combo-ref-info {
+        padding: 0 10px 12px 10px;
+        /* Tightened from 15px */
+    }
+
+    .combo-ref-includes {
+        font-size: 10px;
+        margin-bottom: 6px;
+        /* Tightened from 8px */
+        line-height: 1.2;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        min-height: 24px;
+        /* Ensure 2 lines max height alignment */
+    }
+
+    .combo-ref-price-wrap {
+        gap: 6px;
+        margin-bottom: 10px;
+        /* Tightened from 12px */
+    }
+
+    .combo-ref-price-new {
+        font-size: 18px;
+    }
+
+    .combo-ref-price-old {
+        font-size: 12px;
+    }
+
+    .combo-ref-btn-gold {
+        padding: 10px 5px;
+        font-size: 13px;
+        border-radius: 6px;
+    }
+}
+
 /* Horizontal Touch Scroll for Mobile Arrays */
 @media (max-width: 768px) {
     .trending-section {
@@ -170,52 +393,179 @@
     .mobile-scroll-row {
         flex-wrap: wrap !important;
         overflow-x: hidden;
-        padding: 0 !important;
-        margin-left: -5px !important;
-        margin-right: -5px !important;
+        padding: 5px !important;
+        margin-left: -8px !important;
+        margin-right: -8px !important;
     }
-    
-    .mobile-scroll-row > .col-6 {
+
+    .mobile-scroll-row>.col-6 {
         flex: 0 0 50% !important;
         max-width: 50% !important;
-        padding-left: 5px !important;
-        padding-right: 5px !important;
-        margin-bottom: 20px;
-        scroll-snap-align: unset;
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+        margin-bottom: 25px;
     }
 
     .trending-img-container {
-        aspect-ratio: 4 / 5 !important;
-        border-radius: 6px;
+        aspect-ratio: 0.85;
+        /* Slightly squarer for mobile */
+        border-radius: 12px;
+    }
+
+    .combo-duo-container {
+        padding: 25px 8px 10px 8px !important;
+        /* Tighten for mobile */
+        gap: 5px !important;
+    }
+
+    .combo-duo-img {
+        max-height: 90px !important;
+        width: 46% !important;
+    }
+
+    .combo-savings-banner {
+        font-size: 8px !important;
+        padding: 4px 0 !important;
+        letter-spacing: 0.5px !important;
+    }
+
+    .combo-badge-p {
+        top: 8px !important;
+        left: 8px !important;
+        padding: 3px 8px !important;
+        font-size: 8px !important;
     }
 
     .trending-info {
-        padding-top: 10px !important;
-        text-align: center;
+        padding-top: 12px !important;
+        text-align: left;
+        /* Shift back to left for premium editorial feel */
     }
 
     .trending-name {
-        font-size: 11px !important;
-        height: 32px !important;
-        margin-bottom: 6px !important;
-        line-height: 1.3 !important;
+        font-size: 11.5px !important;
+        height: auto !important;
+        min-height: 32px !important;
+        margin-bottom: 4px !important;
     }
 
     .trending-price-box {
-        justify-content: center;
-        gap: 8px !important;
-    }
-
-    .trending-offer {
-        font-size: 13px !important;
-    }
-
-    .trending-old {
-        font-size: 10px !important;
+        justify-content: flex-start;
+        /* Alignment matched with text */
+        gap: 6px !important;
     }
 
     .trending-view-all {
         font-size: 12px;
         width: fit-content;
     }
+}
+
+/* Combo Highlights - High Converting */
+.combo-badge-p {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: linear-gradient(135deg, #F5D27A 0%, #D4AF37 100%);
+    color: #000;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+    z-index: 10;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.combo-includes-text {
+    font-size: 11px;
+    color: #F5D27A;
+    opacity: 0.9;
+    font-weight: 600;
+    margin-top: 2px;
+    letter-spacing: 0.3px;
+    display: block;
+}
+
+.trending-combo-items {
+    font-size: 0.75rem;
+    line-height: 1.2;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+    margin-top: 4px;
+}
+
+/* Visual Combo Card Layout */
+.combo-savings-banner {
+    background: linear-gradient(to right, #D4AF37, #F5D27A);
+    color: #000;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 6px 0;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 5;
+    letter-spacing: 1.5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.trending-shop-combo-btn {
+    background: #D4AF37 !important;
+    color: #000 !important;
+    font-weight: 800 !important;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 12px !important;
+    padding: 12px !important;
+    border: none !important;
+    width: 100%;
+    margin-top: 15px;
+    border-radius: 8px !important;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.trending-shop-combo-btn:hover {
+    background: #F5D27A !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+}
+
+.combo-duo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 35px 15px 20px 15px;
+    background: #fff;
+    height: 100%;
+    border-radius: 8px;
+}
+
+.combo-duo-img {
+    width: 42% !important;
+    height: auto !important;
+    max-height: 140px;
+    object-fit: contain !important;
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.08));
+}
+
+.trending-card:hover .combo-duo-img {
+    transform: scale(1.1) translateY(-5px);
+}
+
+.combo-plus-sign {
+    font-size: 1.2rem;
+    font-weight: 200;
+    color: #E0E0E0;
+    user-select: none;
+    margin-top: -5px;
 }
