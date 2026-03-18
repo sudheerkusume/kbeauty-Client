@@ -79,6 +79,7 @@ const Footer = () => {
                                 &copy; 2026 K-Beautymart. All rights reserved. &nbsp;|&nbsp;
                                 <Link to="/privacy" className="text-muted text-decoration-none mx-2">Privacy Policy</Link>
                                 <Link to="/terms" className="text-muted text-decoration-none mx-2">Terms of Service</Link>
+                                <Link to="/refund-policy" className="text-muted text-decoration-none mx-2">Refund Policy</Link>
                             </p>
                         </div>
                         <div className="col-md-4 d-flex justify-content-center justify-content-md-end gap-3 mt-4 mt-md-0">

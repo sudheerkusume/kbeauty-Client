@@ -27,6 +27,9 @@ import LipCarePage from "../SinglesPage/LipCarePage";
 import Wishlist from "../Wishlist";
 import AdminRoute from "./AdminRoute";
 import PhoneLogin from "../Pages/PhoneLogin";
+import PrivacyPolicy from "../Pages/PrivacyPolicy";
+import TermsOfService from "../Pages/TermsOfService";
+import RefundPolicy from "../Pages/RefundPolicy";
 
 const Routing = () => {
     return (
@@ -74,6 +77,9 @@ const Routing = () => {
             <Route path="/mobile-login" element={<PhoneLogin />} />
             {/* 404 Page */}
             <Route path="/shop" element={<ShopAll />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/terms" element={<TermsOfService />} />
+            <Route path="/refund-policy" element={<RefundPolicy />} />
             <Route path="*" element={<NoPage />} />
         </Routes>
     );

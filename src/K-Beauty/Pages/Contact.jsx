@@ -68,7 +68,7 @@ const Contact = () => {
                                 </div>
                                 <div>
                                     <h6 className="mb-0 fw-bold text-white-force">Call Our Experts</h6>
-                                    <p className="mb-0 text-white-force opacity-75 small">+91 __________</p>
+                                    <p className="mb-0 text-white-force opacity-75 small">+91 9177509985</p>
                                 </div>
                             </div>
 
@@ -78,7 +78,7 @@ const Contact = () => {
                                 </div>
                                 <div>
                                     <h6 className="mb-0 fw-bold text-white-force">Email Support</h6>
-                                    <p className="mb-0 text-white-force opacity-75 small">__________@kbeautymart.com</p>
+                                    <p className="mb-0 text-white-force opacity-75 small">kbeautymartworkspaces@gmail.com</p>
                                 </div>
                             </div>
 
