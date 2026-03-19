@@ -18,6 +18,7 @@ import { CartProvider } from './K-Beauty/context/CartContext';
 import { ToastContainer } from 'react-toastify';
 import ScrollToTop from './K-Beauty/ScrollToTop';
 import AuthPopup from './K-Beauty/Components/AuthPopup';
+import WhatsAppButton from './K-Beauty/Components/WhatsAppButton';
 export const loginStatus = createContext();
 
 function App() {
@@ -133,6 +134,7 @@ function App() {
               {!isAdminRoute && <Navbar />}
               <Routing />
               {!isAdminRoute && <Footer />}
+              {!isAdminRoute && <WhatsAppButton />}
               <ToastContainer position="top-right" autoClose={1000} />
             </CartProvider>
           </WishlistProvider>

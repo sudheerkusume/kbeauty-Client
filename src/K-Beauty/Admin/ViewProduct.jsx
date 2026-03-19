@@ -540,12 +540,12 @@ const ViewProduct = () => {
         <div className='container-fluid p-0' style={{ fontFamily: "'Inter', sans-serif", color: '#fff' }}>
 
             {/* ── HEADER AESTHETICS ── */}
-            <div className="d-flex justify-content-between align-items-end mb-5">
+            <div className="d-flex flex-column flex-md-row justify-content-between align-items-md-end align-items-start gap-4 mb-5">
                 <div>
                     <h2 className="fw-bold m-0" style={{ letterSpacing: '-1.5px', color: '#fff', fontSize: '2.5rem' }}>Inventory Hub</h2>
                     <p className="text-secondary mt-2 fw-medium">Manage your premium K-Beauty collection with ease.</p>
                 </div>
-                <div className="d-flex gap-3">
+                <div className="d-flex flex-wrap gap-3 mt-3 mt-md-0">
                     <button
                         className="btn btn-luxury-primary d-flex align-items-center gap-3 px-4 py-3 shadow-lg rounded-pill animate-float"
                         data-bs-toggle="modal"
@@ -585,7 +585,7 @@ const ViewProduct = () => {
 
             {/* ── STATS COMMAND CENTER ── */}
             {/* ── COMMAND BAR ── */}
-            <div className="bg-black p-3 rounded-4 shadow-sm border border-secondary mb-4 d-flex justify-content-between align-items-center flex-wrap gap-3">
+            <div className="bg-black p-3 rounded-4 shadow-sm border border-secondary mb-4 d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
                 <div className="category-tabs d-flex gap-2 overflow-x-auto pb-2 scrollbar-hide" style={{ maxWidth: '100%', WebkitOverflowScrolling: 'touch' }}>
                         {availableCategories.map((cat) => (
                         <button
@@ -600,8 +600,8 @@ const ViewProduct = () => {
                     ))}
                 </div>
 
-                <div className="d-flex gap-3 align-items-center flex-grow-1 flex-wrap">
-                    <div className="position-relative flex-grow-1" style={{ minWidth: '200px' }}>
+                <div className="d-flex flex-column flex-sm-row gap-3 align-items-stretch align-items-sm-center flex-grow-1 w-100">
+                    <div className="position-relative flex-grow-1 w-100 w-sm-auto" style={{ minWidth: '200px' }}>
                         <FiSearch className="position-absolute top-50 start-0 translate-middle-y ms-3 text-muted" style={{ zIndex: 10 }} />
                         <input
                             type="text"
@@ -613,7 +613,7 @@ const ViewProduct = () => {
                         />
                     </div>
 
-                    <div className="d-flex align-items-center bg-dark rounded-pill px-4" style={{ height: '50px', border: '1px solid #333' }}>
+                    <div className="d-flex align-items-center bg-dark rounded-pill px-4 justify-content-between justify-content-sm-start" style={{ height: '50px', border: '1px solid #333' }}>
                         <div className="form-check form-switch m-0 d-flex align-items-center gap-3">
                             <input
                                 className="form-check-input pointer"
