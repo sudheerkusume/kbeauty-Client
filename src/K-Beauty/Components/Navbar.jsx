@@ -164,15 +164,15 @@ const Navbar = () => {
 
     return (
         <>
-            <header className={`navbar-main-wrapper ${isSticky ? 'sticky-active' : ''}`}>
-                <div className="announcement-bar bg-black py-2 border-bottom border-secondary">
-                    <div className="announcement-track">
-                        <div className="scroll-text fw-medium text-gold-light" style={{ letterSpacing: '0.5px' }}>
-                            <span>EXTRA ₹250 OFF on orders above ₹2500 &nbsp;|&nbsp; EXTRA ₹500 OFF on orders above ₹3500 &nbsp;|&nbsp; Free Shipping on All Orders &nbsp;|&nbsp; No Coupon Needed &nbsp;|&nbsp; Shop Now & Save Big</span>
-                            <span>EXTRA ₹250 OFF on orders above ₹2500 &nbsp;|&nbsp; EXTRA ₹500 OFF on orders above ₹3500 &nbsp;|&nbsp; Free Shipping on All Orders &nbsp;|&nbsp; No Coupon Needed &nbsp;|&nbsp; Shop Now & Save Big</span>
-                        </div>
+            <div className="announcement-bar bg-black py-2 border-bottom border-secondary">
+                <div className="announcement-track">
+                    <div className="scroll-text fw-medium text-gold-light" style={{ letterSpacing: '0.5px' }}>
+                        <span>Discover your radiant skin with genuine K-Beauty shop now & enjoy doorstep delivery of your favorite Korean skincare. &nbsp;|&nbsp;  &nbsp;|&nbsp; Free Shipping on All Orders &nbsp;|&nbsp; No Coupon Needed &nbsp;|&nbsp; Shop Now & Save Big</span>
+                        <span>Discover your radiant skin with genuine K-Beauty shop now & enjoy doorstep delivery of your favorite Korean skincare. &nbsp;|&nbsp;  &nbsp;|&nbsp; Free Shipping on All Orders &nbsp;|&nbsp; No Coupon Needed &nbsp;|&nbsp; Shop Now & Save Big</span>
                     </div>
                 </div>
+            </div>
+            <header className={`navbar-main-wrapper ${isSticky ? 'sticky-active' : ''}`}>
                 <nav className="navbar navbar-expand-lg navbar-dark bg-black">
                     <div className="container d-flex flex-wrap flex-lg-nowrap align-items-center justify-content-between position-relative">
 

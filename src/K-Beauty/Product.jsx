@@ -11,18 +11,27 @@ import ExpertBacking from './Components/ExpertBacking';
 import BlogSection from './Components/BlogSection';
 import VideoGallery from './Components/VideoGallery';
 import IngredientSection from './Components/IngredientSection';
+import IconPage from './Pages/IconPage';
+import Navpage from './Pages/Navpage';
+import Banner from './Pages/Banner';
+import ShippingDetails from './Components/ShippingDetails';
 
 const Product = () => {
     return (
         <div style={{ backgroundColor: '#000' }}>
             <Hero />
+            <IconPage />
+            <Navpage />
+            <OffersSection />
+            <Banner />
             <BestSellers />
             <Categories />
             <ExpertBacking />
-            <BrandLogos />
             <TrendingProducts />
-            <OffersSection />
+            <ShippingDetails />
             <KoreanCollection />
+            <BrandLogos />
+
             {/* <IngredientSection /> */}
             <BlogSection />
             <VideoGallery />

@@ -121,6 +121,7 @@
 
     .banner-nav .nav-item.active {
         width: 35px;
+        height: 3px;
     }
 }
 

@@ -1,0 +1,340 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600;1,700&family=Outfit:wght@300;400;500;600&display=swap');
+
+.banner-container {
+    background: #fff;
+    border-radius: 40px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.05);
+    min-height: 500px;
+}
+
+/* LEFT COLUMN: PRODUCT */
+.product-column {
+    background: #fbfbfb;
+    border-right: 1px solid #eee;
+    overflow: hidden; /* Ensure large text doesn't spill over */
+}
+
+/* COOL BACKGROUND TEXT BEHIND PRODUCT */
+.product-bg-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.routine-title-bg {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(3.0rem, 5.5vw, 6rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 0;
+}
+
+.routine-title-bg .solid-text {
+    color: #111;
+    opacity: 0.1; /* Very subtle watermark */
+}
+
+.routine-title-bg .hollow-text {
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.2);
+}
+
+.product-card {
+    filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.15));
+}
+
+.discount-badge {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    background: #ff4d6d;
+    color: #fff;
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(255, 77, 109, 0.3);
+}
+
+.banner-product-img {
+    max-height: 400px;
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.product-card:hover .banner-product-img {
+    transform: scale(1.05) rotate(-2deg);
+}
+
+/* RIGHT COLUMN: ROUTINE */
+.routine-column {
+    background: #000;
+    overflow: hidden;
+}
+
+.routine-img-wrapper {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.routine-face-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.85;
+    transform: scale(1.05);
+    transition: transform 10s linear;
+}
+
+.routine-column:hover .routine-face-img {
+    transform: scale(1.15);
+}
+
+/* GLOW SCAN EFFECT */
+.glow-scan-effect {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2), transparent);
+    transform: skewX(-20deg);
+    animation: glowScan 6s infinite ease-in-out;
+}
+
+@keyframes glowScan {
+    0% {
+        left: -100%;
+    }
+
+    40%,
+    100% {
+        left: 150%;
+    }
+}
+
+/* TEXT CONTENT */
+.routine-content {
+    position: relative;
+    z-index: 5;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    color: #fff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.routine-title {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    animation: fadeInDown 1.2s ease-out forwards;
+}
+
+.routine-subtitle {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.9;
+    margin-bottom: 3rem;
+    animation: fadeIn 1.5s ease-out forwards;
+}
+
+/* ABSOLUTE CALLOUT POINTERS */
+.routine-points-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.callout-absolute {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+    white-space: nowrap;
+}
+
+.callout-text {
+    font-size: 1.05rem;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+/* Pointer Wrapper */
+.pointer-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+/* Line Segments */
+.line-h {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.line-d {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.9);
+    position: relative;
+}
+
+/* Diagonal Rotations for L-Shape */
+.down-right {
+    transform-origin: left center;
+    transform: rotate(35deg);
+}
+
+.up-right {
+    transform-origin: left center;
+    transform: rotate(-35deg);
+}
+
+.down-left {
+    transform-origin: right center;
+    transform: rotate(-35deg);
+}
+
+.up-left {
+    transform-origin: right center;
+    transform: rotate(35deg);
+}
+
+/* The Glowing Dot */
+.pointer-dot {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 1);
+}
+
+.l-dot {
+    left: -3px;
+    top: -2.5px;
+}
+
+.r-dot {
+    right: -3px;
+    top: -2.5px;
+}
+
+/* STAGGERED ANIMATIONS (INFINITE LOOP) */
+.callout-absolute.item-1 {
+    animation: pointLoop 8s 0.0s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.callout-absolute.item-2 {
+    animation: pointLoop 8s 1.2s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.callout-absolute.item-3 {
+    animation: pointLoop 8s 2.4s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.callout-absolute.item-4 {
+    animation: pointLoop 8s 3.6s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.callout-absolute.item-5 {
+    animation: pointLoop 8s 4.8s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.callout-absolute.item-6 {
+    animation: pointLoop 8s 6.0s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes pointLoop {
+
+    0%,
+    100% {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    10%,
+    90% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 767px) {
+    .banner-container {
+        border-radius: 20px;
+        margin: 0 10px;
+    }
+
+    .routine-column {
+        height: 450px;
+    }
+
+    .routine-title {
+        font-size: 2.2rem;
+    }
+
+    .callout-absolute {
+        font-size: 0.8rem;
+        gap: 4px;
+    }
+
+    .line-h,
+    .line-d {
+        width: 15px !important;
+    }
+
+    .item-1 {
+        left: 2% !important;
+    }
+
+    .item-4 {
+        right: 2% !important;
+    }
+
+    /* Hide some to avoid mobile clutter */
+    .item-2,
+    .item-3,
+    .item-5,
+    .item-6 {
+        display: none;
+    }
+}

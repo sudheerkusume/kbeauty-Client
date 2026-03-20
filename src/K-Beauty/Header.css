@@ -45,7 +45,7 @@
 /* ----------- Navbar & Mega Menu Premium Styles ----------- */
 
 .navbar-main-wrapper {
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     width: 100%;
@@ -60,12 +60,8 @@
    we align it to top. */
 
 .navbar-main-wrapper.sticky-active {
-    position: fixed;
-    top: 0;
-    left: 0;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
     background: rgba(0, 0, 0, 0.98);
-    animation: slideInNav 0.5s ease;
 }
 
 @keyframes slideInNav {
@@ -82,24 +78,29 @@
 .navbar-main-wrapper .navbar {
     padding-top: 0px !important;
     padding-bottom: 0px !important;
-    height: 80px; /* Force constant height */
+    height: 80px;
+    /* Force constant height */
     display: flex;
     align-items: center;
 }
 
 .navbar-logo {
-    max-height: 90px; /* Increased from 75px */
+    max-height: 90px;
+    /* Increased from 75px */
     width: auto;
     object-fit: contain;
     transition: all 0.3s ease;
     margin: 0;
-    transform: scale(1.3); /* Visual boost for desktop */
+    transform: scale(1.3);
+    /* Visual boost for desktop */
     transform-origin: center center;
 }
 
 .navbar-main-wrapper.sticky-active .navbar-logo {
-    max-height: 70px; /* Increased from 55px */
-    transform: scale(1.1); /* Slightly smaller than base but still prominent */
+    max-height: 70px;
+    /* Increased from 55px */
+    transform: scale(1.1);
+    /* Slightly smaller than base but still prominent */
 }
 
 /* Nav Links & Hover Animation */
@@ -505,9 +506,11 @@
     }
 
     .navbar-logo {
-        max-height: 80px !important; /* Increased from 65px */
+        max-height: 80px !important;
+        /* Increased from 65px */
         width: auto !important;
-        transform: scale(1.25); /* More prominent on mobile */
+        transform: scale(1.25);
+        /* More prominent on mobile */
         object-fit: contain;
     }
 

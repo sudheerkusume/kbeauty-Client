@@ -23,34 +23,32 @@ const BrandLogos = () => {
 
 
     return (
-        <div className="brand-logos-wrap py-4 bg-black border-bottom border-secondary">
-            <div className="container-fluid overflow-hidden px-0">
-                <div className="brand-logos-track">
-                    <div className="brand-logos-scroll">
-                        {/* First set of logos */}
-                        {brands.map((brand, index) => (
-                            <div
-                                key={`brand-1-${index}`}
-                                className="brand-logo-item"
-                                onClick={() => navigate(`/brand/${brand.name}`)}
-                            >
-                                <img src={resolveImg(brand.img)} alt={brand.name} className="brand-logo-img" />
-                            </div>
-                        ))}
-                        {/* Duplicate set for infinite scroll */}
-                        {brands.map((brand, index) => (
-                            <div
-                                key={`brand-2-${index}`}
-                                className="brand-logo-item"
-                                onClick={() => navigate(`/brand/${brand.name}`)}
-                            >
-                                <img src={resolveImg(brand.img)} alt={brand.name} className="brand-logo-img" />
-                            </div>
-                        ))}
+        <section className="partners-section">
+            <div className="container">
+                <div className="row justify-content-center mb-5">
+                    <div className="col-12 col-md-8 text-center partners-header">
+                        <span className="partners-subtitle">TRUSTED BY EXPERTS</span>
+                        <h2 className="partners-title">Our Collaborative Brands</h2>
+                        <div className="partners-divider"></div>
+                        <p className="partners-desc mt-4">
+                            We curate the most innovative and authentic K-Beauty brands, bringing you exclusive formulations directly from Seoul.
+                        </p>
                     </div>
                 </div>
+
+                <div className="partners-matrix">
+                    {brands.map((brand, index) => (
+                        <div 
+                            key={`matrix-brand-${index}`} 
+                            className="matrix-cell"
+                            onClick={() => navigate(`/brand/${brand.name}`)}
+                        >
+                            <img src={resolveImg(brand.img)} alt={brand.name} className="matrix-logo" />
+                        </div>
+                    ))}
+                </div>
             </div>
-        </div>
+        </section>
     );
 };
 

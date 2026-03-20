@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@1,500;1,700&display=swap');
 
 
 :root {
@@ -749,14 +749,13 @@ summary {
 
 @media (min-width: 992px) {
   body {
-    padding-top: 105px;
-    /* Precision offset for announcement + nav */
+    padding-top: 0;
   }
 }
 
 @media (max-width: 991px) {
   body {
-    padding-top: 90px;
+    padding-top: 0;
     /* Aligned for compact mobile header row */
     padding-bottom: 95px;
   }
@@ -3041,4 +3040,12 @@ input::placeholder {
   animation: colorKeyframe 3s infinite linear;
   display: inline-block;
   margin-left: 2px;
+}
+
+/* Navpage */
+@media (min-width: 992px) {
+  .nav-page-container {
+    padding-right: 70px;
+    padding-left: 70px;
+  }
 }
