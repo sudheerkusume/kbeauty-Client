@@ -441,22 +441,22 @@ const BestSellerPage = () => {
                         padding-bottom: 100px; /* Space for mobile bottom nav */
                     }
                     .premium-product-title {
-                        font-size: 0.7rem !important;
-                        height: 2rem !important;
-                        margin-bottom: 5px !important;
+                        font-size: 0.65rem !important;
+                        height: 1.8rem !important;
+                        margin-bottom: 3px !important;
                     }
                     .premium-offer-price {
                         font-size: 0.85rem !important;
                     }
                     .card-content-p {
-                        padding: 10px 8px !important;
+                        padding: 6px 4px !important;
                     }
                     .signature-premium-card {
                         border-radius: 8px !important;
                     }
                     .btn-gold-outline {
-                        padding: 4px 0 !important;
-                        font-size: 0.65rem !important;
+                        padding: 3px 0 !important;
+                        font-size: 0.6rem !important;
                     }
                     /* Compact & Aligned Mobile Checkboxes */
                     .custom-check {

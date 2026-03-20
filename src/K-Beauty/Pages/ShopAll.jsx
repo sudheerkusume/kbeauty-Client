@@ -524,7 +524,23 @@ const ShopAll = () => {
                         }
                         .combo-ref-price-wrap { gap: 6px; margin-bottom: 10px; }
                         .combo-ref-price-new { font-size: 18px; }
-                        .combo-ref-btn-gold { padding: 8px 5px; font-size: 12px; border-radius: 6px; }
+                        .combo-ref-btn-gold { padding: 8px 5px; font-size: 11px; border-radius: 6px; }
+                    }
+
+                    @media (max-width: 991px) {
+                        .signature-premium-card { border-radius: 8px !important; }
+                        .premium-product-title { 
+                            font-size: 0.65rem !important; 
+                            min-height: 28px !important; 
+                            height: 1.8rem !important;
+                            margin-bottom: 3px !important;
+                        }
+                        .card-content-p { padding: 6px 4px !important; }
+                        .signature-shop-btn { 
+                            padding: 4px 10px !important; 
+                            font-size: 0.6rem !important; 
+                        }
+                        .premium-offer-price { font-size: 0.85rem !important; }
                     }
                 `}</style>
         </div>

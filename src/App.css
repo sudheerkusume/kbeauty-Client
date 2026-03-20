@@ -2727,7 +2727,8 @@ input::placeholder {
 /* --- Mobile Responsiveness for Premium Signature --- */
 @media (max-width: 768px) {
   .signature-premium-card {
-    padding: 6px;
+    padding: 3px;
+    border-radius: 8px;
   }
 
   .premium-discount-badge {
@@ -2749,13 +2750,14 @@ input::placeholder {
   }
 
   .premium-img-container {
-    margin-bottom: 8px;
+    margin-bottom: 4px;
+    aspect-ratio: 1 / 1;
   }
 
   .premium-care-label {
-    font-size: clamp(0.45rem, 2vw, 0.55rem);
-    letter-spacing: 1.5px;
-    margin-bottom: 4px;
+    font-size: clamp(0.40rem, 1.8vw, 0.50rem);
+    letter-spacing: 1px;
+    margin-bottom: 2px;
     color: #A68A64;
     white-space: nowrap;
     overflow: hidden;
@@ -2763,9 +2765,9 @@ input::placeholder {
   }
 
   .premium-product-title {
-    font-size: clamp(0.75rem, 3.5vw, 0.9rem);
-    line-height: 1.25;
-    margin-bottom: 6px;
+    font-size: clamp(0.70rem, 3.2vw, 0.85rem);
+    line-height: 1.2;
+    margin-bottom: 4px;
     padding: 0;
     min-height: auto;
     word-break: break-word;
@@ -2777,8 +2779,8 @@ input::placeholder {
   }
 
   .premium-price-wrap {
-    gap: 6px;
-    margin-bottom: 12px;
+    gap: 4px;
+    margin-bottom: 8px;
   }
 
   .premium-old-price {
@@ -2791,10 +2793,10 @@ input::placeholder {
   }
 
   .signature-shop-btn {
-    padding: 10px;
-    font-size: 0.8rem;
-    letter-spacing: 0.2px;
-    border-radius: 30px;
+    padding: 6px;
+    font-size: 0.7rem;
+    letter-spacing: 0.1px;
+    border-radius: 20px;
   }
 }
 

@@ -63,8 +63,8 @@
     }
 
     .premium-img-container {
-        aspect-ratio: 4 / 5;
-        /* Less tall, more balanced width */
+        aspect-ratio: 1 / 1;
+        /* Less tall, square fit */
         overflow: hidden;
         background: #1a1a1a;
     }
@@ -134,8 +134,8 @@
     }
 
     .card-content-p {
-        padding: 10px !important;
-        /* Reduced padding for more content width */
+        padding: 6px !important;
+        /* Reduced padding for more content width and less height */
     }
 
     .btn-editorial-luxe {
