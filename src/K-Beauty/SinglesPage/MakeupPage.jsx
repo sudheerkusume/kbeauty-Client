@@ -31,6 +31,7 @@ const MakeupPage = () => {
         Price: [],
     });
 
+    const [sortBy, setSortBy] = useState("Newest First");
     const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
 
     const toggleSection = (key) => {
@@ -107,6 +108,13 @@ const MakeupPage = () => {
 
     const filteredProducts = products.filter(applyFilters);
 
+    const sortedProducts = [...filteredProducts].sort((a, b) => {
+        if (sortBy === "Price: Low to High") return (a.offerPrice || a.price) - (b.offerPrice || b.price);
+        if (sortBy === "Price: High to Low") return (b.offerPrice || b.price) - (a.offerPrice || a.price);
+        if (sortBy === "Newest First") return b._id.localeCompare(a._id);
+        return 0;
+    });
+
     // Number Counter Animation Component
     const NumberCounter = ({ targetNumber }) => {
         const [count, setCount] = useState(0);
@@ -180,11 +188,11 @@ const MakeupPage = () => {
     };
 
     return (
-        <div className="bg-black text-white pdp-main-container" style={{ fontFamily: "'Outfit', sans-serif" }}>
+        <div className="pdp-main-container" style={{ background: 'var(--bg-cream)', color: 'var(--text-primary)', fontFamily: "'Outfit', sans-serif" }}>
 
             <div className="container-fluid px-2 px-md-4 py-0">
                 {/* 1. MOBILE FILTER TOGGLE (Nykaa Style) */}
-                <div className="d-lg-none mt-4 mb-4 d-flex justify-content-between align-items-center bg-dark py-3 px-3 rounded-2 shadow-sm border border-secondary mobile-filter-sticky">
+                <div className="d-lg-none mt-4 mb-4 d-flex justify-content-between align-items-center py-3 px-3 rounded-2 shadow-sm mobile-filter-sticky" style={{ background: 'var(--bg-card)', border: '1px solid var(--border-soft)' }}>
                     <div className="d-flex flex-column">
                         <span className="small text-muted" style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1px' }}>Showing</span>
                         <span className="fw-bold"><NumberCounter targetNumber={filteredProducts.length} /> Products</span>
@@ -198,18 +206,36 @@ const MakeupPage = () => {
                     {/* 2. FIXED FILTER SIDEBAR (Desktop) */}
                     <div className={`shop-filter-sidebar col-lg-3 ${mobileFilterOpen ? 'mobile-drawer-open' : 'd-none d-lg-block'}`}>
                         {mobileFilterOpen && <div className="mobile-drawer-overlay" onClick={() => setMobileFilterOpen(false)}></div>}
-                        <div className="filter-inner-content custom-scrollbar">
-                            <div className="d-flex justify-content-between align-items-center border-bottom border-secondary pb-3 mb-4">
-                                <h5 className="fw-bold m-0 text-white" style={{ letterSpacing: '2px' }}>FILTERS</h5>
-                                {mobileFilterOpen && <button className="btn-close btn-close-white" onClick={() => setMobileFilterOpen(false)}></button>}
+                        <div className="filter-inner-content custom-scrollbar" style={{ background: '#F8F1ED', padding: '25px 20px', borderRadius: '15px' }}>
+                            <div className="d-flex justify-content-between align-items-center border-bottom pb-3 mb-4" style={{ borderColor: 'var(--border-soft)' }}>
+                                <h5 className="fw-bold m-0" style={{ letterSpacing: '2px', color: 'var(--text-primary)' }}>FILTERS</h5>
+                                {mobileFilterOpen && <button className="btn-close" onClick={() => setMobileFilterOpen(false)}></button>}
                             </div>
 
                             <button className="btn btn-link text-gold p-0 text-decoration-none small mb-4 d-block w-100 text-start"
-                                onClick={() => setSelectedFilters({
-                                    Product: [], Availbaility: [], category: [], Product_Type: [], skinType: [], skinConcern: [], Size: [], Price: [],
-                                })}>
+                                onClick={() => {
+                                    setSelectedFilters({
+                                        Product: [], Availbaility: [], category: [], Product_Type: [], skinType: [], skinConcern: [], Size: [], Price: [],
+                                    });
+                                    setSortBy("Newest First");
+                                }}>
                                 Reset All Filters
                             </button>
+
+                            {/* Mobile Only Sort Section */}
+                            <div className="d-lg-none mb-4 border-bottom pb-4" style={{ borderColor: 'var(--border-soft)' }}>
+                                <h6 className="text-uppercase mb-3" style={{ fontSize: '11px', fontWeight: 800, letterSpacing: '2px', color: '#B17A7E' }}>Sort By</h6>
+                                <select 
+                                    className="form-select border-0 shadow-none bg-light rounded-pill px-4" 
+                                    style={{ fontSize: '14px', height: '45px' }}
+                                    value={sortBy}
+                                    onChange={(e) => setSortBy(e.target.value)}
+                                >
+                                    <option>Newest First</option>
+                                    <option>Price: Low to High</option>
+                                    <option>Price: High to Low</option>
+                                </select>
+                            </div>
 
                             <div className="filter-accordion">
                                 {Object.entries(filters).map(([filterType, values]) => (
@@ -219,7 +245,7 @@ const MakeupPage = () => {
                                             style={{ cursor: "pointer" }}
                                             onClick={() => toggleSection(filterType)}
                                         >
-                                            <h6 className="text-uppercase m-0" style={{ fontSize: '12px', fontWeight: 700, letterSpacing: '1.5px', color: 'var(--gold-light)' }}>
+                                            <h6 className="text-uppercase m-0" style={{ fontSize: '11px', fontWeight: 800, letterSpacing: '2px', color: '#B17A7E' }}>
                                                 {filterType === 'Product_Type' ? 'Product Type' :
                                                     filterType === 'skinType' ? 'Skin Type' :
                                                         filterType === 'skinConcern' ? 'Skin Concern' :
@@ -263,26 +289,31 @@ const MakeupPage = () => {
                     <div className="col-lg-9 scrolling-content-area">
 
                         {/* 4. SLIM CATEGORY HEADER (Now part of scrolling area) */}
-                        <div className="slim-category-header bg-black pt-5 pb-4 text-center">
-                            <span className="text-gold mb-1 d-block" style={{ letterSpacing: '5px', fontSize: '0.75rem', fontWeight: 600 }}>PREMIUM SELECTION</span>
-                            <h1 className="fw-bold m-0" style={{ letterSpacing: '4px', color: '#fff', fontSize: '2.5rem', textTransform: 'uppercase' }}>MAKEUP</h1>
+                        <div className="slim-category-header pt-5 pb-4 text-center" style={{ background: 'var(--bg-cream)' }}>
+                            <span className="mb-1 d-block" style={{ letterSpacing: '5px', fontSize: '0.75rem', fontWeight: 600, color: 'var(--pink-accent)' }}>PREMIUM SELECTION</span>
+                            <h1 className="fw-bold m-0" style={{ letterSpacing: '4px', color: 'var(--text-primary)', fontSize: '2.5rem', textTransform: 'uppercase' }}>MAKEUP</h1>
                         </div>
 
                         <div className="px-3 px-md-4">
-                            <div className="d-none d-lg-flex justify-content-between align-items-center mb-5 text-white bg-dark p-3 rounded-3 border border-secondary">
-                                <span className="fw-medium">Showing <strong className="text-gold"><NumberCounter targetNumber={filteredProducts.length} /></strong> Premium Makeup Items</span>
+                            <div className="d-none d-lg-flex justify-content-between align-items-center mb-5 p-3 rounded-3 shadow-sm" style={{ background: 'var(--bg-card)', border: '1px solid var(--border-soft)', color: 'var(--text-primary)' }}>
+                                <span className="fw-medium">Showing <strong style={{ color: 'var(--pink-accent)' }}><NumberCounter targetNumber={filteredProducts.length} /></strong> Premium Makeup Items</span>
                                 <div className="sort-box d-flex align-items-center gap-3">
                                     <span className="small text-muted">Sort By:</span>
-                                    <select className="bg-transparent border-0 text-white small outline-none" style={{ cursor: 'pointer' }}>
-                                        <option className="bg-black">Newest First</option>
-                                        <option className="bg-black">Price: Low to High</option>
-                                        <option className="bg-black">Price: High to Low</option>
+                                    <select 
+                                        className="bg-transparent border-0 small outline-none" 
+                                        style={{ cursor: 'pointer', color: 'var(--text-primary)' }}
+                                        value={sortBy}
+                                        onChange={(e) => setSortBy(e.target.value)}
+                                    >
+                                        <option className="bg-white">Newest First</option>
+                                        <option className="bg-white">Price: Low to High</option>
+                                        <option className="bg-white">Price: High to Low</option>
                                     </select>
                                 </div>
                             </div>
 
                             <div className="row g-3 g-md-4">
-                                {filteredProducts.map((product) => {
+                                {sortedProducts.map((product) => {
                                     const discountPercent = product.price && product.offerPrice
                                         ? Math.round(((product.price - product.offerPrice) / product.price) * 100)
                                         : 0;
@@ -292,7 +323,7 @@ const MakeupPage = () => {
                                             <Link to={`/Makeup/${product._id}`} className="signature-premium-card h-100 border border-secondary shadow-hover">
                                                 <div className="premium-img-container">
                                                     {discountPercent > 15 && (
-                                                        <div className="premium-discount-badge">
+                                                        <div className="premium-discount-badge" style={{ backgroundColor: 'var(--pink-accent)', color: '#fff' }}>
                                                             <span className="discount-val-p">{discountPercent}<span className="animated-percent">%</span></span>
                                                             <span className="discount-label-p">OFF</span>
                                                         </div>
@@ -324,7 +355,7 @@ const MakeupPage = () => {
                                                         {product.price > product.offerPrice && (
                                                             <span className="premium-old-price small text-muted text-decoration-line-through me-2">₹{product.price}</span>
                                                         )}
-                                                        <span className="premium-offer-price fw-bold" style={{ fontSize: '1.1rem', color: '#fff' }}>
+                                                        <span className="premium-offer-price fw-bold" style={{ fontSize: '1.1rem', color: 'var(--text-primary)' }}>
                                                             ₹{product.offerPrice || product.price}
                                                         </span>
                                                     </div>
@@ -340,9 +371,9 @@ const MakeupPage = () => {
                             </div>
 
                             {filteredProducts.length === 0 && (
-                                <div className="text-center py-5 my-5 bg-dark rounded-4 w-100 border border-secondary">
+                                <div className="text-center py-5 my-5 rounded-4 w-100" style={{ background: 'var(--bg-card)', border: '1px solid var(--border-soft)' }}>
                                     <div className="display-4 text-muted mb-3"><IoFilter /></div>
-                                    <h4 className="fw-bold text-white">No Results Found</h4>
+                                    <h4 className="fw-bold" style={{ color: 'var(--text-primary)' }}>No Results Found</h4>
                                     <p className="text-muted mb-4 px-3">Try adjusting your filters to find your perfect Korean ritual.</p>
                                     <button className="btn btn-gold rounded-pill px-5 py-2" onClick={() => setSelectedFilters({
                                         Product: [], Availbaility: [], category: [], Product_Type: [], skinType: [], skinConcern: [], Size: [], Price: [],
@@ -357,11 +388,11 @@ const MakeupPage = () => {
             </div>
 
             {/* 5. STORY HERO (Bottom / SEO Section) */}
-            <div className="category-hero bg-black py-5 text-center mt-5" style={{ borderTop: '1px solid rgba(212, 175, 55, 0.2)', background: 'linear-gradient(to bottom, #000, #050505)' }}>
+            <div className="category-hero py-5 text-center mt-5" style={{ borderTop: '1px solid var(--border-soft)', background: 'var(--bg-cream)' }}>
                 <div className="container">
-                    <span className="text-gold mb-2 d-block" style={{ letterSpacing: '5px', fontSize: '0.8rem', fontWeight: 500 }}>THE K-BEAUTY STORY</span>
-                    <h2 className="mb-3 text-white" style={{ letterSpacing: '2px', fontFamily: "'Playfair Display', serif", fontSize: '2.5rem' }}>MAKEUP RITUALS</h2>
-                    <p className="mx-auto text-light-50" style={{ maxWidth: '850px', lineHeight: '1.9', fontSize: '1.05rem', color: 'rgba(255,255,255,0.85)' }}>
+                    <span className="mb-2 d-block" style={{ letterSpacing: '5px', fontSize: '0.8rem', fontWeight: 500, color: 'var(--pink-accent)' }}>THE K-BEAUTY STORY</span>
+                    <h2 className="mb-3" style={{ letterSpacing: '2px', fontFamily: "'Playfair Display', serif", fontSize: '2.5rem', color: 'var(--text-primary)' }}>MAKEUP RITUALS</h2>
+                    <p className="mx-auto" style={{ maxWidth: '850px', lineHeight: '1.9', fontSize: '1.05rem', color: 'var(--text-secondary)' }}>
                         In Korea, makeup is an extension of skincare—it's about enhancing your natural beauty.
                         Celebrate your unique radiance with our collection of high-performance Korean makeup.
                         From the perfect cushion foundation for "glass skin" to long-lasting lip tints and innovative mascaras, we bring you the ultimate selection.
@@ -371,8 +402,8 @@ const MakeupPage = () => {
 
             <style>{`
                 .text-truncate-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-                .shadow-hover { transition: all 0.3s ease; }
-                .shadow-hover:hover { transform: translateY(-5px); border-color: var(--gold) !important; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+                .shadow-hover { transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); }
+                .shadow-hover:hover { transform: translateY(-8px); border-color: var(--pink-accent) !important; box-shadow: 0 15px 35px rgba(232, 180, 184, 0.15); }
                 
                 @media (min-width: 992px) {
                     .shop-filter-sidebar {
@@ -503,11 +534,11 @@ const MakeupPage = () => {
                         left: 0;
                         width: 100%;
                         height: 70vh;
-                        background: #111;
+                        background: var(--bg-cream);
                         padding: 25px 15px;
                         border-radius: 20px 20px 0 0;
                         overflow-y: auto;
-                        box-shadow: 0 -10px 40px rgba(0,0,0,0.9);
+                        box-shadow: 0 -10px 40px rgba(0,0,0,0.1);
                         z-index: 2200;
                     }
                     .mobile-drawer-overlay {
@@ -516,15 +547,15 @@ const MakeupPage = () => {
                         left: 0;
                         width: 100%;
                         height: 100%;
-                        background: rgba(0,0,0,0.8);
+                        background: rgba(0,0,0,0.3);
                         backdrop-filter: blur(5px);
                         z-index: 2150;
                     }
                 }
 
-                .form-check-input:checked { background-color: #D4AF37; border-color: #D4AF37; }
-                .custom-check label { color: rgba(255,255,255,0.7); cursor: pointer; transition: 0.3s; font-size: 13px; }
-                .custom-check:hover label { color: #fff; }
+                .form-check-input:checked { background-color: var(--pink-accent); border-color: var(--pink-accent); }
+                .custom-check label { color: var(--text-secondary); cursor: pointer; transition: 0.3s; font-size: 13px; }
+                .custom-check:hover label { color: var(--pink-accent); }
             `}</style>
         </div>
     );

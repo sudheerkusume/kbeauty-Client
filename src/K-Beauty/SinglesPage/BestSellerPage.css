@@ -4,10 +4,14 @@
     transition: all 0.2s ease;
     text-decoration: none;
     cursor: pointer;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .brand-link-common:hover {
-    color: var(--gold, #D4AF37) !important;
+    color: var(--pink-accent) !important;
     text-decoration: underline !important;
 }
 
@@ -17,23 +21,23 @@
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-    background: #111;
+    background: var(--bg-cream);
     border-radius: 4px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: #333;
+    background: var(--pink-accent);
     border-radius: 4px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #444;
+    background: var(--gold);
 }
 
 /* Filter Checkbox Styling */
 .form-check-input:checked {
-    background-color: var(--gold, #D4AF37) !important;
-    border-color: var(--gold, #D4AF37) !important;
+    background-color: var(--pink-accent) !important;
+    border-color: var(--pink-accent) !important;
 }
 
 /* Category Hero Typography */

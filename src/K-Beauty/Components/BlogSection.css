@@ -7,6 +7,13 @@
     margin-bottom: 10px;
 }
 
+.gallery-title {
+    font-size: 2.5rem;
+    font-weight: 300;
+    font-family: 'Playfair Display', serif;
+    color: var(--text-primary);
+}
+
 .blog-title {
     font-size: 2.5rem;
     font-weight: 300;
@@ -57,7 +64,7 @@
 .blog-post-title {
     line-height: 1.4;
     transition: color 0.3s;
-    color: var(--text-primary, #fff);
+    color: var(--text-primary);
     font-size: clamp(1.1rem, 3vw, 1.3rem) !important;
 }
 
@@ -111,6 +118,17 @@
     overflow: hidden;
     animation: slideUp 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
     border: 1px solid var(--border-gold, rgba(212, 175, 55, 0.2));
+}
+
+.video-card-luxe {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    aspect-ratio: 9/16;
+    background: var(--bg-cream);
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border: 1px solid var(--border-soft);
 }
 
 .blog-modal-close {

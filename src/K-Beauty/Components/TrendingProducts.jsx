@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { FiPlus } from 'react-icons/fi';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -10,29 +10,67 @@ import API_BASE_URL from "../config";
 
 const TrendingProducts = () => {
     const [products, setProducts] = useState([]);
+    const [isVisible, setIsVisible] = useState(false);
+    const headerRef = useRef(null);
+
     const navigate = useNavigate();
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                }
+            },
+            { threshold: 0.10 }
+        );
+
+        if (headerRef.current) {
+            observer.observe(headerRef.current);
+        }
+
+        return () => {
+            if (headerRef.current) {
+                observer.unobserve(headerRef.current);
+            }
+        };
+    }, []);
 
     useEffect(() => {
         axios.get(`${API_BASE_URL}/products`)
             .then((res) => {
                 // Sorting by _id descending (Newest First)
                 const sortedAll = (res.data || []).sort((a, b) => b._id.localeCompare(a._id));
-                // Filter for highly rated products (4.0+) from the newest ones
-                const trending = sortedAll.filter(p => p.rating >= 4).slice(0, 4);
+
+                // Filter for highly rated products (4.0+) 
+                // EXCLUDE: Combo deals to avoid visual duplication
+                const trending = sortedAll.filter(p => {
+                    const isCombo = p.combo?.isCombo === true || p.combo?.isCombo === "true" || (p.title && p.title.includes(' + '));
+                    return p.rating >= 4 && !isCombo;
+                }).slice(0, 4);
+
                 setProducts(trending);
             })
             .catch((err) => console.log(err));
     }, []);
 
     return (
-        <section className="trending-section py-5 bg-black">
+        <section className="trending-section py-5" style={{ background: 'var(--bg-cream)' }}>
             <div className="container">
-                <div className="d-flex justify-content-between align-items-center mb-5">
+                <div className="d-flex justify-content-between align-items-center mb-md-5 mb-3">
                     <div>
                         <span className="trending-subtitle">Customer Favorites</span>
-                        <h2 className="trending-title">Trending Products</h2>
+                        <h2
+                            ref={headerRef}
+                            className={`laneige-title animated-marker ${isVisible ? 'in-view' : ''}`}
+                            style={{ fontSize: '2.0rem', fontWeight: 600, color: 'var(--text-primary)', '--pink-accent': '#e1949eff' }}
+                        >Trending Products
+                            <svg className='svg-marker' viewBox='0 0 201 14' preserveAspectRatio='none'>
+                                <path d="M3 10.5732c55.565 6.61382 168.107 -0.117058 197.753 4.63415"></path>
+                            </svg>
+
+                        </h2>
                     </div>
-                    <Link to="/SkinCare" className="trending-view-all">View All Products</Link>
+                    <Link to="/SkinCare" className="trending-view-all d-none d-md-inline-block">View All Products</Link>
                 </div>
 
                 <div className="row g-4 mobile-scroll-row">
@@ -100,6 +138,13 @@ const TrendingProducts = () => {
                             </div>
                         );
                     })}
+                </div>
+
+                {/* Mobile-Only View All Button at Bottom */}
+                <div className="d-flex d-md-none justify-content-center mt-4">
+                    <Link to="/SkinCare" className="trending-view-all">
+                        View All Products
+                    </Link>
                 </div>
             </div>
         </section>

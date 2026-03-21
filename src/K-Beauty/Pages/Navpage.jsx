@@ -10,7 +10,7 @@ const Navpage = () => {
         {
             title: "SALE",
             image: navSale,
-            path: "/shop?isSale=true"
+            path: "/ComboPage"
         },
         {
             title: "FREE ROUTINE",
@@ -26,7 +26,7 @@ const Navpage = () => {
 
     return (
         <section className='container py-lg-4 py-2 px-1'>
-            <div className="nav-page-container overflow-hidden" style={{ background: '#000', color: '#fff', minHeight: 'auto', borderRadius: '20px' }}>
+            <div className="nav-page-container overflow-hidden" style={{ background: 'var(--bg-cream)', color: 'var(--text-primary)', minHeight: 'auto', borderRadius: '20px' }}>
                 <div className="container-fluid px-2 px-md-5 py-3 py-md-5">
                     <div className="row g-4 justify-content-center">
                         {promoItems.map((item, index) => (
@@ -35,7 +35,7 @@ const Navpage = () => {
                                     <NavLink to={item.path} className="promo-link text-decoration-none d-block">
                                         <div className="promo-img-holder overflow-hidden" style={{
                                             borderRadius: '15px',
-                                            backgroundColor: '#111',
+                                            backgroundColor: 'var(--bg-cream)',
                                             position: 'relative'
                                         }}>
                                             <img
@@ -54,14 +54,14 @@ const Navpage = () => {
                                                 left: 0,
                                                 right: 0,
                                                 bottom: 0,
-                                                background: 'linear-gradient(to top, rgba(0,0,0,0.95) 0%, transparent 80%)',
+                                                background: 'linear-gradient(to top, rgba(250, 245, 240, 0.4) 0%, transparent 80%)',
                                                 pointerEvents: 'none'
                                             }}></div>
-                                            
+
                                             <div className="title-wrapper-box text-center">
                                                 <h3 className="promo-title text-capitalize" style={{
                                                     letterSpacing: '0.5px',
-                                                    color: '#fff',
+                                                    color: 'var(--text-primary)',
                                                     fontStyle: 'italic',
                                                     lineHeight: '1.2',
                                                     transition: 'all 0.4s ease'
@@ -141,7 +141,7 @@ const Navpage = () => {
                     font-family: 'Playfair Display', serif !important;
                     font-weight: 500;
                     font-size: 1.8rem;
-                    text-shadow: 0 4px 15px rgba(0,0,0,1);
+                    text-shadow: none;
                     transition: color 0.4s ease;
                 }
 

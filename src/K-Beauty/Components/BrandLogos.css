@@ -1,5 +1,6 @@
 .partners-section {
-    background-color: #fdfcfb; /* Soft alabaster */
+    background-color: var(--bg-cream);
+    /* Soft alabaster */
     padding: 6rem 0;
 }
 
@@ -17,7 +18,7 @@
 .partners-title {
     font-family: 'Playfair Display', serif;
     font-size: clamp(2.5rem, 4vw, 3.5rem);
-    color: #2b2b2b;
+    color: var(--text-primary);
     font-style: italic;
     font-weight: 600;
     margin-bottom: 1.5rem;
@@ -26,7 +27,8 @@
 .partners-divider {
     width: 60px;
     height: 2px;
-    background: #d4af37; /* Luxe gold */
+    background: #d4af37;
+    /* Luxe gold */
     margin: 0 auto;
 }
 
@@ -37,20 +39,26 @@
     line-height: 1.7;
 }
 
-/* The Matrix Grid Layout */
+/* The Carousel/Matrix Ribbon */
+.partners-carousel-wrap {
+    border-top: 1px solid var(--border-soft);
+    border-bottom: 1px solid var(--border-soft);
+    background: #fff;
+    overflow: hidden; /* Contain the slider */
+}
+
+/* Old Matrix fallback - preserved for reference or non-swiper use */
 .partners-matrix {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    /* Top and Left borders on the container to complete the inner grid */
-    border-top: 1px solid #eae5de;
-    border-left: 1px solid #eae5de;
-    background: #fff;
+    border-top: 1px solid var(--border-soft);
+    border-left: 1px solid var(--border-soft);
+    background: var(--bg-card);
 }
 
 .matrix-cell {
-    /* Right and Bottom borders on the items form the internal lines */
-    border-right: 1px solid #eae5de;
-    border-bottom: 1px solid #eae5de;
+    /* Vertical divider for the slider */
+    border-right: 1px solid var(--border-soft);
     height: 150px;
     display: flex;
     align-items: center;
@@ -66,48 +74,61 @@
     max-width: 140px;
     max-height: 60px;
     object-fit: contain;
-    /* Default state: extremely muted, architectural grayscale */
-    filter: grayscale(100%) opacity(0.35);
+    /* Default state: full color, high visibility */
+    filter: grayscale(0%) opacity(0.9);
     transition: all 0.4s ease;
 }
 
 /* The Matrix Reveal Pop-Out Interaction */
 .matrix-cell:hover {
-    transform: scale(1.06); /* Firm lift */
+    transform: scale(1.06);
+    /* Firm lift */
     z-index: 10;
-    border-color: transparent; /* Erase grid crossing lines */
+    border-color: transparent;
+    /* Erase grid crossing lines */
     border-radius: 12px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08); /* Luxurious soft shadow */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    /* Luxurious soft shadow */
 }
 
 .matrix-cell:hover .matrix-logo {
     /* Logo snaps back to vivid full color */
     filter: grayscale(0%) opacity(1);
-    transform: scale(1.08); /* Logo breathes slightly more than the card */
+    transform: scale(1.08);
+    /* Logo breathes slightly more than the card */
 }
 
 @media (max-width: 768px) {
     .partners-section {
         padding: 3rem 0;
     }
+
     .partners-title {
         font-size: 2rem;
     }
+
     .partners-desc {
         font-size: 0.95rem;
-        padding: 0 15px; /* Prevent text touching screen edges */
+        padding: 0 15px;
+        /* Prevent text touching screen edges */
     }
+
     .partners-matrix {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
-        border-radius: 4px; /* Slightly rounder for mobile */
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 columns on mobile */
+        border-radius: 4px;
+        /* Slightly rounder for mobile */
     }
+
     .matrix-cell {
-        height: 100px;
-        padding: 10px; /* Reduce padding to maximize logo size */
+        height: 120px;
+        padding: 15px;
     }
+
     .matrix-logo {
-        max-width: 90px;
-        max-height: 35px;
+        max-width: 140px;
+        max-height: 55px;
+        filter: grayscale(0%) opacity(1);
     }
 }
 
@@ -116,15 +137,94 @@
     .partners-title {
         font-size: 1.8rem;
     }
+
     .partners-matrix {
         grid-template-columns: repeat(2, 1fr);
     }
+
     .matrix-cell {
-        height: 80px;
-        padding: 8px;
+        height: 100px;
+        padding: 12px;
+        border-bottom: none; /* No bottom border in a single ribbon */
     }
+
     .matrix-logo {
-        max-width: 75px;
-        max-height: 25px;
+        max-width: 110px;
+        max-height: 45px;
+        filter: grayscale(0%) opacity(1);
     }
 }
+
+/* View All Brands Link */
+.view-all-brands-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 5px;
+    transition: all 0.3s ease;
+}
+
+.view-all-brands-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: #d4af37;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transform: translateX(-50%);
+}
+
+.view-all-brands-link:hover {
+    color: #d4af37;
+    letter-spacing: 3px;
+}
+
+.view-all-brands-link:hover::after {
+    width: 40px;
+}
+
+.link-arrow {
+    width: 20px;
+    height: 1px;
+    background: #aba093;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.link-arrow::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -2px;
+    width: 6px;
+    height: 6px;
+    border-right: 1px solid #aba093;
+    border-top: 1px solid #aba093;
+    transform: rotate(45deg);
+}
+
+.view-all-brands-link:hover .link-arrow {
+    background: #d4af37;
+    transform: translateX(5px);
+}
+
+.view-all-brands-link:hover .link-arrow::after {
+    border-color: #d4af37;
+}
+
+@media (max-width: 768px) {
+    .view-all-brands-link {
+        font-size: 0.8rem;
+        letter-spacing: 1.5px;
+    }
+}

@@ -1,8 +1,8 @@
 /* Base Styles & Page Wrapper */
 .pdp-main-container {
     padding-bottom: 100px;
-    background-color: #000;
-    color: #fff;
+    background-color: var(--bg-cream);
+    color: var(--text-primary);
 }
 
 .hide-scrollbar::-webkit-scrollbar {
@@ -34,8 +34,13 @@
     border-color: var(--gold, #D4AF37) !important;
 }
 
-.opacity-30 { opacity: 0.3; }
-.opacity-70 { opacity: 0.7; }
+.opacity-30 {
+    opacity: 0.3;
+}
+
+.opacity-70 {
+    opacity: 0.7;
+}
 
 .text-white-force {
     color: #ffffff !important;
@@ -178,8 +183,8 @@
 /* 3. Global Card & Active States */
 .thumbnail-active {
     opacity: 1 !important;
-    border: 2px solid var(--gold, #D4AF37) !important;
-    box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+    border: 2px solid var(--gold) !important;
+    box-shadow: var(--shadow-hover);
 }
 
 .thumbnail-inactive {
@@ -196,7 +201,8 @@
 
 /* Accordion Customizations */
 .accordion-button::after {
-    filter: invert(1); /* Make arrows visible on dark bg */
+    filter: none;
+    /* Arrows visible on light bg */
 }
 
 .accordion-item {
@@ -204,8 +210,8 @@
 }
 
 .accordion-button:not(.collapsed) {
-    background-color: rgba(255, 255, 255, 0.03) !important;
-    color: var(--gold, #D4AF37) !important;
+    background-color: rgba(0, 0, 0, 0.02) !important;
+    color: var(--text-primary) !important;
 }
 
 .accordion-button:focus {

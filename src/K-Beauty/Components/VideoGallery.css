@@ -19,10 +19,10 @@
     border-radius: 20px;
     overflow: hidden;
     aspect-ratio: 9/16;
-    background: #000;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    background: var(--bg-card);
+    box-shadow: var(--shadow-soft);
     transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    border: 1px solid var(--border-gold, rgba(212, 175, 55, 0.1));
+    border: 1px solid var(--border-soft);
 }
 
 .video-card-luxe:hover {

@@ -20,10 +20,10 @@ const MainCart = ({ isOpen, onClose }) => {
             ></div>
 
             {/* Cart Sidebar */}
-            <div className={`cart-sidebar bg-black text-white border-start border-secondary shadow-lg p-5 ${isOpen ? "show" : ""}`}>
-                <div className="offcanvas-header border-bottom border-secondary mb-4 pb-3">
-                    <h5 className="offcanvas-title fw-bold text-gold" style={{ letterSpacing: '1px' }}>🛒 MY LUXURY CART</h5>
-                    <button type="button" className="btn-close btn-close-white" onClick={onClose}></button>
+            <div className={`cart-sidebar shadow-lg p-5 ${isOpen ? "show" : ""}`} style={{ background: 'var(--bg-cream)', color: 'var(--text-primary)', borderLeft: '1px solid var(--border-soft)' }}>
+                <div className="offcanvas-header mb-4 pb-3" style={{ borderBottom: '1px solid var(--border-soft)' }}>
+                    <h5 className="offcanvas-title fw-bold" style={{ letterSpacing: '1px', color: 'var(--text-primary)' }}>🛒 MY LUXURY CART</h5>
+                    <button type="button" className="btn-close" onClick={onClose}></button>
                 </div>
 
                 <div className="offcanvas-body">
@@ -31,8 +31,8 @@ const MainCart = ({ isOpen, onClose }) => {
                         <div className="text-center mt-5">
                             <h6>Your cart is empty.</h6>
                             <button
-                                style={{ borderRadius: 0, marginInlineEnd: 10 }}
-                                className="btn btn-gold mt-3 px-4 py-2 fw-bold"
+                                style={{ borderRadius: '4px', marginInlineEnd: 10, background: 'var(--gold-gradient)', border: 'none' }}
+                                className="btn text-white mt-3 px-4 py-2 fw-bold shadow-sm"
                                 onClick={() => {
                                     onClose();
                                     navigate("/BestSellers");
@@ -41,8 +41,8 @@ const MainCart = ({ isOpen, onClose }) => {
                                 Start Shopping
                             </button>
                             <button
-                                style={{ borderRadius: 0 }}
-                                className="btn btn-outline-gold mt-3 px-4 py-2 fw-bold"
+                                style={{ borderRadius: '4px', border: '1px solid var(--pink-accent)', color: 'var(--pink-accent)' }}
+                                className="btn mt-3 px-4 py-2 fw-bold"
                                 onClick={() => {
                                     onClose();
                                     navigate("/CartPage");
@@ -80,15 +80,15 @@ const MainCart = ({ isOpen, onClose }) => {
                                 </div>
                             ))}
 
-                            <div className="border-top pt-3 mt-4">
-                                <div className="d-flex justify-content-between">
-                                    <span>Total:</span>
-                                    <strong>₹{totalPrice}</strong>
+                             <div className="border-top pt-3 mt-4" style={{ borderColor: 'var(--border-soft)' }}>
+                                <div className="d-flex justify-content-between mb-4">
+                                    <span className="fw-medium">Total:</span>
+                                    <strong className="fs-5">₹{totalPrice}</strong>
                                 </div>
                                 <div className="cart-footer">
                                     <button
-                                        style={{ borderRadius: 0 }}
-                                        className="btn btn-gold w-100 mb-2 py-3 fw-bold"
+                                        style={{ borderRadius: '4px', background: 'var(--gold-gradient)', border: 'none' }}
+                                        className="btn text-white w-100 mb-2 py-3 fw-bold shadow-sm"
                                         onClick={() => {
                                             onClose();
                                             navigate("/CartPage");
@@ -97,8 +97,8 @@ const MainCart = ({ isOpen, onClose }) => {
                                         PROCEED TO CHECKOUT
                                     </button>
                                     <button
-                                        style={{ borderRadius: 0 }}
-                                        className="btn btn-outline-gold w-100 py-3 fw-bold"
+                                        style={{ borderRadius: '4px', border: '1px solid var(--pink-accent)', color: 'var(--pink-accent)' }}
+                                        className="btn w-100 py-3 fw-bold"
                                         onClick={() => {
                                             onClose();
                                             navigate("/CartPage");

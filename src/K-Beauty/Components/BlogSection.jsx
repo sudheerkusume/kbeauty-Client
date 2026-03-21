@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './BlogSection.css';
 import { IoCloseOutline } from 'react-icons/io5';
 import axios from 'axios';
@@ -7,6 +7,9 @@ import API_BASE_URL from "../config";
 const BlogSection = () => {
     const [selectedPost, setSelectedPost] = useState(null);
     const [blogs, setBlogs] = useState([]);
+    const [isVisible, setIsVisible] = useState(false);
+    const headerRef = useRef(null);
+
 
     useEffect(() => {
         axios.get(`${API_BASE_URL}/blogPosts`)
@@ -20,13 +23,44 @@ const BlogSection = () => {
         return `/assets/${img}`;
     };
 
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                }
+            },
+            { threshold: 0.10 }
+        );
+
+        if (headerRef.current) {
+            observer.observe(headerRef.current);
+        }
+
+        return () => {
+            if (headerRef.current) {
+                observer.unobserve(headerRef.current);
+            }
+        };
+    }, []);
 
     return (
-        <section className="blog-section py-5 bg-black">
+        <section className="video-gallery-section py-5" style={{ background: 'var(--bg-cream)' }}>
             <div className="container">
                 <div className="text-center mb-5">
                     <span className="blog-subtitle">The K-Edit</span>
-                    <h2 className="blog-title">From Our Blog</h2>
+                    {/* Premium Animated Title */}
+                    <h4
+                        ref={headerRef}
+                        className={`special-title animated-marker ${isVisible ? 'in-view' : ''}`}
+                        style={{ fontSize: '2.5rem', fontWeight: 600, color: 'var(--text-primary)', '--pink-accent': '#E1949E' }}
+                    >
+                        FROM OUR <span style={{ color: 'var(--pink-accent)' }}>BLOG</span>
+                        <svg className='svg-marker' viewBox='0 0 201 14' preserveAspectRatio='none'>
+                            <path d="M3 10.5732c55.565 6.61382 168.107 -0.117058 197.753 4.63415"></path>
+                        </svg>
+                    </h4>
+
                 </div>
                 <div className="row g-4">
                     {blogs.map((post) => (

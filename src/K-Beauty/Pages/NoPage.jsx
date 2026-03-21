@@ -4,7 +4,7 @@ import { BsSearch, BsArrowLeft } from 'react-icons/bs';
 
 const NoPage = () => {
     return (
-        <div className="nopage-wrapper py-5 bg-black" style={{ minHeight: '80vh', display: 'flex', alignItems: 'center', color: '#fff' }}>
+        <div className="nopage-wrapper py-5" style={{ minHeight: '80vh', display: 'flex', alignItems: 'center', color: 'var(--text-primary)', background: 'var(--bg-cream)' }}>
             <div className="container text-center">
                 <div className="row justify-content-center">
                     <div className="col-lg-6 col-md-8">

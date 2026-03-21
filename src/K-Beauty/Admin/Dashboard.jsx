@@ -92,7 +92,7 @@ const Dashboard = () => {
     };
 
     return (
-        <div className='container-fluid p-0 overflow-hidden' style={{ minHeight: '100vh', backgroundColor: '#000' }}>
+        <div className='container-fluid p-0 overflow-hidden' style={{ minHeight: '100vh', backgroundColor: 'var(--bg-cream)' }}>
             {/* Mobile Sidebar Overlay */}
             {isSidebarOpen && (
                 <div
@@ -109,20 +109,21 @@ const Dashboard = () => {
 
             <div className='row g-0'>
                 {/* Sidebar */}
-                <aside className={`col-lg-2 admin-sidebar d-flex flex-column p-4 text-white ${isSidebarOpen ? 'show-sidebar' : ''}`} style={{
-                    backgroundColor: '#1a1a1a',
+                <aside className={`col-lg-2 admin-sidebar d-flex flex-column p-4 ${isSidebarOpen ? 'show-sidebar' : ''}`} style={{
+                    backgroundColor: 'var(--bg-card)',
                     minHeight: '100vh',
                     position: 'fixed',
                     top: 0,
                     left: 0,
                     zIndex: 1050,
-                    transition: 'all 0.3s ease'
+                    transition: 'all 0.3s ease',
+                    borderRight: '1px solid var(--border-soft)'
                 }}>
                     <div className="brand-header mb-5 px-3 d-flex justify-content-between align-items-center">
-                        <h5 className="m-0 fw-bold" style={{ letterSpacing: '1px', color: '#D4AF37' }}>
-                            K-BEAUTY <span style={{ color: '#fff' }}>ADMIN</span>
+                        <h5 className="m-0 fw-bold" style={{ letterSpacing: '1px', color: 'var(--pink-accent)' }}>
+                            K-BEAUTY <span style={{ color: 'var(--text-primary)' }}>ADMIN</span>
                         </h5>
-                        <button className="btn text-white d-lg-none p-0" onClick={toggleSidebar}>
+                        <button className="btn d-lg-none p-0" style={{ color: 'var(--text-primary)' }} onClick={toggleSidebar}>
                             <FiX size={24} />
                         </button>
                     </div>
@@ -135,8 +136,8 @@ const Dashboard = () => {
                                 className={`btn border-0 text-start d-flex align-items-center gap-3 px-3 py-3 rounded-3 transition-all ${view === item.id ? 'active-admin-nav' : 'text-secondary'
                                     }`}
                                 style={{
-                                    backgroundColor: view === item.id ? '#D4AF37' : 'transparent',
-                                    color: view === item.id ? '#000' : 'inherit',
+                                    background: view === item.id ? 'var(--gold-gradient)' : 'transparent',
+                                    color: view === item.id ? '#fff' : 'var(--text-secondary)',
                                     fontWeight: view === item.id ? 700 : 500
                                 }}
                             >
@@ -154,8 +155,8 @@ const Dashboard = () => {
                     {/* Premium Top Bar (Greeting integrated) */}
                     <header className="px-4 py-3 sticky-top" style={{
                         zIndex: 1030,
-                        background: '#000',
-                        borderBottom: '1px solid #1a1a1a'
+                        background: 'var(--bg-cream)',
+                        borderBottom: '1px solid var(--border-soft)'
                     }}>
                         <div className="d-flex justify-content-between align-items-center flex-wrap gap-3">
                             <div className="d-flex align-items-center gap-4">
@@ -163,7 +164,7 @@ const Dashboard = () => {
                                     <FiMenu size={24} />
                                 </button>
                                 <div>
-                                    <h5 className="fw-bold m-0 text-white" style={{ letterSpacing: '-0.5px' }}>
+                                    <h5 className="fw-bold m-0" style={{ letterSpacing: '-0.5px', color: 'var(--text-primary)' }}>
                                         {greeting()}, Admin <span style={{ fontSize: '1rem' }}>✨</span>
                                     </h5>
                                     <p className="mb-0 d-flex align-items-center gap-2" style={{ fontSize: '11px', color: '#64748b', fontWeight: 600, marginTop: '2px' }}>
@@ -174,29 +175,30 @@ const Dashboard = () => {
                             </div>
 
                             <div className="d-flex align-items-center gap-3">
-                                <div className="d-none d-md-flex align-items-center gap-3 px-3 py-2 rounded-3 bg-dark border border-secondary">
-                                    <FiCalendar size={14} className="text-luxury-gold" />
-                                    <span className="fw-bold text-white" style={{ fontSize: '12px' }}>
+                                <div className="d-none d-md-flex align-items-center gap-3 px-3 py-2 rounded-3 border" style={{ background: 'var(--bg-card)', borderColor: 'var(--border-soft)' }}>
+                                    <FiCalendar size={14} style={{ color: 'var(--pink-accent)' }} />
+                                    <span className="fw-bold" style={{ fontSize: '12px', color: 'var(--text-primary)' }}>
                                         {currentTime.toLocaleDateString('en-US', { day: 'numeric', month: 'short' })}
                                     </span>
-                                    <span className="fw-bold" style={{ fontSize: '12px', color: '#D4AF37' }}>
+                                    <span className="fw-bold" style={{ fontSize: '12px', color: 'var(--pink-accent)' }}>
                                         {currentTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}
                                     </span>
                                 </div>
 
-                                <div className="admin-profile d-flex align-items-center gap-3 ps-3 border-start border-light-subtle">
+                                <div className="admin-profile d-flex align-items-center gap-3 ps-3 border-start" style={{ borderColor: 'var(--border-soft)' }}>
                                     <button
-                                        className="btn btn-link text-secondary text-decoration-none d-flex align-items-center p-0"
+                                        className="btn btn-link text-decoration-none d-flex align-items-center p-0"
+                                        style={{ color: 'var(--text-secondary)' }}
                                         onClick={handleLogout}
                                         title="Sign Out"
                                     >
-                                        <FiLogOut size={20} className="text-secondary hover-gold" />
+                                        <FiLogOut size={20} className="hover-gold" />
                                     </button>
                                     <div className="text-end d-none d-sm-block">
-                                        <p className="m-0 fw-bold text-white" style={{ fontSize: '0.8rem' }}>Admin</p>
-                                        <p className="m-0 text-secondary small fw-bold" style={{ fontSize: '0.7rem' }}>Master Access</p>
+                                        <p className="m-0 fw-bold" style={{ fontSize: '0.8rem', color: 'var(--text-primary)' }}>Admin</p>
+                                        <p className="m-0 small fw-bold" style={{ fontSize: '0.7rem', color: 'var(--text-secondary)' }}>Master Access</p>
                                     </div>
-                                    <div className="profile-img p-2 rounded-circle bg-dark border border-secondary text-luxury-gold">
+                                    <div className="profile-img p-2 rounded-circle border d-flex" style={{ background: 'var(--bg-card)', borderColor: 'var(--border-soft)', color: 'var(--pink-accent)' }}>
                                         <FiUser size={18} />
                                     </div>
                                 </div>
@@ -207,7 +209,7 @@ const Dashboard = () => {
 
                     {/* View Container */}
                     <main className="p-2 p-md-4 p-lg-5">
-                        <div className="bg-black p-3 p-md-4 p-lg-5 rounded-4 rounded-md-5 border border-secondary" style={{ minHeight: '80vh' }}>
+                        <div className="admin-portal p-3 p-md-4 p-lg-5 rounded-4 rounded-md-5 border" style={{ minHeight: '80vh', background: 'var(--bg-card)', borderColor: 'var(--border-soft)' }}>
                             {dashboardView()}
                         </div>
                     </main>
@@ -216,11 +218,11 @@ const Dashboard = () => {
 
             <style>
                 {`
-                    .transition-all { transition: all 0.3s ease; }
-                    .active-admin-nav:hover { background-color: #D4AF37 !important; color: #000 !important; }
-                    .text-luxury-gold { color: #D4AF37 !important; }
-
-                    .hover-gold:hover { color: #D4AF37 !important; }
+                     .transition-all { transition: all 0.3s ease; }
+                    .active-admin-nav:hover { background: var(--gold-gradient) !important; color: #fff !important; }
+                    .text-luxury-gold { color: var(--pink-accent) !important; }
+ 
+                    .hover-gold:hover { color: var(--pink-accent) !important; }
                     .admin-sidebar {
                         width: 220px !important;
                         transition: transform 0.3s ease;

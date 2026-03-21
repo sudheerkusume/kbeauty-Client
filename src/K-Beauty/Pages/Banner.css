@@ -9,9 +9,10 @@
 
 /* LEFT COLUMN: PRODUCT */
 .product-column {
-    background: #fbfbfb;
+    background: linear-gradient(135deg, #FAF5F0 0%, #F3E8DC 100%);
     border-right: 1px solid #eee;
-    overflow: hidden; /* Ensure large text doesn't spill over */
+    overflow: hidden;
+    /* Ensure large text doesn't spill over */
 }
 
 /* COOL BACKGROUND TEXT BEHIND PRODUCT */
@@ -36,31 +37,32 @@
 }
 
 .routine-title-bg .solid-text {
-    color: #111;
-    opacity: 0.1; /* Very subtle watermark */
+    color: #D4A373;
+    opacity: 0.25;
+    /* Luxury Gold-Beige Watermark */
 }
 
 .routine-title-bg .hollow-text {
     color: transparent;
-    -webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.2);
+    -webkit-text-stroke: 1px rgba(212, 163, 115, 0.4);
 }
 
 .product-card {
-    filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.15));
+    filter: drop-shadow(0 20px 60px rgba(212, 163, 115, 0.25));
 }
 
 .discount-badge {
     position: absolute;
     top: -10px;
     left: -10px;
-    background: #ff4d6d;
+    background: var(--pink-accent);
     color: #fff;
     padding: 6px 15px;
     border-radius: 20px;
     font-size: 14px;
     font-weight: 600;
     z-index: 10;
-    box-shadow: 0 4px 12px rgba(255, 77, 109, 0.3);
+    box-shadow: 0 4px 12px rgba(232, 180, 184, 0.3);
 }
 
 .banner-product-img {
@@ -74,7 +76,7 @@
 
 /* RIGHT COLUMN: ROUTINE */
 .routine-column {
-    background: #000;
+    background: var(--bg-cream);
     overflow: hidden;
 }
 
@@ -89,7 +91,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.85;
+    opacity: 0.90;
     transform: scale(1.05);
     transition: transform 10s linear;
 }
@@ -129,8 +131,8 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    color: #fff;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    color: var(--text-primary);
+    text-shadow: none;
 }
 
 .routine-title {
@@ -185,12 +187,12 @@
 /* Line Segments */
 .line-h {
     height: 1px;
-    background: rgba(255, 255, 255, 0.9);
+    background: var(--text-secondary);
 }
 
 .line-d {
     height: 1px;
-    background: rgba(255, 255, 255, 0.9);
+    background: var(--text-secondary);
     position: relative;
 }
 
@@ -220,9 +222,9 @@
     position: absolute;
     width: 6px;
     height: 6px;
-    background: #fff;
+    background: var(--gold);
     border-radius: 50%;
-    box-shadow: 0 0 8px rgba(255, 255, 255, 1);
+    box-shadow: 0 0 8px rgba(209, 176, 123, 0.5);
 }
 
 .l-dot {
@@ -235,29 +237,59 @@
     top: -2.5px;
 }
 
-/* STAGGERED ANIMATIONS (INFINITE LOOP) */
-.callout-absolute.item-1 {
-    animation: pointLoop 8s 0.0s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
+/* STAGGERED REVEAL & DRIFT (DESKTOP) */
+.callout-absolute {
+    opacity: 0;
+    animation: pointReveal 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards,
+        pointLoop 8s infinite ease-in-out 4s;
+    /* Wait for full sequence */
 }
 
-.callout-absolute.item-2 {
-    animation: pointLoop 8s 1.2s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
+.item-1 {
+    top: 15%;
+    left: 10%;
+    animation-delay: 0.1s, 4.0s !important;
 }
 
-.callout-absolute.item-3 {
-    animation: pointLoop 8s 2.4s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
+.item-2 {
+    top: 45%;
+    left: 5%;
+    animation-delay: 0.7s, 4.6s !important;
 }
 
-.callout-absolute.item-4 {
-    animation: pointLoop 8s 3.6s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
+.item-3 {
+    top: 75%;
+    left: 12%;
+    animation-delay: 1.3s, 5.2s !important;
 }
 
-.callout-absolute.item-5 {
-    animation: pointLoop 8s 4.8s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
+.item-4 {
+    top: 42%;
+    right: 8%;
+    animation-delay: 1.9s, 5.8s !important;
 }
 
-.callout-absolute.item-6 {
-    animation: pointLoop 8s 6.0s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
+.item-logo {
+    top: 60%;
+    right: 5%;
+    animation-delay: 2.5s, 6.4s !important;
+}
+
+.item-6 {
+    top: 85%;
+    right: 10%;
+    animation-delay: 3.1s, 7.0s !important;
+}
+
+.banner-callout-logo {
+    width: 100px;
+    height: auto;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.7));
+    transition: transform 0.3s ease;
+}
+
+.banner-callout-logo:hover {
+    transform: scale(1.1);
 }
 
 @keyframes pointLoop {
@@ -297,44 +329,207 @@
     }
 }
 
-/* MOBILE RESPONSIVE */
+/* MOBILE RESPONSIVE (PRECISION OVERLAY - DESKTOP STYLE) */
 @media (max-width: 767px) {
     .banner-container {
         border-radius: 20px;
         margin: 0 10px;
+        min-height: auto;
+    }
+
+    .product-column {
+        height: 350px;
+        border-right: none;
+        border-bottom: 1px solid #f0f0f0;
+        padding-top: 50px !important;
     }
 
     .routine-column {
-        height: 450px;
+        height: 480px;
+        /* Fixed height for absolute overlays */
+        position: relative;
+        overflow: hidden;
     }
 
-    .routine-title {
-        font-size: 2.2rem;
+    .routine-img-wrapper {
+        position: absolute;
+        inset: 0;
+    }
+
+    /* Floating Callouts (Desktop Style) */
+    .routine-points-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 10;
+        pointer-events: none;
     }
 
     .callout-absolute {
-        font-size: 0.8rem;
-        gap: 4px;
+        position: absolute !important;
+        opacity: 0;
+        /* Hidden initially for staggered reveal */
+        /* Exact same dual-phase animation as Desktop: Reveal then Drifting Loop */
+        animation: staggeredFadeIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards,
+            pointLoop 10s infinite ease-in-out 1.5s !important;
+        gap: 6px;
+        white-space: nowrap;
     }
 
-    .line-h,
-    .line-d {
-        width: 15px !important;
+    @keyframes staggeredFadeIn {
+        0% {
+            opacity: 0;
+            transform: translateY(15px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
+    .callout-text {
+        background: transparent !important;
+        backdrop-filter: none !important;
+        padding: 0;
+        border-radius: 0;
+        color: #3d2c23 !important;
+        /* Elegant dark espresso black */
+        font-weight: 600;
+        font-size: 0.8rem !important;
+        text-shadow: 0 0 8px rgba(255, 255, 255, 0.9), 0 0 4px rgba(255, 255, 255, 0.6);
+        /* White halo for legibility */
+        border: none !important;
+        box-shadow: none !important;
+        letter-spacing: 0.5px;
+    }
+
+    .pointer-wrapper {
+        display: flex !important;
+        transform: scale(0.5);
+        /* Even smaller pointers for mobile */
+        transform-origin: center;
+        opacity: 0.8;
+    }
+
+    .pointer-dot {
+        width: 10px !important;
+        /* Slightly larger dot for visibility */
+        height: 10px !important;
+        background: var(--gold);
+        box-shadow: 0 0 10px rgba(209, 176, 123, 0.8);
+        animation: dotPulse 2s infinite ease-in-out;
+    }
+
+    @keyframes dotPulse {
+
+        0%,
+        100% {
+            transform: scale(1);
+            opacity: 0.8;
+        }
+
+        50% {
+            transform: scale(1.3);
+            opacity: 1;
+        }
+    }
+
+    /* Cinematic Stagger Delays (0.6s intervals for an undeniable one-by-one effect) */
     .item-1 {
-        left: 2% !important;
+        animation-delay: 0.1s, 4.0s !important;
+        top: 15% !important;
+        left: -2% !important;
+    }
+
+    .item-2 {
+        animation-delay: 0.7s, 4.6s !important;
+        top: 40% !important;
+        left: -4% !important;
+    }
+
+    .item-3 {
+        animation-delay: 1.3s, 5.2s !important;
+        top: 78% !important;
+        left: 0% !important;
     }
 
     .item-4 {
-        right: 2% !important;
+        animation-delay: 1.9s, 5.8s !important;
+        top: 22% !important;
+        right: -2% !important;
+        flex-direction: row-reverse;
     }
 
-    /* Hide some to avoid mobile clutter */
-    .item-2,
-    .item-3,
-    .item-5,
+    .item-logo {
+        animation-delay: 2.5s, 6.4s !important;
+        top: 52% !important;
+        right: -4% !important;
+    }
+
     .item-6 {
-        display: none;
+        animation-delay: 3.1s, 7.0s !important;
+        top: 82% !important;
+        right: 0% !important;
+        flex-direction: row-reverse;
+    }
+
+    .banner-callout-logo {
+        width: 100px;
+        filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.8));
+    }
+
+    /* For right-side items, ensure the pointer direction is reversed */
+    .item-4 .pointer-wrapper,
+    .item-logo .pointer-wrapper,
+    .item-6 .pointer-wrapper {
+        flex-direction: row-reverse;
+    }
+
+    .callout-text {
+        background: transparent !important;
+        padding: 0;
+        color: #3d2c23 !important;
+        font-weight: 600;
+        font-size: 0.78rem !important;
+        text-shadow: none !important;
+        letter-spacing: 0.3px;
+        opacity: 0.9;
+    }
+
+    /* Luxury Gold-Beige Watermark for Mobile (ULTIMATE INCREASE) */
+    .routine-title-bg {
+        font-size: 3.5rem !important;
+        line-height: 0.8;
+        opacity: 1 !important;
+        /* Fixed user's '10' */
+        width: 120%;
+        text-align: start;
+        filter: blur(0.5px);
+        /* Soften for luxury feel */
+    }
+
+    .routine-title-bg .solid-text {
+        opacity: 0.35 !important;
+        /* Much more visible color */
+        color: #D4A373;
+    }
+
+    .routine-title-bg .hollow-text {
+        color: transparent;
+        -webkit-text-stroke: 2px rgba(212, 163, 115, 0.5);
+        /* Thicker stroke */
+        opacity: 0.6 !important;
+    }
+}
+
+/* Specific fix for very narrow screens */
+@media (max-width: 400px) {
+    .routine-column {
+        height: 400px;
+    }
+
+    .callout-text {
+        font-size: 0.7rem !important;
+        padding: 3px 8px;
     }
 }

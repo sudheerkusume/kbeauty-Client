@@ -1,12 +1,12 @@
 .trending-section {
-    background-color: var(--bg-dark, #000);
+    background-color: var(--bg-cream);
 }
 
 .trending-subtitle {
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 3px;
-    color: var(--gold, #D4AF37);
+    color: var(--pink-accent);
     display: block;
     margin-bottom: 8px;
 }
@@ -15,15 +15,15 @@
     font-size: 2.5rem;
     font-weight: 600;
     margin: 0;
-    color: var(--text-primary, #fff);
+    color: var(--text-primary);
 }
 
 .trending-view-all {
-    color: var(--gold-light, #F5D27A);
+    color: var(--text-primary);
     text-decoration: none;
     font-weight: 600;
     font-size: 14px;
-    border-bottom: 2px solid var(--gold, #D4AF37);
+    border-bottom: 2px solid var(--pink-accent);
     padding-bottom: 2px;
     transition: opacity 0.3s;
 }
@@ -43,8 +43,8 @@
     aspect-ratio: 3/4;
     overflow: hidden;
     border-radius: 8px;
-    background: var(--bg-card, #1A1A1A);
-    border: 1px solid var(--border-gold, rgba(212, 175, 55, 0.1));
+    background: var(--bg-cream);
+    border: 1px solid var(--border-soft);
 }
 
 .trending-img {
@@ -62,23 +62,23 @@
     position: absolute;
     top: 12px;
     right: 12px;
-    background: rgba(0, 0, 0, 0.8);
-    color: var(--gold-light, #F5D27A);
+    background: var(--pink-accent);
+    color: #FFFFFF;
     padding: 4px 8px;
     border-radius: 4px;
     font-size: 12px;
     font-weight: 700;
     display: flex;
     align-items: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    border: 1px solid var(--border-gold, rgba(212, 175, 55, 0.2));
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .trending-brand-link {
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: var(--gold, #D4AF37);
+    color: var(--pink-accent);
     display: block;
     margin-bottom: 5px;
     cursor: pointer;
@@ -102,7 +102,7 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
     height: 38px;
-    color: var(--text-primary, #fff);
+    color: var(--text-primary);
 }
 
 .trending-price-box {
@@ -114,12 +114,12 @@
 .trending-offer {
     font-weight: 700;
     font-size: 16px;
-    color: var(--gold-light, #F5D27A);
+    color: var(--text-primary);
 }
 
 .trending-old {
     font-size: 13px;
-    color: var(--text-muted, #888);
+    color: var(--text-secondary);
 }
 
 /* =========================================
@@ -145,8 +145,8 @@
 
 /* --- Premium Combo Card Design v2 (Gold Standard) --- */
 .combo-ref-card {
-    background: #000;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--bg-card);
+    border: 1px solid var(--border-soft);
     border-radius: 12px;
     overflow: hidden;
     display: flex;
@@ -167,7 +167,7 @@
 .combo-ref-badge-wrap {
     text-align: center;
     padding-top: 15px;
-    background: #000;
+    background: var(--bg-card);
 }
 
 .combo-ref-badge {
@@ -210,7 +210,7 @@
     justify-content: center;
     gap: 15px;
     padding: 20px 15px 30px 15px;
-    background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+    background: var(--bg-cream);
     position: relative;
 }
 
@@ -243,7 +243,7 @@
 
 .combo-ref-includes {
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--text-secondary);
     margin-bottom: 12px;
     font-weight: 500;
 }
@@ -259,7 +259,7 @@
 .combo-ref-price-new {
     font-size: 24px;
     font-weight: 800;
-    color: #fff;
+    color: var(--text-primary);
     letter-spacing: -0.5px;
 }
 
@@ -376,8 +376,8 @@
     .trending-section .d-flex.justify-content-between {
         flex-direction: column !important;
         text-align: center;
-        gap: 15px;
-        margin-bottom: 30px !important;
+        gap: 12px;
+        margin-bottom: 10px !important;
     }
 
     .trending-title {
@@ -544,7 +544,7 @@
     justify-content: center;
     gap: 15px;
     padding: 35px 15px 20px 15px;
-    background: #fff;
+    background: var(--bg-cream);
     height: 100%;
     border-radius: 8px;
 }

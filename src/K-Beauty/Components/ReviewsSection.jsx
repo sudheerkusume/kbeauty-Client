@@ -31,10 +31,10 @@ const ReviewsSection = () => {
     ];
 
     return (
-        <section className="reviews-section py-5 bg-black">
+        <section className="reviews-section py-5" style={{ background: 'var(--bg-cream)' }}>
             <div className="container">
                 <div className="text-center mb-5">
-                    <h2 className="section-title text-white">What Our Customers Say</h2>
+                    <h2 className="section-title" style={{ color: 'var(--text-primary)' }}>What Our Customers Say</h2>
                     <div className="title-underline mx-auto"></div>
                 </div>
 
@@ -47,8 +47,8 @@ const ReviewsSection = () => {
                                 <div className="d-flex align-items-center mt-auto">
                                     <img src={review.img} alt={review.name} className="reviewer-img me-3" />
                                     <div>
-                                        <h5 className="reviewer-name mb-0 fw-bold text-white">{review.name}</h5>
-                                        <p className="mb-0 review-role" style={{ fontSize: '12px' }}>{review.role}</p>
+                                        <h5 className="reviewer-name mb-0 fw-bold" style={{ color: 'var(--text-primary)' }}>{review.name}</h5>
+                                        <p className="mb-0 review-role" style={{ fontSize: '12px', color: 'var(--pink-accent)' }}>{review.role}</p>
                                         <div className="rating-stars mt-1">
                                             {[...Array(5)].map((_, i) => (
                                                 <FaStar key={i} size={12} color={i < review.rating ? "#FFD700" : "#EEE"} />

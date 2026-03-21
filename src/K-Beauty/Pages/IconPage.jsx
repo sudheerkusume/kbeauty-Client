@@ -40,7 +40,7 @@ const IconPage = () => {
 
             <style>{`
                 .premium-marquee-section {
-                    background: #000;
+                    background: var(--bg-cream);
                     padding: 2.5rem 0;
                     position: relative;
                     z-index: 10;
@@ -98,7 +98,7 @@ const IconPage = () => {
                 .marquee-icon-wrapper {
                     width: 65px;
                     height: 65px;
-                    background: rgba(255, 255, 255, 0.05);
+                    background: rgba(0, 0, 0, 0.03);
                     border: 1.5px solid rgba(212, 175, 55, 0.3);
                     border-radius: 50%;
                     display: flex;
@@ -131,7 +131,7 @@ const IconPage = () => {
                 }
 
                 .marquee-label {
-                    color: rgba(255, 255, 255, 0.85);
+                    color: var(--text-primary);
                     font-size: 0.95rem;
                     font-weight: 600;
                     text-transform: uppercase;

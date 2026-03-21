@@ -40,10 +40,40 @@
     color: var(--text-secondary, #ccc);
 }
 
+.stat {
+    transition: transform 0.3s ease;
+}
+
+.expert-card-wrap:hover .stat {
+    transform: translateY(-5px);
+}
+
 .stat-num {
     font-size: 1.8rem;
     font-weight: 700;
     color: var(--gold-light, #F5D27A);
+    text-shadow: 0 0 10px rgba(245, 210, 122, 0.2);
+    /* Soft premium glow */
+    display: inline-block;
+    animation: luxuryReveal 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+@keyframes luxuryReveal {
+    0% {
+        opacity: 0;
+        filter: blur(8px);
+        transform: scale(0.9) translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        filter: blur(0);
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Stagger the CSS reveal entrance to match the JS count stagger */
+.expert-stats .stat:nth-child(2) .stat-num {
+    animation-delay: 0.3s;
 }
 
 .stat-label {

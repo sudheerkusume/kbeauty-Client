@@ -6,7 +6,7 @@ import { IoIosArrowForward } from 'react-icons/io';
 import { IoFilter } from 'react-icons/io5';
 import './BestSellerPage.css';
 
-const BestSellerPage = () => {
+const ComboPage = () => {
     const [products, setProducts] = useState([]);
     const [openSections, setOpenSections] = useState({});
     const [filters, setFilters] = useState({
@@ -42,20 +42,27 @@ const BestSellerPage = () => {
     };
 
     useEffect(() => {
-        axios.get(`${API_BASE_URL}/products?bestseller=true`)
+        axios.get(`${API_BASE_URL}/products`)
             .then((res) => {
                 // Sorting by _id descending (Newest First)
-                const sortedData = (res.data || []).sort((a, b) => b._id.localeCompare(a._id));
+                const allData = res.data || [];
+                
+                // Filter for "Offers" (Discounted) OR "Combos"
+                const filteredData = allData.filter(item => 
+                    (item.price > item.offerPrice) || (item.combo?.isCombo === true)
+                );
+
+                const sortedData = filteredData.sort((a, b) => b._id.localeCompare(a._id));
                 setProducts(sortedData);
 
                 const newFilters = {
-                    Product: [...new Set(res.data.map(item => item.brand).filter(Boolean))],
+                    Product: [...new Set(filteredData.map(item => item.brand).filter(Boolean))],
                     Availbaility: ["In Stock", "Only few left"],
-                    category: [...new Set(res.data.map(item => item.category).filter(Boolean))],
-                    Product_Type: [...new Set(res.data.map(item => item.type).filter(Boolean))],
-                    skinType: [...new Set(res.data.map(item => item.skinType).filter(Boolean))],
-                    skinConcern: [...new Set(res.data.map(item => item.skinConcern).filter(Boolean))],
-                    Size: [...new Set(res.data.map(item => item.size).filter(Boolean))],
+                    category: [...new Set(filteredData.map(item => item.category).filter(Boolean))],
+                    Product_Type: [...new Set(filteredData.map(item => item.type).filter(Boolean))],
+                    skinType: [...new Set(filteredData.map(item => item.skinType).filter(Boolean))],
+                    skinConcern: [...new Set(filteredData.map(item => item.skinConcern).filter(Boolean))],
+                    Size: [...new Set(filteredData.map(item => item.size).filter(Boolean))],
                     Price: ['Under 500', '500 - 999', '1000+'],
                 };
 
@@ -290,13 +297,13 @@ const BestSellerPage = () => {
 
                         {/* 4. SLIM CATEGORY HEADER (Now part of scrolling area) */}
                         <div className="slim-category-header pt-5 pb-4 text-center" style={{ background: 'var(--bg-cream)' }}>
-                            <span className="mb-1 d-block" style={{ letterSpacing: '5px', fontSize: '0.75rem', fontWeight: 600, color: 'var(--pink-accent)' }}>PREMIUM SELECTION</span>
-                            <h1 className="fw-bold m-0" style={{ letterSpacing: '4px', color: 'var(--text-primary)', fontSize: '2.5rem', textTransform: 'uppercase' }}>BEST SELLERS</h1>
+                            <span className="mb-1 d-block" style={{ letterSpacing: '5px', fontSize: '0.75rem', fontWeight: 600, color: 'var(--pink-accent)' }}>CURATED SAVINGS</span>
+                            <h1 className="fw-bold m-0" style={{ letterSpacing: '4px', color: 'var(--text-primary)', fontSize: '2.5rem', textTransform: 'uppercase' }}>COMBOS & OFFERS</h1>
                         </div>
 
                         <div className="px-3 px-md-4">
                             <div className="d-none d-lg-flex justify-content-between align-items-center mb-5 p-3 rounded-3 shadow-sm" style={{ background: 'var(--bg-card)', border: '1px solid var(--border-soft)', color: 'var(--text-primary)' }}>
-                                <span className="fw-medium">Showing <strong style={{ color: 'var(--pink-accent)' }}><NumberCounter targetNumber={filteredProducts.length} /></strong> Premium Best Sellers</span>
+                                <span className="fw-medium">Showing <strong style={{ color: 'var(--pink-accent)' }}><NumberCounter targetNumber={filteredProducts.length} /></strong> Special Values</span>
                                 <div className="sort-box d-flex align-items-center gap-3">
                                     <span className="small text-muted">Sort By:</span>
                                     <select 
@@ -320,7 +327,7 @@ const BestSellerPage = () => {
 
                                     return (
                                         <div className="col-6 col-md-4" key={product._id}>
-                                            <Link to={`/BestSellers/${product._id}`} className="signature-premium-card h-100 border border-secondary shadow-hover">
+                                            <Link to={`/ComboPage/${product._id}`} className="signature-premium-card h-100 border border-secondary shadow-hover">
                                                 <div className="premium-img-container">
                                                     {discountPercent > 15 && (
                                                         <div className="premium-discount-badge" style={{ backgroundColor: 'var(--pink-accent)', color: '#fff' }}>
@@ -562,4 +569,4 @@ const BestSellerPage = () => {
     );
 };
 
-export default BestSellerPage;
+export default ComboPage;

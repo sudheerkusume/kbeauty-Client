@@ -14,9 +14,9 @@ const Categories = () => {
     ];
 
     return (
-        <div className="container-fluid py-5 bg-black">
+        <div className="container-fluid py-5" style={{ background: 'var(--bg-cream)' }}>
             <div className="container">
-                <h5 className="mb-4 text-start fw-bold text-uppercase text-white" style={{ letterSpacing: '2px', fontSize: '1rem' }}>Trending Categories</h5>
+                <h5 className="mb-4 text-start fw-bold text-uppercase" style={{ letterSpacing: '2px', fontSize: '1rem', color: 'var(--text-primary)' }}>Trending Categories</h5>
                 <div className="row g-4 justify-content-center text-center">
                     {categoryData.map((cat, index) => (
                         <div className="col-6 col-md-2" key={index}>
@@ -24,7 +24,7 @@ const Categories = () => {
                                 <div className="category-circle-bg">
                                     <img src={cat.img} alt={cat.name} className="category-pop-img" />
                                 </div>
-                                <div className="category-name-p mt-3 text-white">{cat.name}</div>
+                                <div className="category-name-p mt-3" style={{ color: 'var(--text-primary)' }}>{cat.name}</div>
                             </Link>
                         </div>
                     ))}

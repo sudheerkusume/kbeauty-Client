@@ -89,10 +89,10 @@ const Wishlist = () => {
                     max-width: 1400px;
                     margin: 0 auto;
                     padding: 40px 5% 100px;
-                    background: #000;
+                    background: var(--bg-cream);
                     min-height: 100vh;
-                    font-family: 'Inter', sans-serif;
-                    color: #fff;
+                    font-family: 'Outfit', sans-serif;
+                    color: var(--text-primary);
                 }
 
                 /* Editorial Header */
@@ -108,8 +108,8 @@ const Wishlist = () => {
                     margin-bottom: 30px;
                 }
 
-                .back-btn-minimal {
-                    color: #fff;
+                 .back-btn-minimal {
+                    color: var(--text-primary);
                     text-decoration: none;
                     text-transform: uppercase;
                     letter-spacing: 2px;
@@ -124,12 +124,13 @@ const Wishlist = () => {
 
                 .back-btn-minimal:hover { opacity: 1; color: #D4AF37; }
 
-                .count-badge {
+                 .count-badge {
                     font-size: 10px;
                     letter-spacing: 1px;
                     text-transform: uppercase;
-                    color: #D4AF37;
-                    border: 1px solid rgba(212, 175, 55, 0.2);
+                    color: var(--pink-accent);
+                    border: 1px solid var(--border-soft);
+                    background: var(--bg-card);
                     padding: 4px 12px;
                     border-radius: 100px;
                 }
@@ -140,33 +141,33 @@ const Wishlist = () => {
                     line-height: 0.9;
                 }
 
-                .title-decorative {
+                 .title-decorative {
                     font-family: 'Playfair Display', serif;
                     font-style: italic;
                     font-weight: 400;
                     font-size: clamp(1.5rem, 4vw, 2.5rem);
-                    color: #D4AF37;
+                    color: var(--pink-accent);
                     margin-left: 15px;
                     margin-bottom: -5px;
                     opacity: 0.8;
                 }
 
-                .main-title {
-                    font-family: 'Inter', sans-serif;
+                 .main-title {
+                    font-family: 'Outfit', sans-serif;
                     font-weight: 900;
                     font-size: clamp(3rem, 10vw, 7rem);
                     text-transform: uppercase;
                     letter-spacing: -3px;
                     margin: 0;
-                    background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.2) 100%);
+                    background: linear-gradient(180deg, var(--text-primary) 0%, var(--text-secondary) 100%);
                     -webkit-background-clip: text;
                     -webkit-text-fill-color: transparent;
                 }
 
-                .description-minimal {
+                 .description-minimal {
                     max-width: 350px;
                     margin-top: 30px;
-                    color: #777;
+                    color: var(--text-secondary);
                     font-size: 1rem;
                     line-height: 1.5;
                     font-weight: 300;
@@ -179,14 +180,14 @@ const Wishlist = () => {
                     gap: 30px;
                 }
 
-                .iridescent-glass {
-                    background: rgba(15, 15, 15, 0.6);
-                    backdrop-filter: blur(20px);
-                    border: 1px solid rgba(255, 255, 255, 0.05);
+                 .iridescent-glass {
+                    background: var(--bg-card);
+                    border: 1px solid var(--border-soft);
                     border-radius: 24px;
                     transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
                     position: relative;
                     overflow: hidden;
+                    box-shadow: var(--shadow-soft);
                 }
 
                 .iridescent-glass::before {
@@ -203,17 +204,17 @@ const Wishlist = () => {
                     opacity: 0.4;
                 }
 
-                .luxury-card:hover {
+                 .luxury-card:hover {
                     transform: translateY(-10px);
-                    border-color: rgba(212, 175, 55, 0.2);
-                    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+                    border-color: var(--pink-accent);
+                    box-shadow: var(--shadow-hover);
                 }
 
-                .image-stage {
+                 .image-stage {
                     position: relative;
                     height: 380px;
                     overflow: hidden;
-                    background: #0a0a0a;
+                    background: #fff;
                 }
 
                 .product-hero {
@@ -287,12 +288,12 @@ const Wishlist = () => {
                     opacity: 0.8;
                 }
 
-                .item-title {
+                 .item-title {
                     font-size: 1.1rem;
-                    font-weight: 500;
+                    font-weight: 600;
                     line-height: 1.3;
                     margin-bottom: 20px;
-                    color: #fff;
+                    color: var(--text-primary);
                     height: 2.8rem;
                     overflow: hidden;
                     display: -webkit-box;
@@ -305,19 +306,19 @@ const Wishlist = () => {
                     justify-content: space-between;
                     align-items: center;
                     padding-top: 15px;
-                    border-top: 1px solid rgba(255, 255, 255, 0.05);
+                    border-top: 1px solid var(--border-soft);
                 }
 
-                .item-price {
+                 .item-price {
                     font-size: 1.4rem;
-                    font-weight: 400;
-                    color: #D4AF37;
+                    font-weight: 700;
+                    color: var(--text-primary);
                 }
 
-                .add-ritual-btn {
-                    background: transparent;
+                 .add-ritual-btn {
+                    background: var(--gold-gradient);
                     color: #fff;
-                    border: 1px solid rgba(255,255,255,0.2);
+                    border: none;
                     padding: 10px 20px;
                     border-radius: 100px;
                     font-weight: 600;
@@ -329,12 +330,12 @@ const Wishlist = () => {
                     display: flex;
                     align-items: center;
                     gap: 6px;
+                    box-shadow: 0 4px 15px rgba(209, 176, 123, 0.2);
                 }
 
-                .add-ritual-btn:hover {
-                    background: #fff;
-                    color: #000;
-                    border-color: #fff;
+                 .add-ritual-btn:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 6px 20px rgba(209, 176, 123, 0.3);
                 }
 
                 /* Empty State V2 */
@@ -377,17 +378,17 @@ const Wishlist = () => {
                     margin-bottom: 15px;
                 }
 
-                .empty-sub {
-                    color: #777;
+                 .empty-sub {
+                    color: var(--text-secondary);
                     font-size: 1.1rem;
                     max-width: 400px;
                     margin-bottom: 40px;
                     font-weight: 300;
                 }
 
-                .luxury-cta {
-                    background: #fff;
-                    color: #000;
+                 .luxury-cta {
+                    background: var(--gold-gradient);
+                    color: #fff;
                     padding: 18px 40px;
                     border-radius: 100px;
                     text-decoration: none;
@@ -396,6 +397,7 @@ const Wishlist = () => {
                     letter-spacing: 2px;
                     font-size: 12px;
                     transition: all 0.4s;
+                    box-shadow: 0 4px 15px rgba(209, 176, 123, 0.2);
                 }
 
                 .luxury-cta:hover {

@@ -8,7 +8,7 @@ const TermsOfService = () => {
     }, []);
 
     return (
-        <div className="bg-black text-white py-5 min-vh-100">
+        <div className="py-5 min-vh-100" style={{ background: 'var(--bg-cream)', color: 'var(--text-primary)' }}>
             <div className="container py-5">
                 <h1 className="display-4 mb-5 text-gold" style={{ fontFamily: "'Playfair Display', serif" }}>Terms of Service</h1>
                 <div className="lh-lg opacity-75">

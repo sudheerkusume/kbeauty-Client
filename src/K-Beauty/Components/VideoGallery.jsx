@@ -14,7 +14,7 @@ const VideoGallery = () => {
     ];
 
     return (
-        <section className="video-gallery-section py-5 bg-black">
+        <section className="video-gallery-section py-5" style={{ background: 'var(--bg-cream)' }}>
             <div className="container">
                 <div className="text-center mb-5">
                     <span className="gallery-subtitle">K-Beauty in Motion</span>

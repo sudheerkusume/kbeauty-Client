@@ -1,6 +1,6 @@
 import axios from "axios";
 import API_BASE_URL from "../config";
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { IoIosArrowForward } from 'react-icons/io';
 import WishlistButton from '../WishlistButton';
@@ -8,33 +8,61 @@ import './BestSeller.css';
 
 const BestSellers = () => {
     const [products, setProducts] = useState([]);
+    const [isVisible, setIsVisible] = useState(false);
+    const headerRef = useRef(null);
     const navigate = useNavigate();
 
     useEffect(() => {
         axios.get(`${API_BASE_URL}/products?bestseller=true`)
             .then((res) => {
-                // Sorting by _id descending (Newest First)
                 const sortedData = (res.data || []).sort((a, b) => b._id.localeCompare(a._id));
                 setProducts(sortedData);
             })
             .catch((err) => console.log(err));
     }, []);
 
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                }
+            },
+            { threshold: 0.10 }
+        );
+
+        if (headerRef.current) {
+            observer.observe(headerRef.current);
+        }
+
+        return () => {
+            if (headerRef.current) {
+                observer.unobserve(headerRef.current);
+            }
+        };
+    }, []);
+
     return (
-        <div className="container-fluid py-5" style={{ background: '#000', borderBottom: '1px solid var(--border-gold)' }}>
+        <div className="container-fluid py-5" style={{ background: 'var(--bg-cream)', borderBottom: '1px solid var(--border-soft)' }}>
             <div className="container py-lg-4">
-                {/* Refined Header Section */}
-                <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-end mb-5">
-                    <div className="mb-4 mb-md-0">
-                        <span className="section-label" style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '4px', color: '#C8A27C', display: 'block', marginBottom: '12px' }}>
+                <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-end mb-md-5 mb-3">
+                    <div className="mb-md-4 mb-2">
+                        <span className="section-label" style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '4px', color: 'var(--pink-accent)', display: 'block', marginBottom: '12px' }}>
                             Our Best Selection
                         </span>
-                        <h2 className="laneige-title" style={{ fontSize: '2.8rem', fontWeight: 600, color: 'var(--gold)' }}>
-                            SIGNATURE
-                        </h2>
+                        <h4
+                            ref={headerRef}
+                            className={`laneige-title animated-marker ${isVisible ? 'in-view' : ''}`}
+                            style={{ fontSize: '2.0rem', fontWeight: 600, color: 'var(--text-primary)', '--pink-accent': '#e1949eff' }}
+                        >
+                            BEST SELLERS
+                            <svg className='svg-marker' viewBox='0 0 201 14' preserveAspectRatio='none'>
+                                <path d="M3 10.5732c55.565 6.61382 168.107 -0.117058 197.753 4.63415"></path>
+                            </svg>
+                        </h4>
                     </div>
                     <button
-                        className="btn-editorial-luxe"
+                        className="btn-editorial-luxe d-none d-md-inline-flex"
                         onClick={() => navigate("/BestSellers")}
                     >
                         Shop All <IoIosArrowForward size={14} className="ms-2" />
@@ -82,8 +110,8 @@ const BestSellers = () => {
 
                                     <div className="card-content-p">
                                         <span className="premium-care-label">PREMIUM CARE</span>
-                                        <h3 className="premium-product-title">
-                                            {product.title}
+                                        <h3 className="premium-product-title" style={{ color: '#3d2c23', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', display: 'block' }}>
+                                            {product.title || product.name || "K-Beauty Product"}
                                         </h3>
 
                                         <div className="premium-price-wrap">
@@ -101,6 +129,16 @@ const BestSellers = () => {
                             </div>
                         );
                     })}
+                </div>
+
+                {/* Mobile-Only Shop All Button at Bottom */}
+                <div className="d-flex d-md-none justify-content-center mt-4 pt-2">
+                    <button
+                        className="btn-editorial-luxe"
+                        onClick={() => navigate("/BestSellers")}
+                    >
+                        Shop All <IoIosArrowForward size={14} className="ms-2" />
+                    </button>
                 </div>
             </div>
         </div>

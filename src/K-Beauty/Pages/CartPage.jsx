@@ -27,10 +27,10 @@ const CartPage = () => {
 
     return (
         <div className="cart-page-root" style={{
-            background: 'radial-gradient(circle at top, #111 0%, #000 100%)',
+            background: 'var(--bg-cream)',
             minHeight: '100vh',
-            color: '#fff',
-            fontFamily: "'Inter', sans-serif",
+            color: 'var(--text-primary)',
+            fontFamily: "'Outfit', sans-serif",
             paddingTop: '100px',
             paddingBottom: '50px'
         }}>
@@ -50,7 +50,7 @@ const CartPage = () => {
                                 <p className="text-secondary fs-5 mb-5 max-w-lg mx-auto mx-lg-0">
                                     Your luxury skincare journey awaits. Discover our curated collection of K-Beauty essentials.
                                 </p>
-                                <button onClick={() => navigate('/')} className="btn-luxury px-5 py-3">
+                                <button onClick={() => navigate('/')} className="btn-luxury px-5 py-3 shadow-sm">
                                     START YOUR RITUAL <FiChevronRight className="ms-2" />
                                 </button>
 
@@ -74,10 +74,10 @@ const CartPage = () => {
                         {/* Header Section */}
                         <div className="d-flex flex-column flex-md-row justify-content-between align-items-center align-items-md-end mb-4 mb-md-5 gap-3">
                             <div className="text-center text-md-start">
-                                <Link to="/" className="text-gold text-decoration-none small fw-bold d-inline-flex align-items-center gap-2 mb-3 hover-gold">
+                                <Link to="/" className="text-decoration-none small fw-bold d-inline-flex align-items-center gap-2 mb-3 hover-gold" style={{ color: 'var(--pink-accent)' }}>
                                     <FiArrowLeft /> CONTINUE SHOPPING
                                 </Link>
-                                <h1 className="cart-active-title fw-bold m-0 lh-1">YOUR <span className="text-gold">SELECTION</span></h1>
+                                <h1 className="cart-active-title fw-bold m-0 lh-1" style={{ color: 'var(--text-primary)' }}>YOUR SELECTION</h1>
                             </div>
                             <div>
                                 <span className="badge-luxury">{cartItems.length} {cartItems.length === 1 ? 'Product' : 'Products'}</span>
@@ -100,7 +100,7 @@ const CartPage = () => {
                                                 <div className="flex-grow-1">
                                                     <div className="d-flex justify-content-between align-items-start mb-2">
                                                         <div>
-                                                            <h5 className="item-title-luxury fw-bold mb-1 text-white">{item.title}</h5>
+                                                            <h5 className="item-title-luxury fw-bold mb-1" style={{ color: 'var(--text-primary)' }}>{item.title}</h5>
                                                             <span className="text-secondary smaller fw-medium">Size: {item.size || "Standard"}</span>
                                                         </div>
                                                         <button onClick={() => removeFromCart(item)} className="btn-delete-luxury" title="Remove item">
@@ -128,7 +128,7 @@ const CartPage = () => {
 
                                                         {/* Price Tag */}
                                                         <div className="item-price-tag text-end">
-                                                            <span className="text-gold fs-5 fw-bold">₹{(Number(item.price) * (item.quantity || 1)).toLocaleString()}</span>
+                                                            <span className="fs-5 fw-bold" style={{ color: 'var(--text-primary)' }}>₹{(Number(item.price) * (item.quantity || 1)).toLocaleString()}</span>
                                                             <div className="text-secondary smaller mt-1">₹{Number(item.price).toLocaleString()} / u</div>
                                                         </div>
                                                     </div>
@@ -141,22 +141,22 @@ const CartPage = () => {
 
                             {/* Order Summary Sidebar */}
                             <div className="col-lg-4">
-                                <div className="summary-glass-card p-4 p-md-5 sticky-top" style={{ top: '120px' }}>
-                                    <h4 className="fw-bold mb-4 border-bottom border-dark pb-3 text-white fs-5">Order Summary</h4>
+                                <div className="summary-glass-card p-4 p-md-5 sticky-top shadow-sm" style={{ top: '120px', background: 'var(--bg-card)', border: '1px solid var(--border-soft)' }}>
+                                    <h4 className="fw-bold mb-4 border-bottom pb-3 fs-5" style={{ color: 'var(--text-primary)', borderColor: 'var(--border-soft)' }}>Order Summary</h4>
 
                                     <div className="summary-row mb-3 smaller-md">
                                         <span className="text-secondary">Subtotal ({cartItems.length} items)</span>
-                                        <span className="text-white fw-bold">₹{total.toLocaleString()}</span>
+                                        <span className="fw-bold" style={{ color: 'var(--text-primary)' }}>₹{total.toLocaleString()}</span>
                                     </div>
                                     <div className="summary-row mb-4 smaller-md">
                                         <span className="text-secondary">Luxury Shipping</span>
                                         <span className="text-success fw-bold">FREE</span>
                                     </div>
 
-                                    <div className="total-box pt-4 border-top border-dark mb-4 mb-md-5">
+                                    <div className="total-box pt-4 border-top mb-4 mb-md-5" style={{ borderColor: 'var(--border-soft)' }}>
                                         <div className="d-flex justify-content-between align-items-end">
                                             <span className="label-luxury m-0">Grand Total</span>
-                                            <span className="text-gold fs-3 fw-bold">₹{total.toLocaleString()}</span>
+                                            <span className="fs-3 fw-bold" style={{ color: 'var(--pink-accent)' }}>₹{total.toLocaleString()}</span>
                                         </div>
                                         <div className="text-secondary smaller text-end mt-1">Inclusive of all taxes</div>
                                     </div>
@@ -165,7 +165,7 @@ const CartPage = () => {
                                         CHECKOUT <FiChevronRight />
                                     </button>
 
-                                    <div className="mt-4 pt-4 border-top border-dark d-flex justify-content-center gap-4 opacity-30 small fw-bold letter-spacing-2">
+                                    <div className="mt-4 pt-4 border-top d-flex justify-content-center gap-4 opacity-30 small fw-bold letter-spacing-2" style={{ borderColor: 'var(--border-soft)' }}>
                                         <span>SECURE</span>
                                         <span>ENCRYPTED</span>
                                     </div>
@@ -177,8 +177,8 @@ const CartPage = () => {
             </div>
 
             <style>{`
-                .text-gold { color: #D4AF37 !important; }
-                .text-secondary { color: #94a3b8 !important; }
+                .text-gold { color: var(--pink-accent) !important; }
+                .text-secondary { color: var(--text-secondary) !important; }
                 .smaller { font-size: 11px; }
                 .letter-spacing-2 { letter-spacing: 2px; }
                 .fw-900 { font-weight: 900; }
@@ -186,23 +186,22 @@ const CartPage = () => {
                 
                 /* ── CARDS ── */
                 .cart-item-card-premium {
-                    background: rgba(15, 15, 15, 0.6);
-                    backdrop-filter: blur(20px);
-                    border: 1px solid rgba(255, 255, 255, 0.05);
+                    background: var(--bg-card);
+                    border: 1px solid var(--border-soft);
                     border-radius: 20px;
                     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                    box-shadow: var(--shadow-soft);
                 }
                 .cart-item-card-premium:hover {
-                    border-color: rgba(212, 175, 55, 0.3);
+                    border-color: var(--pink-accent);
                     transform: translateY(-3px);
-                    background: rgba(20, 20, 20, 0.8);
+                    box-shadow: var(--shadow-hover);
                 }
 
                 .summary-glass-card {
-                    background: #0d0d0d;
-                    border: 1px solid rgba(212, 175, 55, 0.15);
+                    background: var(--bg-card);
+                    border: 1px solid var(--border-soft);
                     border-radius: 20px;
-                    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
                 }
 
                 /* ── IMAGES ── */
@@ -210,13 +209,12 @@ const CartPage = () => {
                     width: 80px;
                     height: 80px;
                     flex-shrink: 0;
-                    background: #111;
+                    background: var(--bg-cream);
                     border-radius: 14px;
                     padding: 8px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    border: 1px solid rgba(255,255,255,0.05);
                     overflow: hidden;
                 }
                 @media (min-width: 768px) {
@@ -244,14 +242,14 @@ const CartPage = () => {
                 .qty-controls-luxury {
                     display: flex;
                     align-items: center;
-                    background: #111;
+                    background: var(--bg-cream);
                     padding: 4px;
                     border-radius: 10px;
-                    border: 1px solid #222;
+                    border: 1px solid var(--border-soft);
                     width: fit-content;
                 }
                 .qty-btn {
-                    background: none; border: none; color: #fff;
+                    background: none; border: none; color: var(--text-primary);
                     width: 28px; height: 28px; border-radius: 6px;
                     display: flex; align-items: center; justify-content: center;
                     transition: all 0.2s;
@@ -260,7 +258,7 @@ const CartPage = () => {
                 @media (min-width: 768px) {
                     .qty-btn { width: 34px; height: 34px; font-size: 14px; }
                 }
-                .qty-btn:hover:not(:disabled) { background: #222; color: #D4AF37; }
+                .qty-btn:hover:not(:disabled) { background: var(--bg-card); color: var(--pink-accent); }
                 .qty-btn:disabled { opacity: 0.2; cursor: not-allowed; }
                 .qty-value { width: 30px; text-align: center; font-weight: 700; font-size: 13px; }
                 @media (min-width: 768px) {
@@ -269,8 +267,8 @@ const CartPage = () => {
 
                 /* ── BUTTONS ── */
                 .btn-luxury {
-                    background: #D4AF37;
-                    color: #000;
+                    background: var(--gold-gradient);
+                    color: #FFF;
                     font-weight: 800;
                     letter-spacing: 1.2px;
                     border: none;
@@ -307,14 +305,14 @@ const CartPage = () => {
                 }
 
                 .badge-luxury {
-                    background: rgba(212, 175, 55, 0.1);
-                    color: #D4AF37;
+                    background: var(--bg-cream);
+                    color: var(--pink-accent);
                     padding: 5px 12px;
                     border-radius: 8px;
                     font-size: 10px;
                     font-weight: 800;
                     letter-spacing: 1px;
-                    border: 1px solid rgba(212, 175, 55, 0.2);
+                    border: 1px solid var(--border-soft);
                     text-transform: uppercase;
                 }
                 @media (min-width: 768px) {
@@ -338,9 +336,9 @@ const CartPage = () => {
 
                 /* ── VIDEO ── */
                 .video-glass-container {
-                    background: rgba(255, 255, 255, 0.03);
+                    background: var(--bg-card);
                     backdrop-filter: blur(20px);
-                    border: 1px solid rgba(255, 255, 255, 0.1);
+                    border: 1px solid var(--border-soft);
                     border-radius: 30px;
                     max-width: 400px;
                     margin: 0 auto;

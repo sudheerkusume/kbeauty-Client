@@ -14,27 +14,46 @@ import './KoreanCollection.css';
 const KoreanCollection = () => {
     const [products, setProducts] = useState([]);
     const [selectedCountry, setSelectedCountry] = useState('Korea');
+    const [isFading, setIsFading] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`${API_BASE_URL}/products?Country=${selectedCountry}`)
-            .then((res) => {
-                // Sorting by _id descending AND filtering out combo products
-                const filtered = (res.data || [])
-                    .filter(p => !p.combo || (p.combo.isCombo !== true && p.combo.isCombo !== "true"))
-                    .filter(p => !p.title?.includes(' + ')) // Extra safety check
-                    .sort((a, b) => b._id.localeCompare(a._id));
-                setProducts(filtered);
-            })
-            .catch((err) => console.log(err));
+        setIsFading(true);
+        // Short delay to allow fade-out before data swap
+        const timer = setTimeout(() => {
+            axios.get(`${API_BASE_URL}/products`)
+                .then((res) => {
+                    const allProducts = res.data || [];
+                    const filtered = allProducts
+                        .filter(p => p.Country === selectedCountry)
+                        .filter(p => !p.combo || (p.combo.isCombo !== true && p.combo.isCombo !== "true"))
+                        .sort((a, b) => b._id.localeCompare(a._id));
+                    setProducts(filtered);
+                    // Fade back in after content is ready
+                    setTimeout(() => setIsFading(false), 50);
+                })
+                .catch((err) => {
+                    console.log(err);
+                    setIsFading(false);
+                });
+        }, 300);
+
+        return () => clearTimeout(timer);
     }, [selectedCountry]);
 
     return (
-        <section className="korean-section py-5 bg-black">
+        <section className="korean-section py-5" style={{ background: 'var(--bg-cream)' }}>
             <div className="container">
                 <div className="text-center mb-5">
                     <span className="korean-subtitle">Authentic Selection</span>
-                    <h2 className="korean-title text-white">The {selectedCountry} Collection</h2>
+                    {/* Premium Section Title with High Contrast */}
+                    {/* <h2 className="korean-title mb-2" style={{ color: 'var(--text-primary)', fontWeight: '700' }}>
+                        The {selectedCountry} <span style={{ color: 'var(--pink-accent)' }}>Collection</span>
+
+                    </h2> */}
+                    <h1 className="special-title" style={{ color: 'var(--text-primary)' }}>
+                        The {selectedCountry} <span style={{ color: 'var(--pink-accent)' }}>Collection</span></h1>
+
                     <p className="korean-desc mx-auto" style={{ maxWidth: '600px' }}>
                         Experience the gold standard of beauty with our curated selection of authentic {selectedCountry} skincare and makeup.
                     </p>
@@ -57,7 +76,7 @@ const KoreanCollection = () => {
                     </div>
                 </div>
 
-                <div className="korean-slider-wrap position-relative">
+                <div className={`korean-slider-wrap position-relative transition-container ${isFading ? 'fading-out' : 'fading-in'}`}>
                     <Swiper
                         modules={[Navigation]}
                         spaceBetween={20}
@@ -101,7 +120,7 @@ const KoreanCollection = () => {
                                             >
                                                 {product.brand}
                                             </span>
-                                            <h3 className="korean-name text-white mb-1" style={{ fontSize: '13px', minHeight: '38px', overflow: 'hidden', textOverflow: 'ellipsis', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' }}>{product.title}</h3>
+                                            <h3 className="korean-name mb-1" style={{ color: 'var(--text-primary)', fontSize: '13px', minHeight: '18px', overflow: 'hidden', textOverflow: 'ellipsis', display: '-webkit-box', WebkitLineClamp: 1, WebkitBoxOrient: 'vertical' }}>{product.title}</h3>
                                             <div className="d-flex align-items-center justify-content-center gap-2">
                                                 <p className="korean-price mb-0">₹{product.offerPrice}</p>
                                                 <span className="text-muted text-decoration-line-through small" style={{ fontSize: '0.75rem', opacity: 0.6 }}>₹{product.price}</span>
@@ -117,6 +136,21 @@ const KoreanCollection = () => {
                     <button className="korean-nav-btn korean-next"><IoIosArrowForward /></button>
                 </div>
             </div>
+            <style>{`
+                .transition-container {
+                    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                }
+                .fading-out {
+                    opacity: 0;
+                    transform: translateY(10px) scale(0.98);
+                    filter: blur(4px);
+                }
+                .fading-in {
+                    opacity: 1;
+                    transform: translateY(0) scale(1);
+                    filter: blur(0);
+                }
+            `}</style>
         </section>
     );
 };

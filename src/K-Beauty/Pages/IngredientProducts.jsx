@@ -24,7 +24,7 @@ const IngredientProducts = () => {
     }, [name]);
 
     return (
-        <div className="ingredient-products-page py-5 bg-black">
+        <div className="ingredient-products-page py-5" style={{ background: 'var(--bg-cream)', color: 'var(--text-primary)' }}>
             <div className="container py-5">
                 <button
                     className="btn btn-link text-dark text-decoration-none mb-4 d-flex align-items-center p-0"

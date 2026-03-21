@@ -14,15 +14,15 @@
 }
 
 .auth-popup-content {
-    background: #0d0d0d;
-    border: 1px solid rgba(212, 175, 55, 0.3);
+    background: var(--bg-card);
+    border: 1px solid var(--border-soft);
     max-width: 450px;
     width: 100%;
     padding: 40px;
     border-radius: 20px;
     position: relative;
     text-align: center;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(212, 175, 55, 0.1);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1), 0 0 30px rgba(209, 176, 123, 0.1);
 }
 
 .close-btn {
@@ -54,12 +54,12 @@
 .auth-popup-header h2 {
     font-family: 'Playfair Display', serif;
     font-size: 32px;
-    color: #fff;
+    color: var(--text-primary);
     margin-bottom: 15px;
 }
 
 .auth-popup-header p {
-    color: #ccc;
+    color: var(--text-secondary);
     font-size: 15px;
     line-height: 1.6;
     margin-bottom: 30px;
@@ -72,8 +72,8 @@
 }
 
 .btn-gold-luxe {
-    background: linear-gradient(135deg, #D4AF37 0%, #F5D27A 100%);
-    color: #000;
+    background: var(--gradient-gold);
+    color: #fff;
     border: none;
     padding: 16px;
     border-radius: 50px;

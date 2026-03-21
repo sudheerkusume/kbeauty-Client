@@ -164,22 +164,22 @@ const Navbar = () => {
 
     return (
         <>
-            <div className="announcement-bar bg-black py-2 border-bottom border-secondary">
+            <div className="announcement-bar py-2 border-bottom" style={{ backgroundColor: 'var(--text-primary)', color: 'var(--gold-light)' }}>
                 <div className="announcement-track">
-                    <div className="scroll-text fw-medium text-gold-light" style={{ letterSpacing: '0.5px' }}>
+                    <div className="scroll-text fw-medium" style={{ letterSpacing: '1px' }}>
                         <span>Discover your radiant skin with genuine K-Beauty shop now & enjoy doorstep delivery of your favorite Korean skincare. &nbsp;|&nbsp;  &nbsp;|&nbsp; Free Shipping on All Orders &nbsp;|&nbsp; No Coupon Needed &nbsp;|&nbsp; Shop Now & Save Big</span>
                         <span>Discover your radiant skin with genuine K-Beauty shop now & enjoy doorstep delivery of your favorite Korean skincare. &nbsp;|&nbsp;  &nbsp;|&nbsp; Free Shipping on All Orders &nbsp;|&nbsp; No Coupon Needed &nbsp;|&nbsp; Shop Now & Save Big</span>
                     </div>
                 </div>
             </div>
             <header className={`navbar-main-wrapper ${isSticky ? 'sticky-active' : ''}`}>
-                <nav className="navbar navbar-expand-lg navbar-dark bg-black">
+                <nav className="navbar navbar-expand-lg">
                     <div className="container d-flex flex-wrap flex-lg-nowrap align-items-center justify-content-between position-relative">
 
                         {/* Mobile: Hamburger + Search (Left) - Tightened */}
                         <div className="order-1 d-flex align-items-center d-lg-none gap-1" style={{ zIndex: 10, flex: 1, paddingLeft: '0' }}>
                             <button className="navbar-toggler border-0 p-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-label="Toggle navigation" style={{ minWidth: 'unset', width: 'auto' }}>
-                                <FiMenu size={22} color="var(--gold, #D4AF37)" />
+                                <FiMenu size={22} color="var(--pink-accent)" />
                             </button>
                             <div className="nav-icon-item p-0" onClick={() => setIsSearchOpen(true)} style={{ cursor: 'pointer', paddingLeft: '5px' }}>
                                 <BsSearch size={18} />
@@ -253,7 +253,7 @@ const Navbar = () => {
 
                             {/* User Icon (Account) - Visible on both */}
                             <NavLink className="nav-icon-item" to="/Login">
-                                <i className="bi bi-person" style={{ fontSize: isMobile ? '20px' : '24px' }}></i>
+                                <FiUser size={isMobile ? 22 : 24} />
                             </NavLink>
 
                             <div className={`nav-icon-item position-relative ${cartAnimate ? 'badge-pop' : ''}`} onClick={() => setIsCartOpen(true)}>

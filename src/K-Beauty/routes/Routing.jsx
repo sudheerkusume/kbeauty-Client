@@ -30,6 +30,7 @@ import PhoneLogin from "../Pages/PhoneLogin";
 import PrivacyPolicy from "../Pages/PrivacyPolicy";
 import TermsOfService from "../Pages/TermsOfService";
 import RefundPolicy from "../Pages/RefundPolicy";
+import ComboPage from "../SinglesPage/ComboPage";
 
 const Routing = () => {
     return (
@@ -57,6 +58,9 @@ const Routing = () => {
             {/* BestSellers */}
             <Route path="/BestSellers" element={<BestSellersPage />} />
             <Route path='/BestSellers/:id' element={<ProductSingle />} />
+            {/* ComboPage / Sale Hub */}
+            <Route path="/ComboPage" element={<ComboPage />} />
+            <Route path='/ComboPage/:id' element={<ProductSingle />} />
             {/* SkinCare */}
             <Route path="/SkinCare" element={<SkinCarePage />} />
             <Route path='/SkinCare/:id' element={<ProductSingle />} />

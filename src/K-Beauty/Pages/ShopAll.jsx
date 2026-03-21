@@ -32,6 +32,7 @@ const ShopAll = () => {
         price: []
     });
 
+    const [sortBy, setSortBy] = useState("Newest First");
     const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
     const [searchParams] = useSearchParams();
 
@@ -133,6 +134,13 @@ const ShopAll = () => {
 
     const filteredProducts = products.filter(applyFilters);
 
+    const sortedProducts = [...filteredProducts].sort((a, b) => {
+        if (sortBy === "Price: Low to High") return (a.offerPrice || a.price) - (b.offerPrice || b.price);
+        if (sortBy === "Price: High to Low") return (b.offerPrice || b.price) - (a.offerPrice || a.price);
+        if (sortBy === "Newest First") return b._id.localeCompare(a._id);
+        return 0;
+    });
+
     // Number Counter Animation Component
     const NumberCounter = ({ targetNumber }) => {
         const [count, setCount] = useState(0);
@@ -218,11 +226,11 @@ const ShopAll = () => {
     }
 
     return (
-        <div className="bg-black text-white" style={{ fontFamily: "'Outfit', sans-serif" }}>
-            <div className="shop-all-hero bg-black py-5 text-center mb-5" style={{ borderBottom: '1px solid rgba(212, 175, 55, 0.15)', background: 'linear-gradient(to bottom, #050505, #000)' }}>
-                <span className="text-gold mb-2 d-block" style={{ letterSpacing: '5px', fontSize: '0.8rem', fontWeight: 500 }}>CURATED SELECTION</span>
-                <h1 className="fw-light mb-3" style={{ letterSpacing: '2px', color: '#fff', fontFamily: "'Playfair Display', serif", fontSize: '3.5rem' }}>SHOP ALL</h1>
-                <p className="mx-auto" style={{ maxWidth: '600px', color: 'rgba(255, 255, 255, 0.6)', fontWeight: 300, letterSpacing: '1px' }}>
+        <div className="pdp-main-container" style={{ background: 'var(--bg-cream)', color: 'var(--text-primary)', fontFamily: "'Outfit', sans-serif" }}>
+            <div className="shop-all-hero py-5 text-center mb-5" style={{ background: 'var(--bg-cream)', borderBottom: '1px solid var(--border-soft)' }}>
+                <span className="mb-2 d-block" style={{ letterSpacing: '5px', fontSize: '0.8rem', fontWeight: 500, color: 'var(--pink-accent)' }}>CURATED SELECTION</span>
+                <h1 className="fw-light mb-3" style={{ letterSpacing: '2px', color: 'var(--text-primary)', fontFamily: "'Playfair Display', serif", fontSize: '3.5rem' }}>SHOP ALL</h1>
+                <p className="mx-auto" style={{ maxWidth: '600px', color: 'var(--text-secondary)', fontWeight: 300, letterSpacing: '1px' }}>
                     Discover our complete range of high-performance K-Beauty products,
                     sourced directly from Seoul's most prestigious laboratories.
                 </p>
@@ -230,9 +238,9 @@ const ShopAll = () => {
 
             <div className="container-fluid px-4 px-md-5 pb-5">
                 {/* Mobile Filter Toggle */}
-                <div className="d-lg-none mb-4 d-flex justify-content-between align-items-center border-bottom pb-3">
+                <div className="d-lg-none mb-4 d-flex justify-content-between align-items-center border-bottom pb-3" style={{ borderColor: 'var(--border-soft)' }}>
                     <span className="fw-bold"><NumberCounter targetNumber={filteredProducts.length} /> Results</span>
-                    <button className="btn btn-dark d-flex align-items-center gap-2 rounded-1 px-4" onClick={() => setMobileFilterOpen(!mobileFilterOpen)}>
+                    <button className="btn d-flex align-items-center gap-2 rounded-1 px-4 shadow-sm" onClick={() => setMobileFilterOpen(!mobileFilterOpen)} style={{ background: 'var(--bg-card)', border: '1px solid var(--border-soft)', color: 'var(--text-primary)' }}>
                         <IoFilter /> {mobileFilterOpen ? 'Close Filters' : 'Filters'}
                     </button>
                 </div>
@@ -240,12 +248,33 @@ const ShopAll = () => {
                 <div className="row">
                     {/* ── FILTER SIDEBAR ── */}
                     <div className={`shop-filter-sidebar col-lg-3 pe-lg-5 ${mobileFilterOpen ? 'd-block mb-4' : 'd-none d-lg-block'}`}>
-                        <div className="position-sticky custom-scrollbar" style={{ top: '100px', maxHeight: 'calc(100vh - 120px)', overflowY: 'auto', paddingRight: '15px' }}>
-                            <div className="d-flex justify-content-between align-items-center border-bottom pb-3 mb-4">
-                                <h5 className="fw-bold m-0 text-white" style={{ letterSpacing: '1px' }}>FILTERS</h5>
-                                <button className="btn btn-link text-gold p-0 text-decoration-none small" onClick={() => setSelectedFilters({ brand: [], category: [], type: [], skinType: [], skinConcern: [], price: [] })}>
+                        <div className="position-sticky custom-scrollbar" style={{ top: '100px', maxHeight: 'calc(100vh - 120px)', overflowY: 'auto', paddingRight: '15px', background: '#F8F1ED', padding: '25px 20px', borderRadius: '15px' }}>
+                            <div className="d-flex justify-content-between align-items-center border-bottom pb-3 mb-4" style={{ borderColor: 'var(--border-soft)' }}>
+                                <h5 className="fw-bold m-0" style={{ letterSpacing: '1px', color: 'var(--text-primary)' }}>FILTERS</h5>
+                                <button className="btn btn-link p-0 text-decoration-none small" 
+                                    onClick={() => {
+                                        setSelectedFilters({ brand: [], category: [], type: [], skinType: [], skinConcern: [], price: [] });
+                                        setSortBy("Newest First");
+                                    }} 
+                                    style={{ color: 'var(--pink-accent)' }}
+                                >
                                     Reset All
                                 </button>
+                            </div>
+
+                            {/* Mobile Only Sort Section */}
+                            <div className="d-lg-none mb-4 border-bottom pb-4" style={{ borderColor: 'var(--border-soft)' }}>
+                                <h6 className="text-uppercase mb-3" style={{ fontSize: '11px', fontWeight: 800, letterSpacing: '2px', color: '#B17A7E' }}>Sort By</h6>
+                                <select 
+                                    className="form-select border-0 shadow-none bg-light rounded-pill px-4" 
+                                    style={{ fontSize: '14px', height: '45px' }}
+                                    value={sortBy}
+                                    onChange={(e) => setSortBy(e.target.value)}
+                                >
+                                    <option>Newest First</option>
+                                    <option>Price: Low to High</option>
+                                    <option>Price: High to Low</option>
+                                </select>
                             </div>
 
                             {Object.entries(filters).map(([filterKey, values]) => {
@@ -257,10 +286,10 @@ const ShopAll = () => {
                                             onClick={() => toggleSection(filterKey)}
                                             style={{ cursor: 'pointer' }}
                                         >
-                                            <h6 className="text-uppercase m-0" style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '2px', color: 'var(--gold-light)' }}>
+                                            <h6 className="text-uppercase m-0" style={{ fontSize: '11px', fontWeight: 800, letterSpacing: '2px', color: '#B17A7E' }}>
                                                 {formatFilterLabel(filterKey)}
                                             </h6>
-                                            <span style={{ transform: openSections[filterKey] ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.3s ease', color: 'var(--gold)' }}>
+                                            <span style={{ transform: openSections[filterKey] ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.3s ease', color: 'var(--pink-accent)' }}>
                                                 <IoIosArrowForward />
                                             </span>
                                         </div>
@@ -275,17 +304,17 @@ const ShopAll = () => {
                                                 return (
                                                     <div className="form-check custom-checkbox mb-2 d-flex align-items-center" key={idx}>
                                                         <input
-                                                            className="form-check-input bg-black border-secondary shadow-none me-2"
+                                                            className="form-check-input border-secondary shadow-none me-2"
                                                             type="checkbox"
                                                             id={`filter-${filterKey}-${idx}`}
                                                             checked={selectedFilters[filterKey].includes(val)}
                                                             onChange={() => handleFilterChange(filterKey, val)}
                                                             style={{ cursor: 'pointer', borderRadius: '4px' }}
                                                         />
-                                                        <label className="form-check-label d-flex justify-content-between w-100" htmlFor={`filter-${filterKey}-${idx}`} style={{ cursor: 'pointer', fontSize: '13px', color: 'rgba(255, 255, 255, 0.7)', letterSpacing: '0.5px' }}>
-                                                            <span>{val}</span>
-                                                            <span className="small opacity-50" style={{ fontSize: '10px' }}>{count}</span>
-                                                        </label>
+                                                        <label className="form-check-label d-flex justify-content-between w-100" htmlFor={`filter-${filterKey}-${idx}`} style={{ cursor: 'pointer', fontSize: '13px', color: 'var(--text-secondary)', fontWeight: 500, letterSpacing: '0.5px' }}>
+    <span>{val}</span>
+    <span className="small" style={{ fontSize: '10px', color: 'var(--pink-accent)', opacity: 0.8 }}>{count}</span>
+</label>
                                                     </div>
                                                 );
                                             })}
@@ -298,13 +327,26 @@ const ShopAll = () => {
 
                     {/* ── PRODUCT GRID ── */}
                     <div className="col-lg-9">
-                        <div className="d-none d-lg-flex justify-content-between align-items-center mb-4">
-                            <span className="text-white fw-bold">Showing <NumberCounter targetNumber={filteredProducts.length} /> Products</span>
+                        <div className="d-none d-lg-flex justify-content-between align-items-center mb-4 p-3 rounded-3 shadow-sm" style={{ background: 'var(--bg-card)', border: '1px solid var(--border-soft)', color: 'var(--text-primary)' }}>
+                            <span className="fw-medium">Showing <strong style={{ color: 'var(--pink-accent)' }}><NumberCounter targetNumber={filteredProducts.length} /></strong> Premium Boutique Items</span>
+                            <div className="sort-box d-flex align-items-center gap-3">
+                                <span className="small text-muted">Sort By:</span>
+                                <select 
+                                    className="bg-transparent border-0 small outline-none" 
+                                    style={{ cursor: 'pointer', color: 'var(--text-primary)' }}
+                                    value={sortBy}
+                                    onChange={(e) => setSortBy(e.target.value)}
+                                >
+                                    <option className="bg-white">Newest First</option>
+                                    <option className="bg-white">Price: Low to High</option>
+                                    <option className="bg-white">Price: High to Low</option>
+                                </select>
+                            </div>
                         </div>
 
                         {filteredProducts.length === 0 ? (
-                            <div className="text-center py-5 my-5 bg-dark rounded-4" style={{ border: '1px solid var(--border-gold)' }}>
-                                <h4 className="fw-bold text-white">No Products Found</h4>
+                            <div className="text-center py-5 my-5 rounded-4" style={{ background: 'var(--bg-card)', border: '1px solid var(--border-soft)' }}>
+                                <h4 className="fw-bold" style={{ color: 'var(--text-primary)' }}>No Products Found</h4>
                                 <p className="text-muted mb-4">We couldn't find anything matching your selected filters.</p>
                                 <button className="btn btn-gold rounded-1 px-4 py-2" onClick={() => setSelectedFilters({ brand: [], category: [], type: [], skinType: [], skinConcern: [], price: [] })}>
                                     Clear All Filters
@@ -312,7 +354,7 @@ const ShopAll = () => {
                             </div>
                         ) : (
                             <div className="row g-4">
-                                {filteredProducts.map(product => {
+                                {sortedProducts.map(product => {
                                     const discountPercent = product.price && product.offerPrice
                                         ? Math.round(((product.price - product.offerPrice) / product.price) * 100)
                                         : 0;
@@ -353,9 +395,9 @@ const ShopAll = () => {
                                                 <Link to={targetLink} className="signature-premium-card">
                                                     <div className="premium-img-container">
                                                         {discountPercent > 15 && (
-                                                            <div className="premium-discount-badge" style={{ left: '10px', right: 'auto' }}>
-                                                                <span className="discount-val-p">{discountPercent}<span className="animated-percent">%</span></span>
-                                                                <span className="discount-label-p">OFF</span>
+                                                            <div className="premium-discount-badge" style={{ left: '15px', right: 'auto', background: 'var(--pink-accent)' }}>
+                                                                <span className="discount-val-p" style={{ color: '#fff' }}>{discountPercent}<span className="animated-percent">%</span></span>
+                                                                <span className="discount-label-p" style={{ color: '#fff' }}>OFF</span>
                                                             </div>
                                                         )}
 
@@ -404,19 +446,20 @@ const ShopAll = () => {
             </div>
 
             <style>{`
-                    .pointer { cursor: pointer; }
+                     .pointer { cursor: pointer; }
                     .transition-transform { transition: transform 0.3s ease; }
                     .group:hover .transition-transform { transform: scale(1.05); }
                     .custom-scrollbar::-webkit-scrollbar { width: 4px; }
-                    .custom-scrollbar::-webkit-scrollbar-track { background: #111; border-radius: 4px; }
-                    .custom-scrollbar::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
-                    .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #444; }
-                    .custom-checkbox input:checked { background-color: #D4AF37; border-color: #D4AF37; }
+                    .custom-scrollbar::-webkit-scrollbar-track { background: var(--bg-cream); border-radius: 4px; }
+                    .custom-scrollbar::-webkit-scrollbar-thumb { background: var(--border-soft); border-radius: 4px; }
+                    .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+                    .custom-checkbox input:checked { background-color: var(--pink-accent); border-color: var(--pink-accent); }
+                    .form-check-input:checked { background-color: var(--pink-accent) !important; border-color: var(--pink-accent) !important; }
 
-                    /* Premium Combo Card Design v2 (Gold Standard) */
+                     /* Premium Combo Card Design v2 (Gold Standard) */
                     .combo-ref-card {
-                        background: #000;
-                        border: 1px solid rgba(255, 255, 255, 0.08);
+                        background: var(--bg-card);
+                        border: 1px solid var(--border-soft);
                         border-radius: 12px;
                         overflow: hidden;
                         display: flex;
@@ -425,18 +468,17 @@ const ShopAll = () => {
                         transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
                         text-decoration: none !important;
                         position: relative;
-                        box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+                        box-shadow: var(--shadow-soft);
                     }
                     .combo-ref-card:hover {
                         transform: translateY(-8px);
-                        border-color: rgba(197, 160, 89, 0.5);
-                        box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+                        border-color: var(--pink-accent);
+                        box-shadow: var(--shadow-hover);
                     }
-                    .combo-ref-badge-wrap { text-align: center; padding-top: 15px; background: #000; }
+                     .combo-ref-badge-wrap { text-align: center; padding-top: 15px; background: var(--bg-card); }
                     .combo-ref-badge {
-                        background: rgba(197, 160, 89, 0.2);
-                        color: #F5D27A;
-                        border: 1px solid rgba(197, 160, 89, 0.4);
+                        background: var(--pink-accent);
+                        color: #FFF;
                         padding: 4px 16px;
                         border-radius: 50px;
                         font-size: 13px;
@@ -445,45 +487,44 @@ const ShopAll = () => {
                         text-transform: none;
                         letter-spacing: 0.5px;
                     }
-                    .combo-ref-savings-bar {
-                        background: linear-gradient(to right, #C5A059, #F5D27A, #C5A059);
+                     .combo-ref-savings-bar {
+                        background: var(--gold-gradient);
                         padding: 8px 12px;
                         display: flex;
                         align-items: center;
                         justify-content: center;
                         gap: 8px;
                         margin: 15px 0;
-                        color: #3D2616;
+                        color: #FFF;
                         font-weight: 800;
                         font-size: 14px;
-                        box-shadow: inset 0 2px 4px rgba(255,255,255,0.3);
                     }
-                    .combo-ref-savings-bar .save-text { color: #a00000; font-weight: 900; }
-                    .combo-ref-images {
+                    .combo-ref-savings-bar .save-text { color: var(--pink-accent); font-weight: 900; }
+                     .combo-ref-images {
                         display: flex;
                         align-items: center;
                         justify-content: center;
                         gap: 15px;
                         padding: 20px 15px 30px 15px;
-                        background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+                        background: radial-gradient(circle at center, var(--bg-cream) 0%, var(--bg-card) 100%);
                     }
                     .combo-ref-img {
                         width: 44%;
                         height: 130px;
                         object-fit: contain;
-                        filter: drop-shadow(0 8px 15px rgba(0,0,0,0.6));
+                        filter: drop-shadow(0 8px 15px rgba(61, 44, 35, 0.1));
                         transition: transform 0.4s ease;
                     }
                     .combo-ref-card:hover .combo-ref-img { transform: scale(1.08) translateY(-5px); }
-                    .combo-ref-plus { color: rgba(255, 255, 255, 0.8); font-size: 24px; font-weight: 300; margin-top: -5px; }
-                    .combo-ref-info { padding: 0 20px 20px 20px; text-align: center; display: flex; flex-direction: column; flex-grow: 1; }
-                    .combo-ref-includes { font-size: 12px; color: rgba(255, 255, 255, 0.7); margin-bottom: 12px; font-weight: 500; }
+                    .combo-ref-plus { color: var(--text-primary); font-size: 24px; font-weight: 300; margin-top: -5px; }
+                     .combo-ref-info { padding: 0 20px 20px 20px; text-align: center; display: flex; flex-direction: column; flex-grow: 1; }
+                    .combo-ref-includes { font-size: 12px; color: var(--text-secondary); margin-bottom: 12px; font-weight: 500; }
                     .combo-ref-price-wrap { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 20px; }
-                    .combo-ref-price-new { font-size: 24px; font-weight: 800; color: #fff; letter-spacing: -0.5px; }
-                    .combo-ref-price-old { font-size: 16px; color: rgba(255, 255, 255, 0.4); text-decoration: line-through; }
-                    .combo-ref-btn-gold {
+                    .combo-ref-price-new { font-size: 24px; font-weight: 800; color: var(--text-primary); letter-spacing: -0.5px; }
+                    .combo-ref-price-old { font-size: 16px; color: var(--text-secondary); opacity: 0.4; text-decoration: line-through; }
+                     .combo-ref-btn-gold {
                         width: 100%;
-                        background: linear-gradient(135deg, #8E6E3C 0%, #C5A059 50%, #8E6E3C 100%);
+                        background: var(--gold-gradient);
                         color: #fff !important;
                         border: none;
                         padding: 14px;
@@ -492,9 +533,9 @@ const ShopAll = () => {
                         font-size: 16px;
                         cursor: pointer;
                         transition: all 0.3s ease;
-                        box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+                        box-shadow: var(--shadow-soft);
                     }
-                    .combo-ref-btn-gold:hover { transform: scale(1.02); filter: brightness(1.1); }
+                    .combo-ref-btn-gold:hover { transform: scale(1.02); box-shadow: var(--shadow-hover); }
 
                     @media (max-width: 576px) {
                         .combo-ref-badge-wrap { padding-top: 8px; }

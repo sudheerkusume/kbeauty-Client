@@ -1,11 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/Mainlogo.png';
+import cherryLeft from '../assets/Cherryblogs2.PNG';
+import cherryRight1 from '../assets/Footer_Cherry1.png';
+import cherryRight2 from '../assets/Footer_Cherry2.png';
+import footerPetal from '../assets/footer1_petal.png';
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import './Footer.css';
 
 const Footer = () => {
     return (
-        <footer className="footer-dark text-light py-5 px-3">
+        <footer className="footer-luxury py-5 px-3">
+            {/* Specific Branches with Multi-Motion */}
+            <img src={cherryLeft} alt="error" className="cherry-branch branch-left" />
+            <img src={cherryRight1} alt="error" className="cherry-branch branch-right-1" />
+            {/* <img src={cherryRight2} alt="error" className="cherry-branch branch-right-2" /> */}
+
+            {/* Falling Petals */}
+            <div className="petal-container">
+                {[...Array(6)].map((_, i) => (
+                    <img key={i} src={footerPetal} alt="" className={`petal p${i + 1}`} />
+                ))}
+            </div>
+
             <div className="container">
                 <div className="row gy-5 text-start">
                     {/* Section 1: Explore */}
@@ -39,7 +56,6 @@ const Footer = () => {
                             src={logo}
                             alt="K-Beautymart Logo"
                             className="footer-logo mb-4"
-                            style={{ filter: 'brightness(0) invert(1)' }}
                         />
                         <p className="footer-description">
                             <strong>K-Beautymart</strong> is your premier destination for curated, 100% authentic Korean skincare. Experience the ultimate glass skin glow.
@@ -63,10 +79,10 @@ const Footer = () => {
                             <input
                                 type="email"
                                 placeholder="Enter email for glow tips"
-                                className="form-control bg-dark text-white border-secondary"
+                                className="form-control bg-white text-dark border-light"
                                 style={{ borderRadius: '0' }}
                             />
-                            <button type="submit" className="footer-newsletter-btn bg-gold text-black border-0 px-3">→</button>
+                            <button type="submit" className="footer-newsletter-btn bg-gold text-white border-0 px-3">→</button>
                         </form>
                     </div>
                 </div>

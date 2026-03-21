@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./Banner.css";
 import faceGlow from "../assets/Banner.jpg";
 import productImg from "../assets/Banner2.png";
-
+import icon from "../assets/Mainlogo.png"
 export default function Banner() {
     return (
         <section className="banner-section py-lg-5 py-3">
@@ -12,7 +12,7 @@ export default function Banner() {
 
                     {/* LEFT: PRODUCT */}
                     <div className="col-12 col-md-5 product-column d-flex align-items-center justify-content-center p-4 p-lg-5 position-relative z-1">
-                        
+
                         {/* Cool Background Text Overlay */}
                         <div className="product-bg-text">
                             <h2 className="routine-title-bg">
@@ -44,7 +44,7 @@ export default function Banner() {
                             {/* CALLOUTS WITH L-SHAPE POINTERS */}
                             <div className="routine-points-overlay">
                                 {/* Left Side Callouts */}
-                                <div className="callout-absolute item-1" style={{ top: '32%', left: '8%' }}>
+                                <div className="callout-absolute item-1">
                                     <span className="callout-text">Dark Spots Lightened</span>
                                     <div className="pointer-wrapper">
                                         <div className="line-h" style={{ width: '30px' }}></div>
@@ -52,7 +52,7 @@ export default function Banner() {
                                     </div>
                                 </div>
 
-                                <div className="callout-absolute item-2" style={{ top: '52%', left: '4%' }}>
+                                <div className="callout-absolute item-2">
                                     <span className="callout-text">Whiteheads Reduced</span>
                                     <div className="pointer-wrapper">
                                         <div className="line-h" style={{ width: '25px' }}></div>
@@ -60,7 +60,7 @@ export default function Banner() {
                                     </div>
                                 </div>
 
-                                <div className="callout-absolute item-3" style={{ top: '78%', left: '10%' }}>
+                                <div className="callout-absolute item-3">
                                     <span className="callout-text">Radiant Glow</span>
                                     <div className="pointer-wrapper">
                                         <div className="line-h" style={{ width: '40px' }}></div>
@@ -69,7 +69,7 @@ export default function Banner() {
                                 </div>
 
                                 {/* Right Side Callouts */}
-                                <div className="callout-absolute item-4" style={{ top: '42%', right: '8%' }}>
+                                <div className="callout-absolute item-4">
                                     <div className="pointer-wrapper">
                                         <div className="line-d down-left" style={{ width: '45px' }}><div className="pointer-dot l-dot"></div></div>
                                         <div className="line-h" style={{ width: '25px' }}></div>
@@ -77,20 +77,16 @@ export default function Banner() {
                                     <span className="callout-text">Glass Skin Glow ✨</span>
                                 </div>
 
-                                <div className="callout-absolute item-5" style={{ top: '65%', right: '4%' }}>
-                                    <div className="pointer-wrapper">
-                                        <div className="line-d down-left" style={{ width: '40px' }}><div className="pointer-dot l-dot"></div></div>
-                                        <div className="line-h" style={{ width: '35px' }}></div>
-                                    </div>
-                                    <span className="callout-text">Pigmentation Fades</span>
+                                <div className="callout-absolute item-logo">
+                                    <img src={icon} alt="Brand Logo" className="banner-callout-logo" />
                                 </div>
 
-                                <div className="callout-absolute item-6" style={{ top: '85%', right: '10%' }}>
+                                <div className="callout-absolute item-6">
                                     <div className="pointer-wrapper">
                                         <div className="line-d up-left" style={{ width: '30px' }}><div className="pointer-dot l-dot"></div></div>
                                         <div className="line-h" style={{ width: '40px' }}></div>
                                     </div>
-                                    <span className="callout-text">Bright, Even Skin Tone</span>
+                                    <span className="callout-text">Healthier Skin Barrier</span>
                                 </div>
                             </div>
                         </div>

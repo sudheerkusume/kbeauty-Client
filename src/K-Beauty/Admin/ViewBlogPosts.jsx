@@ -32,7 +32,7 @@ const ViewBlogPosts = () => {
     const fetchBlogs = async () => {
         setLoading(true);
         try {
-            const res = await axios.get(`${API_BASE_URL}/blogs`);
+            const res = await axios.get(`${API_BASE_URL}/blogPosts`);
             setBlogs(res.data || []);
             setLoading(false);
         } catch (err) {
@@ -48,7 +48,7 @@ const ViewBlogPosts = () => {
     const deleteBlog = async (id) => {
         if (window.confirm("Delete this blog post?")) {
             try {
-                await axios.delete(`${API_BASE_URL}/blogs/${id}`);
+                await axios.delete(`${API_BASE_URL}/blogPosts/${id}`);
                 fetchBlogs();
             } catch (err) {
                 alert("Delete failed");
@@ -99,9 +99,9 @@ const ViewBlogPosts = () => {
             };
 
             if (isEdit) {
-                await axios.put(`${API_BASE_URL}/blogs/${activeBlog._id || activeBlog.id}`, formData, config);
+                await axios.put(`${API_BASE_URL}/blogPosts/${activeBlog._id || activeBlog.id}`, formData, config);
             } else {
-                await axios.post(`${API_BASE_URL}/blogs`, formData, config);
+                await axios.post(`${API_BASE_URL}/blogPosts`, formData, config);
             }
             bootstrap.Modal.getInstance(document.getElementById('blogModal')).hide();
             fetchBlogs();

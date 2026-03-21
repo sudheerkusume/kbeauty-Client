@@ -29,12 +29,12 @@ const OffersSection = () => {
     if (offerProducts.length === 0) return null;
 
     return (
-        <section className="offers-slider-section py-5 bg-black">
+        <section className="offers-slider-section py-5" style={{ background: 'var(--bg-cream)' }}>
             <div className="container">
                 <div className="d-flex justify-content-between align-items-end mb-4">
-                    <div>
+                    <div className="offers-header-marker">
                         <span className="offers-badge-mini">Today's Deals</span>
-                        <h2 className="offers-main-title">Special Offers</h2>
+                        <h4 className="special-title" style={{ color: 'var(--text-primary)' }}>Special <span>Offers</span></h4>
                     </div>
                     <div className="offers-nav-group d-none d-md-flex">
                         <button className="offers-arr offers-prev"><IoIosArrowBack /></button>
@@ -64,36 +64,36 @@ const OffersSection = () => {
                         const comboSavings = combo?.savings || (product.price - product.offerPrice);
 
                         return (
-                        <SwiperSlide key={product._id}>
-                            <div className="offer-card-luxe">
-                                <div className="row g-0 align-items-center">
-                                    <div className="col-5">
-                                        <div className="offer-img-box">
-                                            <img src={product.images?.[0] || product.image} alt={product.title} className="img-fluid" />
-                                            <div className="offer-tag">-{Math.round(((product.price - product.offerPrice) / product.price) * 100)}%</div>
-                                            <div className="position-absolute top-0 end-0 m-2" style={{ zIndex: 10 }}>
-                                                <WishlistButton product={product} />
+                            <SwiperSlide key={product._id}>
+                                <div className="offer-card-luxe">
+                                    <div className="row g-0 align-items-center">
+                                        <div className="col-5">
+                                            <div className="offer-img-box">
+                                                <img src={product.images?.[0] || product.image} alt={product.title} className="img-fluid" />
+                                                <div className="offer-tag">-{Math.round(((product.price - product.offerPrice) / product.price) * 100)}%</div>
+                                                <div className="position-absolute top-0 end-0 m-2" style={{ zIndex: 10 }}>
+                                                    <WishlistButton product={product} />
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className="col-7">
-                                        <div className="offer-details p-3 p-md-4">
-                                            <h3 className="offer-prod-title">{product.title}</h3>
-                                            <div className="offer-pricing">
-                                                <span className="offer-price-new">₹{product.offerPrice}</span>
-                                                <span className="offer-price-old ms-2">₹{product.price}</span>
+                                        <div className="col-7">
+                                            <div className="offer-details p-3 p-md-4">
+                                                <h3 className="offer-prod-title">{product.title}</h3>
+                                                <div className="offer-pricing">
+                                                    <span className="offer-price-new">₹{product.offerPrice}</span>
+                                                    <span className="offer-price-old ms-2">₹{product.price}</span>
+                                                </div>
+                                                <Link
+                                                    to={targetLink}
+                                                    className="offer-cta-link mt-3"
+                                                >
+                                                    Shop Deal <IoIosArrowForward size={12} />
+                                                </Link>
                                             </div>
-                                            <Link
-                                                to={targetLink}
-                                                className="offer-cta-link mt-3"
-                                            >
-                                                Shop Deal <IoIosArrowForward size={12} />
-                                            </Link>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </SwiperSlide>
+                            </SwiperSlide>
                         );
                     })}
                 </Swiper>

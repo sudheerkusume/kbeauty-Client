@@ -18,7 +18,7 @@ import ShippingDetails from './Components/ShippingDetails';
 
 const Product = () => {
     return (
-        <div style={{ backgroundColor: '#000' }}>
+        <div style={{ backgroundColor: 'var(--bg-cream)' }}>
             <Hero />
             <IconPage />
             <Navpage />

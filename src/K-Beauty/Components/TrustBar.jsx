@@ -22,7 +22,7 @@ const TrustBar = () => {
     ];
 
     return (
-        <div className="trust-bar-wrap py-4 border-bottom border-top bg-black border-secondary">
+        <div className="trust-bar-wrap py-4 border-bottom border-top" style={{ background: 'var(--bg-cream)', borderColor: 'var(--border-soft)' }}>
             <div className="container">
                 <div className="row justify-content-center g-4">
                     {trustItems.map((item, index) => (
@@ -32,8 +32,8 @@ const TrustBar = () => {
                                     {item.icon}
                                 </div>
                                 <div className="trust-content text-start">
-                                    <h6 className="mb-0 fw-bold text-white" style={{ fontSize: '13px', letterSpacing: '1px' }}>{item.title}</h6>
-                                    <p className="mb-0 text-muted" style={{ fontSize: '11px' }}>{item.desc}</p>
+                                    <h6 className="mb-0 fw-bold" style={{ fontSize: '13px', letterSpacing: '1px', color: 'var(--text-primary)' }}>{item.title}</h6>
+                                    <p className="mb-0" style={{ fontSize: '11px', color: 'var(--text-secondary)' }}>{item.desc}</p>
                                 </div>
                             </div>
                         </div>

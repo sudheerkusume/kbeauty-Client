@@ -252,7 +252,7 @@ const Order = () => {
                     {/* Main Content */}
                     <div className="col-lg-7">
                         <div className="d-flex align-items-center mb-4">
-                            <h2 className="brand-logo mb-0 me-3">K-BEAUTY</h2>
+                            <h2 className="brand-logo mb-0 me-3" style={{ fontFamily: "'Playfair Display', serif", fontWeight: 900, color: 'var(--text-primary)' }}>K-BEAUTY</h2>
                             <StepIndicator />
                         </div>
 
@@ -261,7 +261,7 @@ const Order = () => {
                                 <section className="mb-5">
                                     <div className="d-flex justify-content-between align-items-center mb-3">
                                         <h5 className="checkout-title mb-0">Contact Information</h5>
-                                        {!loggedInUser && <span className="small text-muted">Already have an account? <a href="/login" className="text-gold">Log in</a></span>}
+                                        {!loggedInUser && <span className="small text-muted">Already have an account? <a href="/login" style={{ color: 'var(--pink-accent)' }}>Log in</a></span>}
                                     </div>
                                     <div className="form-floating mb-3">
                                         <input 
@@ -347,7 +347,7 @@ const Order = () => {
                                     <div className="d-flex justify-content-between">
                                         <div className="small text-muted w-25">Ship to</div>
                                         <div className="small flex-grow-1">{formData.shippingAddress.address}, {formData.shippingAddress.city}, {formData.shippingAddress.pincode}</div>
-                                        <button className="btn btn-link text-gold btn-sm p-0" onClick={() => setCurrentStep(1)}>Change</button>
+                                        <button className="btn btn-link btn-sm p-0" style={{ color: 'var(--pink-accent)', textDecoration: 'none' }} onClick={() => setCurrentStep(1)}>Change</button>
                                     </div>
                                 </div>
 
@@ -427,7 +427,7 @@ const Order = () => {
                     <div className="col-lg-5">
                         <div className="order-summary-sticky">
                             <div className="checkout-card">
-                                <h5 className="checkout-title mb-4 pb-2 border-bottom border-secondary">Your Cart ({cartItems.length} items)</h5>
+                                <h5 className="checkout-title mb-4 pb-2 border-bottom" style={{ borderColor: 'var(--border-soft)' }}>Your Cart ({cartItems.length} items)</h5>
                                 
                                 <div className="mb-4">
                                     {cartItems.map((item, idx) => (

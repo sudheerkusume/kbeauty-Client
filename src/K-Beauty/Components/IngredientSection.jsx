@@ -33,11 +33,11 @@ const IngredientSection = () => {
     if (ingredients.length === 0) return null;
 
     return (
-        <section className="ingredient-section py-5 bg-black">
+        <section className="ingredient-section py-5" style={{ background: 'var(--bg-cream)' }}>
             <div className="container">
                 <div className="text-center mb-5">
-                    <span className="ing-subtitle">Purity in Every Drop</span>
-                    <h2 className="ing-title">Shop by Ingredient</h2>
+                    <span className="ing-subtitle" style={{ color: 'var(--pink-accent)', textTransform: 'uppercase', letterSpacing: '4px', fontSize: '11px' }}>Purity in Every Drop</span>
+                    <h2 className="ing-title" style={{ color: 'var(--text-primary)', fontFamily: "'Playfair Display', serif" }}>Shop by Ingredient</h2>
                 </div>
                 <div className="ingredient-grid-luxe">
                     {ingredients.map((ing, index) => (

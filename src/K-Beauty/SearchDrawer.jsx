@@ -15,6 +15,7 @@ const SearchDrawer = ({ isOpen, onClose }) => {
     const [isDeleting, setIsDeleting] = useState(false);
     const [loopNum, setLoopNum] = useState(0);
     const [typingSpeed, setTypingSpeed] = useState(150);
+    const [showCursor, setShowCursor] = useState(true);
 
     const phrases = ["Cleansers", "Serums", "Moisturizers", "Sunscreen", "Face Masks"];
 
@@ -29,10 +30,10 @@ const SearchDrawer = ({ isOpen, onClose }) => {
                     : fullText.substring(0, placeholder.length + 1)
             );
 
-            setTypingSpeed(isDeleting ? 50 : 150);
+            setTypingSpeed(isDeleting ? 80 : 150);
 
             if (!isDeleting && placeholder === fullText) {
-                setTimeout(() => setIsDeleting(true), 2000);
+                setTimeout(() => setIsDeleting(true), 1500);
             } else if (isDeleting && placeholder === '') {
                 setIsDeleting(false);
                 setLoopNum(loopNum + 1);
@@ -42,6 +43,14 @@ const SearchDrawer = ({ isOpen, onClose }) => {
         const timer = setTimeout(handleTyping, typingSpeed);
         return () => clearTimeout(timer);
     }, [placeholder, isDeleting, loopNum, typingSpeed]);
+
+    // Blinking Cursor Effect
+    useEffect(() => {
+        const cursorTimer = setInterval(() => {
+            setShowCursor(prev => !prev);
+        }, 500);
+        return () => clearInterval(cursorTimer);
+    }, []);
 
     const navigate = useNavigate();
 
@@ -103,7 +112,7 @@ const SearchDrawer = ({ isOpen, onClose }) => {
                         <input
                             type="text"
                             className="form-control search-input border-0 border-bottom rounded-0 px-0 shadow-none"
-                            placeholder={query ? "" : `Search for ${placeholder}...`}
+                            placeholder={query ? "" : `Search for ${placeholder}${showCursor ? '|' : ''}`}
                             value={query}
                             onChange={handleInputChange}
                             autoFocus

@@ -1,7 +1,7 @@
 .trust-bar-wrap {
-    background: var(--bg-dark, #000);
-    border-top: 1px solid var(--border-gold, rgba(212, 175, 55, 0.1));
-    border-bottom: 1px solid var(--border-gold, rgba(212, 175, 55, 0.1));
+    background: var(--bg-cream);
+    border-top: 1px solid var(--border-soft);
+    border-bottom: 1px solid var(--border-soft);
 }
 
 .trust-item {
@@ -13,12 +13,34 @@
 }
 
 .trust-icon {
-    color: var(--gold, #D4AF37);
+    color: var(--pink-accent);
 }
 
 .trust-content h6 {
     text-transform: uppercase;
-    color: var(--text-primary, #fff);
+    color: var(--text-primary);
+}
+
+.ingredient-section {
+    background-color: var(--bg-cream);
+    border-top: 1px solid var(--border-soft);
+    border-bottom: 1px solid var(--border-soft);
+}
+
+.ing-subtitle {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--pink-accent);
+    display: block;
+    margin-bottom: 8px;
+}
+
+.ing-initial {
+    font-size: 2rem;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: var(--text-primary);
 }
 
 @media (max-width: 768px) {

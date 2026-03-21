@@ -1,0 +1,177 @@
+.footer-luxury {
+    background-color: #f7fbfc; /* Soft boutique teal wash */
+    position: relative;
+    overflow: hidden;
+    color: var(--text-primary);
+    font-family: 'Outfit', sans-serif;
+    border-top: 1px solid rgba(232, 180, 184, 0.2);
+}
+
+/* Specific Multi-Branch Motion */
+.cherry-branch {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.7;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.05));
+    transition: all 0.8s ease;
+}
+
+.branch-left {
+    top: -40px;
+    left: -50px;
+    width: 320px;
+    transform-origin: top left;
+    animation: sway-soft-left 10s ease-in-out infinite alternate;
+    opacity: 0.85;
+}
+
+.branch-right-1 {
+    bottom: -10px;
+    right: -10px;
+    width: 320px;
+    transform-origin: bottom right;
+    animation: sway-soft-right 8s ease-in-out infinite alternate;
+    opacity: 0.95;
+    z-index: 2; /* Bring the girl portrait slightly forward */
+}
+
+.branch-right-2 {
+    top: -40px;
+    right: -20px;
+    width: 250px;
+    opacity: 0.7;
+    transform-origin: top right;
+    animation: sway-soft-right 12s ease-in-out infinite alternate-reverse;
+}
+
+/* Petal Particles */
+.petal-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.petal {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    opacity: 0;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+    animation: petal-fall linear infinite;
+}
+
+/* Randomized Petals */
+.petal.p1 { left: 10%; animation-duration: 7s; animation-delay: 0s; }
+.petal.p2 { left: 25%; animation-duration: 9s; animation-delay: 2s; }
+.petal.p3 { left: 45%; animation-duration: 8s; animation-delay: 4s; }
+.petal.p4 { left: 65%; animation-duration: 10s; animation-delay: 1s; }
+.petal.p5 { left: 85%; animation-duration: 6s; animation-delay: 3s; }
+.petal.p6 { left: 15%; animation-duration: 11s; animation-delay: 5s; }
+
+@keyframes petal-fall {
+    0% {
+        transform: translateY(-20px) translateX(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% { opacity: 0.8; }
+    90% { opacity: 0.8; }
+    100% {
+        transform: translateY(100vh) translateX(100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes sway-soft-left {
+    0% { transform: rotate(0deg) scale(1.02); }
+    100% { transform: rotate(4deg) scale(1); }
+}
+
+@keyframes sway-soft-right {
+    0% { transform: rotate(0deg) scale(1); }
+    100% { transform: rotate(-3deg) scale(1.05); }
+}
+
+.footer-luxury .container {
+    position: relative;
+    z-index: 2;
+}
+
+.footer-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+    position: relative;
+    display: inline-block;
+    color: var(--text-primary);
+}
+
+.footer-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 30px;
+    height: 1.5px;
+    background-color: var(--pink-accent);
+}
+
+.footer-hover-link, .footericon-hover-link {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    text-decoration: none !important;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.footer-hover-link:hover, .footericon-hover-link:hover {
+    color: var(--pink-accent) !important;
+    transform: translateX(5px);
+}
+
+.footer-logo {
+    max-height: 80px;
+    width: auto;
+}
+
+.footer-description {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+}
+
+/* Newsletter Refinement */
+.footer-newsletter input {
+    height: 50px;
+    border: 1px solid rgba(232, 180, 184, 0.3);
+    border-radius: 50px !important;
+    padding-left: 20px;
+    font-size: 0.9rem;
+}
+
+.footer-newsletter-btn {
+    height: 50px;
+    border-radius: 0 50px 50px 0 !important;
+    background-color: var(--pink-accent) !important;
+    transition: all 0.3s;
+}
+
+.footer-newsletter-btn:hover {
+    filter: brightness(0.9);
+}
+
+@media (max-width: 991px) {
+    .branch-right-2 { display: none; }
+}
+
+@media (max-width: 767px) {
+    .branch-left { width: 180px; left: -20px; }
+    .branch-right-1 { width: 220px; right: -20px; }
+    .footer-luxury { text-align: center !important; }
+}
